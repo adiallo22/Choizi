@@ -9,10 +9,24 @@
 import UIKit
 
 class Home : UIViewController {
+
+    let nav = HomeNavBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        configUI()
+    }
+    
+}
+
+
+//MARK: - helpers
+
+extension Home {
+    
+    func configUI() {
+        view.addSubview(nav)
+        nav.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor)
     }
     
 }
