@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  Home.swift
 //  Choizi
 //
 //  Created by Abdul Diallo on 7/28/20.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class Home : UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .blue
     }
-
-
+    
 }
-
