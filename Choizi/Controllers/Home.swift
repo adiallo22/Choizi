@@ -22,6 +22,7 @@ class Home : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
+        configCards()
     }
     
 }
@@ -43,6 +44,12 @@ extension Home {
         view.addSubview(stack)
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor)
         
+    }
+    
+    func configCards() {
+        let card = Card()
+        deck.addSubview(card)
+        card.fillSuperview()
     }
     
 }

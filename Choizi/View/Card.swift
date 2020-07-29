@@ -13,14 +13,13 @@ class Card : UIView {
     private let photos : UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
-        img.layer.cornerRadius = 5
-        img.layer.masksToBounds = true
         img.image = #imageLiteral(resourceName: "Wtfv8VY8I2RDhbQlIvSqORBAx1N2")
         return img
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configUI()
     }
     
     required init?(coder: NSCoder) {
@@ -34,6 +33,8 @@ class Card : UIView {
 extension Card {
     
     func configUI() {
+        layer.cornerRadius = 5
+        clipsToBounds = true
         addSubview(photos)
         photos.fillSuperview()
     }
