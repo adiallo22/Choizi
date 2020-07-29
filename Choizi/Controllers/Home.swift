@@ -11,7 +11,9 @@ import UIKit
 class Home : UIViewController {
 
     private let nav = HomeNavBar()
+    
     private let footer = FooterHomeBar()
+    
     private let deck : UIView = {
         let view = UIView()
         view.layer.cornerRadius = 5

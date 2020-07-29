@@ -41,6 +41,7 @@ class Card : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
+        configGestures()
     }
     
     required init?(coder: NSCoder) {
@@ -78,6 +79,27 @@ extension Card {
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradient.locations = [0.4, 1.0]
         layer.addSublayer(gradient)
+    }
+    
+    fileprivate func configGestures() {
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(handleTapGesture))
+        let pan = UIPanGestureRecognizer.init(target: self, action: #selector(handlePanGesture))
+        addGestureRecognizer(tap)
+        addGestureRecognizer(pan)
+    }
+    
+}
+
+//MARK: - selectors
+
+extension Card {
+    
+    @objc func handleTapGesture(withSender sender: UITapGestureRecognizer) {
+        print("tapped")
+    }
+    
+    @objc func handlePanGesture(withSender sender: UIPanGestureRecognizer) {
+        print("paned")
     }
     
 }
