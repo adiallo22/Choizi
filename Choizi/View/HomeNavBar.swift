@@ -25,11 +25,13 @@ class HomeNavBar : UIStackView {
     var img : UIImageView = {
         let img = UIImageView()
         img.image = #imageLiteral(resourceName: "app_icon")
+        img.contentMode = .scaleAspectFit
         return img
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        heightAnchor.constraint(equalToConstant: 80).isActive = true
         [settingButton, UIView(), img, UIView(), conversationButton].forEach { view in
             addArrangedSubview(view)
         }
