@@ -94,12 +94,35 @@ extension Card {
 
 extension Card {
     
-    @objc func handleTapGesture(withSender sender: UITapGestureRecognizer) {
-        print("tapped")
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
+        
     }
     
-    @objc func handlePanGesture(withSender sender: UIPanGestureRecognizer) {
-        print("paned")
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            print("began")
+        case .changed:
+            swipeCard(sender)
+        case .ended:
+            returnCardPosition(sender)
+        default:
+            break
+        }
+    }
+    
+    fileprivate func swipeCard(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: nil)
+        let degrees : CGFloat = translation.x / 20
+        let angle = degrees * .pi / 180
+        let rotation = CGAffineTransform.init(rotationAngle: angle)
+        self.transform = rotation.translatedBy(x: translation.x, y: translation.y)
+    }
+    
+    fileprivate func returnCardPosition(_ sender: UIPanGestureRecognizer) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+            self.transform = .identity
+        })
     }
     
 }
