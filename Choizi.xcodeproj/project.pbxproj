@@ -16,6 +16,7 @@
 		C0095E5224D0E0D70000B1EC /* HomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5124D0E0D70000B1EC /* HomeNavBar.swift */; };
 		C0095E5424D0E4090000B1EC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5324D0E4090000B1EC /* Extensions.swift */; };
 		C0095E5624D0F3DB0000B1EC /* FooterHomeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5524D0F3DB0000B1EC /* FooterHomeBar.swift */; };
+		C0095E5824D108260000B1EC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5724D108260000B1EC /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C0095E5124D0E0D70000B1EC /* HomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavBar.swift; sourceTree = "<group>"; };
 		C0095E5324D0E4090000B1EC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C0095E5524D0F3DB0000B1EC /* FooterHomeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterHomeBar.swift; sourceTree = "<group>"; };
+		C0095E5724D108260000B1EC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				C0095E5124D0E0D70000B1EC /* HomeNavBar.swift */,
 				C0095E5524D0F3DB0000B1EC /* FooterHomeBar.swift */,
+				C0095E5724D108260000B1EC /* Card.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			files = (
 				C0095E5424D0E4090000B1EC /* Extensions.swift in Sources */,
 				C0095E3524D07E8D0000B1EC /* AppDelegate.swift in Sources */,
+				C0095E5824D108260000B1EC /* Card.swift in Sources */,
 				C0095E5024D07F6B0000B1EC /* Home.swift in Sources */,
 				C0095E5624D0F3DB0000B1EC /* FooterHomeBar.swift in Sources */,
 				C0095E5224D0E0D70000B1EC /* HomeNavBar.swift in Sources */,
