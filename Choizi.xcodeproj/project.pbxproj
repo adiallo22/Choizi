@@ -19,6 +19,8 @@
 		C0095E5824D108260000B1EC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5724D108260000B1EC /* Card.swift */; };
 		C05EE6B324D8860C00C08BA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B224D8860C00C08BA8 /* User.swift */; };
 		C05EE6B524D8883D00C08BA8 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */; };
+		C05EE6B824D8C41E00C08BA8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B724D8C41D00C08BA8 /* Login.swift */; };
+		C05EE6BA24D8C44200C08BA8 /* SingUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B924D8C44200C08BA8 /* SingUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		C0095E5724D108260000B1EC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C05EE6B224D8860C00C08BA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		C05EE6B724D8C41D00C08BA8 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		C05EE6B924D8C44200C08BA8 /* SingUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		C0095E4C24D07F200000B1EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C05EE6B624D8C40500C08BA8 /* Authentication */,
 				C0095E4F24D07F6B0000B1EC /* Home.swift */,
 			);
 			path = Controllers;
@@ -131,6 +136,15 @@
 				C0095E5324D0E4090000B1EC /* Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C05EE6B624D8C40500C08BA8 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				C05EE6B724D8C41D00C08BA8 /* Login.swift */,
+				C05EE6B924D8C44200C08BA8 /* SingUp.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,12 +219,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0095E5424D0E4090000B1EC /* Extensions.swift in Sources */,
+				C05EE6B824D8C41E00C08BA8 /* Login.swift in Sources */,
 				C0095E3524D07E8D0000B1EC /* AppDelegate.swift in Sources */,
 				C0095E5824D108260000B1EC /* Card.swift in Sources */,
 				C0095E5024D07F6B0000B1EC /* Home.swift in Sources */,
 				C05EE6B324D8860C00C08BA8 /* User.swift in Sources */,
 				C0095E5624D0F3DB0000B1EC /* FooterHomeBar.swift in Sources */,
 				C0095E5224D0E0D70000B1EC /* HomeNavBar.swift in Sources */,
+				C05EE6BA24D8C44200C08BA8 /* SingUp.swift in Sources */,
 				C0095E3724D07E8D0000B1EC /* SceneDelegate.swift in Sources */,
 				C05EE6B524D8883D00C08BA8 /* CardViewModel.swift in Sources */,
 			);
