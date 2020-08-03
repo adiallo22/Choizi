@@ -49,9 +49,14 @@ extension Home {
     }
     
     func configCards() {
-        let card = Card()
-        deck.addSubview(card)
-        card.fillSuperview()
+        let user1 = User.init(name: "dylan", age: 0, photos: [#imageLiteral(resourceName: "Wtfv8VY8I2RDhbQlIvSqORBAx1N2")])
+        let user2 = User.init(name: "amadou", age: 0, photos: [#imageLiteral(resourceName: "Wtfv8VY8I2RDhbQlIvSqORBAx1N2")])
+        let card1 = Card(viewModel: CardViewModel.init(user: user1))
+        let card2 = Card(viewModel: CardViewModel.init(user: user2))
+        deck.addSubview(card1)
+        deck.addSubview(card2)
+        card1.fillSuperview()
+        card2.fillSuperview()
     }
     
 }

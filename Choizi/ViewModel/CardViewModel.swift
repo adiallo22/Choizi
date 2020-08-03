@@ -6,15 +6,13 @@
 //  Copyright © 2020 Abdul Diallo. All rights reserved.
 //
 
-import UIKit.UIImage
+import UIKit
 
 struct CardViewModel {
     
     private let user : User
     
-    var name : String {
-        return user.name
-    }
+    var details : NSAttributedString
     
     var age : Int {
         return user.age
@@ -26,6 +24,15 @@ struct CardViewModel {
     
     init(user: User) {
         self.user = user
+        let attributed = NSMutableAttributedString(string: user.name, attributes: [
+                                                    .font: UIFont.systemFont(ofSize: 30, weight: .heavy),
+                                                    .foregroundColor: UIColor.white])
+        attributed.append(NSAttributedString.init(string: "  \(user.age)",
+                                                  attributes: [
+                                                    .font: UIFont.systemFont(ofSize: 22),
+                                                    .foregroundColor : UIColor.white]))
+        self.details = attributed
+        
     }
     
 }

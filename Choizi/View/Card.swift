@@ -12,23 +12,17 @@ class Card : UIView {
     
     private let gradient = CAGradientLayer()
     
+    private let viewModel : CardViewModel
+    
     private let photos : UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
-        img.image = #imageLiteral(resourceName: "Wtfv8VY8I2RDhbQlIvSqORBAx1N2")
         return img
     }()
     
-    private var info : UILabel = {
+    private lazy var info : UILabel = {
         let label = UILabel()
-        let attributed = NSMutableAttributedString(string: "Dylan Amadou", attributes: [
-                                                    .font: UIFont.systemFont(ofSize: 30, weight: .heavy),
-                                                    .foregroundColor: UIColor.white])
-        attributed.append(NSAttributedString.init(string: "  0",
-                                                  attributes: [
-                                                    .font: UIFont.systemFont(ofSize: 22),
-                                                    .foregroundColor : UIColor.white]))
-        label.attributedText = attributed
+        label.attributedText = viewModel.details
         return label
     }()
     
@@ -38,8 +32,9 @@ class Card : UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(viewModel: CardViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
         configUI()
         configGestures()
     }
@@ -73,6 +68,8 @@ extension Card {
         detailsButton.anchor(right: rightAnchor, paddingRight: 16)
         detailsButton.centerY(inView: info)
         detailsButton.setDimensions(height: 40, width: 40)
+        //
+        photos.image = viewModel.photos.first
     }
     
     fileprivate func gradientBottom() {
@@ -105,7 +102,8 @@ extension Card {
         case .changed:
             swipeCard(sender)
         case .ended:
-            returnCardPosition(sender)
+//            returnCardPosition(sender)
+            print("")
         default:
             break
         }
@@ -122,7 +120,9 @@ extension Card {
     fileprivate func returnCardPosition(_ sender: UIPanGestureRecognizer) {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             self.transform = .identity
-        })
+        }) {_ in
+            print("")
+        }
     }
     
 }
