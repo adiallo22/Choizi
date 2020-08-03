@@ -8,9 +8,11 @@
 
 import UIKit
 
-struct CardViewModel {
+class CardViewModel {
     
     private let user : User
+    
+    private var indexPhoto = 0
     
     var details : NSAttributedString
     
@@ -18,8 +20,10 @@ struct CardViewModel {
         return user.age
     }
     
-    var photos : [UIImage] {
-        return user.photos
+    var photo : UIImage?
+    
+    var firstPhoto : UIImage {
+        return user.photos.first!
     }
     
     init(user: User) {
@@ -33,6 +37,18 @@ struct CardViewModel {
                                                     .foregroundColor : UIColor.white]))
         self.details = attributed
         
+    }
+    
+    func nextPhoto() {
+        guard indexPhoto < user.photos.count - 1 else { return }
+        indexPhoto += 1
+        self.photo = self.user.photos[indexPhoto]
+    }
+    
+    func previousPhoto() {
+        guard indexPhoto > 0 else { return }
+        indexPhoto -= 1
+        self.photo = self.user.photos[indexPhoto]
     }
     
 }

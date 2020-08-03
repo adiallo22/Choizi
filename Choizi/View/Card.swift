@@ -74,7 +74,7 @@ extension Card {
         detailsButton.centerY(inView: info)
         detailsButton.setDimensions(height: 40, width: 40)
         //
-        photos.image = viewModel.photos.first
+        photos.image = viewModel.firstPhoto
     }
     
     fileprivate func gradientBottom() {
@@ -97,7 +97,13 @@ extension Card {
 extension Card {
     
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
-        
+        let position = sender.location(in: nil).x
+        let shouldShowNextPhoto = position > self.frame.width / 2
+        if shouldShowNextPhoto {
+            viewModel.nextPhoto()
+        } else {
+            viewModel.previousPhoto()
+        }
     }
     
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
