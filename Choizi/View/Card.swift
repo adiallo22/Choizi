@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum SwipeDirection : Int {
+    case left = -1
+    case right = 1
+}
+
 class Card : UIView {
     
     private let gradient = CAGradientLayer()
@@ -98,12 +103,11 @@ extension Card {
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began:
-            print("began")
+            superview?.subviews.forEach({ $0.layer.removeAllAnimations() })
         case .changed:
             swipeCard(sender)
         case .ended:
-//            returnCardPosition(sender)
-            print("")
+            returnCardPosition(sender)
         default:
             break
         }
@@ -118,10 +122,20 @@ extension Card {
     }
     
     fileprivate func returnCardPosition(_ sender: UIPanGestureRecognizer) {
+        let direction : SwipeDirection = sender.translation(in: nil).x > 100 ? .right : .left
+        let shouldDismissCard = abs(sender.translation(in: nil).x) > 100
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
-            self.transform = .identity
+            if shouldDismissCard {
+                let x = CGFloat(direction.rawValue) * 1000
+                let offScreen = self.transform.translatedBy(x: x, y: 0)
+                self.transform = offScreen
+            } else {
+                self.transform = .identity
+            }
         }) {_ in
-            print("")
+            if shouldDismissCard {
+                self.removeFromSuperview()
+            }
         }
     }
     
