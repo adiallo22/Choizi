@@ -102,7 +102,7 @@ extension Login {
     }
     
     @objc func segueToSignUp() {
-        print("sign up opened..")
+        navigationController?.pushViewController(SignUp(), animated: true)
     }
     
 }
