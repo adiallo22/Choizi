@@ -12,7 +12,7 @@ import UIKit
 
 extension UITextField {
     
-    func customTextField(withPlaceholder placeholder: String) {
+    func customTextField(withPlaceholder placeholder: String, andSecureEntry: Bool? = false) {
         let spacer = UIView()
         spacer.setDimensions(height: 50, width: 5)
         leftView = spacer
@@ -23,6 +23,7 @@ extension UITextField {
         layer.cornerRadius = 5
         attributedPlaceholder = NSAttributedString.init(string: placeholder, attributes: [.foregroundColor:UIColor.init(white: 1, alpha: 0.8)])
         heightAnchor.constraint(equalToConstant: 50).isActive = true
+        isSecureTextEntry = andSecureEntry!
     }
     
 }
@@ -30,9 +31,12 @@ extension UITextField {
 //MARK: - uibutton
 
 extension UIButton {
-    func customNavButton() {
-        self.layer.cornerRadius = self.layer.frame.size.width / 2.0
-        self.layer.masksToBounds = true
+    func authButton(withTitle title: String) {
+        heightAnchor.constraint(equalToConstant: 50).isActive = true
+        setTitle(title, for: .normal)
+        layer.cornerRadius = 5
+        backgroundColor = UIColor.init(white: 1, alpha: 0.5)
+        tintColor = .white
     }
 }
 

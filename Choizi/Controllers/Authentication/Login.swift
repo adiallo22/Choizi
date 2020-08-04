@@ -25,17 +25,27 @@ class Login : UIViewController {
     
     private let password : UITextField = {
         let tf = UITextField()
-        tf.customTextField(withPlaceholder: "Password")
+        tf.customTextField(withPlaceholder: "Password", andSecureEntry: true)
         return tf
     }()
     
     private let logibButton : UIButton = {
         let button = UIButton()
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.setTitle("Login", for: .normal)
-        button.layer.cornerRadius = 5
-        button.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
-        button.tintColor = .white
+        button.authButton(withTitle: "Login")
+        button.addTarget(self, action: #selector(loginTaped), for: .touchUpInside)
+        return button
+    }()
+    
+    private let signupButton : UIButton = {
+        let button = UIButton()
+        let attributed = NSMutableAttributedString.init(string: "Don't have an account?   ",
+                                                        attributes: [.foregroundColor: UIColor.white,
+                                                                     .font: UIFont.systemFont(ofSize: 16)])
+        attributed.append(NSAttributedString.init(string: "SignUp",
+                                                  attributes: [.foregroundColor: UIColor.white,
+                                                               .font: UIFont.boldSystemFont(ofSize: 16)]))
+        button.setAttributedTitle(attributed, for: .normal)
+        button.addTarget(self, action: #selector(segueToSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -75,6 +85,24 @@ extension Login {
                      paddingTop: 24,
                      paddingLeft: 32,
                      paddingRight: 32)
+        //
+        view.addSubview(signupButton)
+        signupButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 8)
+        signupButton.centerX(inView: view)
+    }
+    
+}
+
+//MARK: - selectors
+
+extension Login {
+    
+    @objc func loginTaped() {
+        print("logged in..")
+    }
+    
+    @objc func segueToSignUp() {
+        print("sign up opened..")
     }
     
 }
