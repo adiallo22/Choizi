@@ -83,7 +83,7 @@ extension SignUp {
         stack.anchor(top: photoButton.bottomAnchor,
                      left: view.leftAnchor,
                      right: view.rightAnchor,
-                     paddingTop: 24,
+                     paddingTop: 8,
                      paddingLeft: 32,
                      paddingRight: 32)
         //
@@ -99,7 +99,9 @@ extension SignUp {
 extension SignUp {
     
     @objc func imagePicked() {
-        print("picked..")
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        present(picker, animated: true, completion: nil)
     }
     
     @objc func signupTapped(){
@@ -107,7 +109,15 @@ extension SignUp {
     }
     
     @objc func segueToLogin() {
-        print("back to login..")
+        navigationController?.popViewController(animated: true)
     }
+    
+}
+
+//MARK: - <#section heading#>
+
+extension SignUp : UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    
     
 }
