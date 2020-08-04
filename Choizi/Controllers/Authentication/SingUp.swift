@@ -67,7 +67,7 @@ class SignUp : UIViewController {
 
 extension SignUp {
     
-    func configUI() {
+    fileprivate func configUI() {
         view.addSubview(photoButton)
         photoButton.setDimensions(height: 270, width: 270)
         photoButton.centerX(inView: view)
@@ -83,13 +83,20 @@ extension SignUp {
         stack.anchor(top: photoButton.bottomAnchor,
                      left: view.leftAnchor,
                      right: view.rightAnchor,
-                     paddingTop: 8,
+                     paddingTop: 16,
                      paddingLeft: 32,
                      paddingRight: 32)
         //
         view.addSubview(backtoLogin)
         backtoLogin.centerX(inView: view)
         backtoLogin.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+    }
+    
+    fileprivate func configButtonPhoto() {
+        photoButton.layer.cornerRadius = 10
+        photoButton.layer.borderWidth = 3
+        photoButton.layer.borderColor = .init(srgbRed: 1, green: 1, blue: 1, alpha: 0.8)
+        photoButton.imageView?.contentMode = .scaleAspectFill
     }
     
 }
@@ -114,10 +121,15 @@ extension SignUp {
     
 }
 
-//MARK: - <#section heading#>
+//MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
 
 extension SignUp : UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let img = info[.originalImage] as? UIImage else { return }
+        photoButton.setImage(img.withRenderingMode(.alwaysOriginal), for: .normal)
+        configButtonPhoto()
+        dismiss(animated: true, completion: nil)
+    }
     
 }
