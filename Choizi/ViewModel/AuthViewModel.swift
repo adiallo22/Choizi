@@ -12,11 +12,11 @@ import Foundation
 
 struct LoginViewModel {
     
-    var email : String
-    var password : String
+    var email : String?
+    var password : String?
     
     var isValid : Bool {
-        return !email.isEmpty && !password.isEmpty
+        return email?.isEmpty == false && password?.isEmpty == false
     }
     
 }

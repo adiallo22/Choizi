@@ -10,6 +10,8 @@ import UIKit
 
 class Login : UIViewController {
     
+    private var viewModel = LoginViewModel()
+    
     private var logo : UIImageView = {
         let img = UIImageView()
         img.image = #imageLiteral(resourceName: "app_icon").withRenderingMode(.alwaysTemplate)
@@ -20,12 +22,14 @@ class Login : UIViewController {
     private let email : UITextField = {
         let tf = UITextField()
         tf.customTextField(withPlaceholder: "Email")
+        tf.addTarget(self, action: #selector(emailEdited), for: .editingChanged)
         return tf
     }()
     
     private let password : UITextField = {
         let tf = UITextField()
         tf.customTextField(withPlaceholder: "Password", andSecureEntry: true)
+        tf.addTarget(self, action: #selector(passwordEdited), for: .editingChanged)
         return tf
     }()
     
@@ -103,6 +107,14 @@ extension Login {
     
     @objc func segueToSignUp() {
         navigationController?.pushViewController(SignUp(), animated: true)
+    }
+    
+    @objc func emailEdited(sender: UITextField) {
+        print(sender.text)
+    }
+    
+    @objc func passwordEdited(sender: UITextField) {
+        print(sender.text)
     }
     
 }
