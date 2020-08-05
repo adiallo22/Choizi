@@ -22,14 +22,14 @@ class Login : UIViewController {
     private let email : UITextField = {
         let tf = UITextField()
         tf.customTextField(withPlaceholder: "Email")
-        tf.addTarget(self, action: #selector(emailEdited), for: .editingChanged)
+        tf.addTarget(self, action: #selector(emailOrPwdEdited), for: .editingChanged)
         return tf
     }()
     
     private let password : UITextField = {
         let tf = UITextField()
         tf.customTextField(withPlaceholder: "Password", andSecureEntry: true)
-        tf.addTarget(self, action: #selector(passwordEdited), for: .editingChanged)
+        tf.addTarget(self, action: #selector(emailOrPwdEdited), for: .editingChanged)
         return tf
     }()
     
@@ -109,12 +109,16 @@ extension Login {
         navigationController?.pushViewController(SignUp(), animated: true)
     }
     
-    @objc func emailEdited(sender: UITextField) {
-        print(sender.text)
+    @objc func emailOrPwdEdited(sender: UITextField) {
+        switch sender {
+        case email:
+            viewModel.email = sender.text
+        case password:
+            viewModel.password = sender.text
+        default:
+            break
+        }
     }
     
-    @objc func passwordEdited(sender: UITextField) {
-        print(sender.text)
-    }
     
 }
