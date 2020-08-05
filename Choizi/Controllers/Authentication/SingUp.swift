@@ -97,6 +97,7 @@ extension SignUp {
         photoButton.layer.borderWidth = 3
         photoButton.layer.borderColor = .init(srgbRed: 1, green: 1, blue: 1, alpha: 0.8)
         photoButton.imageView?.contentMode = .scaleAspectFill
+        photoButton.clipsToBounds = true
     }
     
 }
