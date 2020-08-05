@@ -25,12 +25,12 @@ struct LoginViewModel {
 
 struct SignUpViewModel {
     
-    var email : String
-    var password : String
-    var fullname : String
+    var email : String?
+    var password : String?
+    var fullname : String?
     
     var isValid : Bool {
-        return !email.isEmpty && !password.isEmpty && !fullname.isEmpty
+        return email?.isEmpty == false && password?.isEmpty == false && fullname?.isEmpty == false
     }
     
 }

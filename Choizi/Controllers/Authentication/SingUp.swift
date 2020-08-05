@@ -10,6 +10,8 @@ import UIKit
 
 class SignUp : UIViewController {
     
+    private var viewModel = SignUpViewModel()
+    
     private var photoButton : UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -21,18 +23,21 @@ class SignUp : UIViewController {
     private var fullname : UITextField = {
         let tf = UITextField()
         tf.customTextField(withPlaceholder: "Full Name")
+        tf.addTarget(self, action: #selector(tfEdited), for: .editingChanged)
         return tf
     }()
     
     private var email : UITextField = {
         let tf = UITextField()
         tf.customTextField(withPlaceholder: "Email")
+        tf.addTarget(self, action: #selector(tfEdited), for: .editingChanged)
         return tf
     }()
     
     private var password : UITextField = {
         let tf = UITextField()
         tf.customTextField(withPlaceholder: "Password")
+        tf.addTarget(self, action: #selector(tfEdited), for: .editingChanged)
         return tf
     }()
     
@@ -118,6 +123,19 @@ extension SignUp {
     
     @objc func segueToLogin() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func tfEdited(sender: UITextField) {
+        switch sender {
+        case email:
+            viewModel.email = sender.text
+        case password:
+            viewModel.password = sender.text
+        case fullname:
+            viewModel.fullname = sender.text
+        default:
+            break
+        }
     }
     
 }
