@@ -105,6 +105,16 @@ extension SignUp {
         photoButton.clipsToBounds = true
     }
     
+    fileprivate func buttonStatus() {
+        switch viewModel.isValid {
+        case true:
+            signupButton.isEnabled = true
+            signupButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        case false:
+            signupButton.isEnabled = false
+        }
+    }
+    
 }
 
 //MARK: - selectors
@@ -136,6 +146,7 @@ extension SignUp {
         default:
             break
         }
+        buttonStatus()
     }
     
 }

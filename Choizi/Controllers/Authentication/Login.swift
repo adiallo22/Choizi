@@ -94,6 +94,16 @@ extension Login {
         signupButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 8)
         signupButton.centerX(inView: view)
     }
+
+    fileprivate func buttonStatus() {
+        switch viewModel.isValid {
+        case true:
+            logibButton.isEnabled = true
+            logibButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        case false:
+            logibButton.isEnabled = false
+        }
+    }
     
 }
 
@@ -118,6 +128,7 @@ extension Login {
         default:
             break
         }
+        buttonStatus()
     }
     
     
