@@ -42,13 +42,7 @@ class Login : UIViewController {
     
     private let signupButton : UIButton = {
         let button = UIButton()
-        let attributed = NSMutableAttributedString.init(string: "Don't have an account?   ",
-                                                        attributes: [.foregroundColor: UIColor.white,
-                                                                     .font: UIFont.systemFont(ofSize: 16)])
-        attributed.append(NSAttributedString.init(string: "SignUp",
-                                                  attributes: [.foregroundColor: UIColor.white,
-                                                               .font: UIFont.boldSystemFont(ofSize: 16)]))
-        button.setAttributedTitle(attributed, for: .normal)
+        button.doYouHaveAcctButton(str1: "Don't have an account?   ", str2: "SignUp")
         button.addTarget(self, action: #selector(segueToSignUp), for: .touchUpInside)
         return button
     }()

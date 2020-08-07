@@ -50,13 +50,7 @@ class SignUp : UIViewController {
     
     private let backtoLogin : UIButton = {
         let button = UIButton()
-        let attributed = NSMutableAttributedString.init(string: "Already have an account?   ",
-                                                        attributes: [.foregroundColor: UIColor.white,
-                                                                     .font: UIFont.systemFont(ofSize: 16)])
-        attributed.append(NSAttributedString.init(string: "SignIn",
-                                                  attributes: [.foregroundColor: UIColor.white,
-                                                               .font: UIFont.boldSystemFont(ofSize: 16)]))
-        button.setAttributedTitle(attributed, for: .normal)
+        button.doYouHaveAcctButton(str1: "Already have an account?   ", str2: "SignIn")
         button.addTarget(self, action: #selector(segueToLogin), for: .touchUpInside)
         return button
     }()
