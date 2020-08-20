@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class Home : UIViewController {
 
@@ -25,6 +26,7 @@ class Home : UIViewController {
         super.viewDidLoad()
         configUI()
         configCards()
+        checkLogStatus()
     }
     
 }
@@ -57,6 +59,38 @@ extension Home {
         deck.addSubview(card2)
         card1.fillSuperview()
         card2.fillSuperview()
+    }
+    
+    fileprivate func presentLogginScreen() {
+        DispatchQueue.main.async {
+            let loginvc = Login()
+            let nav = UINavigationController.init(rootViewController: loginvc)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
+    }
+    
+}
+
+//MARK: - APIS
+
+extension Home {
+    
+    func checkLogStatus() {
+        if Auth.auth().currentUser == nil {
+            presentLogginScreen()
+        } else {
+            print("user IS logged in")
+        }
+    }
+    
+    func loggout() {
+        do {
+            try Auth.auth().signOut()
+            presentLogginScreen()
+        } catch {
+            print("error signing out user")
+        }
     }
     
 }
