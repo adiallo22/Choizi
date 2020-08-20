@@ -106,7 +106,15 @@ extension Login {
 extension Login {
     
     @objc func loginTaped() {
-        print("logged in..")
+        guard let email = email.text,
+            let pwd = password.text else { return }
+        AuthenticationService.signIn(withEmail: email, andPassword: pwd) { result, err in
+            if let err = err {
+                print(err.localizedDescription)
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func segueToSignUp() {

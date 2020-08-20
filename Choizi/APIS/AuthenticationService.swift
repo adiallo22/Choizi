@@ -6,7 +6,6 @@
 //  Copyright © 2020 Abdul Diallo. All rights reserved.
 //
 
-import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -39,4 +38,14 @@ struct AuthenticationService {
         
     }
     
+}
+
+//MARK: - LOGGIN
+
+extension AuthenticationService {
+    static func signIn(withEmail email: String,
+                       andPassword password: String,
+                       completion: AuthDataResultCallback?) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
+    }
 }
