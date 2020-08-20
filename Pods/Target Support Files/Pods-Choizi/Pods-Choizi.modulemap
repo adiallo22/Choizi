@@ -1,0 +1,6 @@
+framework module Pods_Choizi {
+  umbrella header "Pods-Choizi-umbrella.h"
+
+  export *
+  module * { export * }
+}

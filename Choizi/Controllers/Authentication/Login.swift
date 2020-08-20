@@ -33,7 +33,7 @@ class Login : UIViewController {
         return tf
     }()
     
-    private let logibButton : UIButton = {
+    private let loginButton : UIButton = {
         let button = UIButton()
         button.authButton(withTitle: "Login")
         button.addTarget(self, action: #selector(loginTaped), for: .touchUpInside)
@@ -71,7 +71,7 @@ extension Login {
         logo.centerX(inView: view)
         //
         let stack : UIStackView = {
-           let stack = UIStackView(arrangedSubviews: [email, password, logibButton])
+           let stack = UIStackView(arrangedSubviews: [email, password, loginButton])
             stack.axis = .vertical
             stack.spacing = 16
             return stack
@@ -92,10 +92,10 @@ extension Login {
     fileprivate func buttonStatus() {
         switch viewModel.isValid {
         case true:
-            logibButton.isEnabled = true
-            logibButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         case false:
-            logibButton.isEnabled = false
+            loginButton.isEnabled = false
         }
     }
     
