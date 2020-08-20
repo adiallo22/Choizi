@@ -36,7 +36,7 @@ class SignUp : UIViewController {
     
     private var password : UITextField = {
         let tf = UITextField()
-        tf.customTextField(withPlaceholder: "Password")
+        tf.customTextField(withPlaceholder: "Password", andSecureEntry: true)
         tf.addTarget(self, action: #selector(tfEdited), for: .editingChanged)
         return tf
     }()
@@ -124,7 +124,7 @@ extension SignUp {
     }
     
     @objc func signupTapped(){
-        print("signed up..")
+        register()
     }
     
     @objc func segueToLogin() {
@@ -173,6 +173,12 @@ extension SignUp {
                                         email: email,
                                         password: password,
                                         profileIMG: profileIMG)
-        AuthenticationService.register(withCredentials: credential)
+        AuthenticationService.register(withCredentials: credential) { err in
+            if let err = err {
+                print(err.localizedDescription)
+                return
+            }
+            print("successfully signed up \(credential.fullname)")
+        }
     }
 }
