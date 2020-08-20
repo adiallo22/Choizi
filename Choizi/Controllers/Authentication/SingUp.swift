@@ -55,6 +55,8 @@ class SignUp : UIViewController {
         return button
     }()
     
+    private var profile : UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
@@ -151,9 +153,26 @@ extension SignUp : UIImagePickerControllerDelegate & UINavigationControllerDeleg
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let img = info[.originalImage] as? UIImage else { return }
+        profile = img
         photoButton.setImage(img.withRenderingMode(.alwaysOriginal), for: .normal)
         configButtonPhoto()
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+//MARK: - APIS
+
+extension SignUp {
+    fileprivate func register() {
+        guard let fullname = fullname.text,
+            let email = email.text,
+            let password = password.text,
+            let profileIMG = profile else { return }
+        let credential = UserCredential(fullname: fullname,
+                                        email: email,
+                                        password: password,
+                                        profileIMG: profileIMG)
+        AuthenticationService.register(withCredentials: credential)
+    }
 }
