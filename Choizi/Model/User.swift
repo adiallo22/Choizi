@@ -12,6 +12,16 @@ struct User {
     
     var name : String
     var age : Int
-    var photos : [UIImage]
+    var email : String
+    var images : String
+    var uid : String
+    
+    init(value : [String:Any]) {
+        self.name = value["fullname"] as? String ?? ""
+        self.age = value["age"] as? Int ?? 0
+        self.email = value["email"] as? String ?? ""
+        self.images = value["images"] as? String ?? ""
+        self.uid = value["uid"] as? String ?? ""
+    }
     
 }
