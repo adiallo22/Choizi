@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol NavigationDelegate : class {
+    func settingTapped()
+    func conversationTapped()
+}
+
 class HomeNavBar : UIStackView {
+    
+    weak var delegate : NavigationDelegate?
     
     var settingButton : UIButton = {
         let button = UIButton()
@@ -31,6 +38,21 @@ class HomeNavBar : UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configUI()
+        settingButton.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
+        conversationButton.addTarget(self, action: #selector(handleConversation), for: .touchUpInside)
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+//MARK: - helpers
+
+extension HomeNavBar {
+    fileprivate func configUI() {
         heightAnchor.constraint(equalToConstant: 80).isActive = true
         [settingButton, UIView(), img, UIView(), conversationButton].forEach { view in
             addArrangedSubview(view)
@@ -39,9 +61,18 @@ class HomeNavBar : UIStackView {
         isLayoutMarginsRelativeArrangement = true
         layoutMargins = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
+}
+
+//MARK: - selectors
+
+extension HomeNavBar {
     
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func handleSetting() {
+        delegate?.settingTapped()
+    }
+    
+    @objc func handleConversation() {
+        delegate?.conversationTapped()
     }
     
 }

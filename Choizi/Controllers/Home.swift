@@ -45,6 +45,7 @@ class Home : UIViewController {
 extension Home {
     
     func configUI() {
+        nav.delegate = self
         let stack : UIStackView = {
             let stack = UIStackView(arrangedSubviews: [nav, deck, footer])
             stack.axis = .vertical
@@ -122,6 +123,20 @@ extension Home {
                 print(err.localizedDescription)
             }
         }
+    }
+    
+}
+
+//MARK: - NavigationDelegate
+
+extension Home : NavigationDelegate {
+    
+    func settingTapped() {
+        print("setting")
+    }
+    
+    func conversationTapped() {
+        print("conversation")
     }
     
 }
