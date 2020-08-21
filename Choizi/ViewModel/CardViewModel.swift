@@ -22,9 +22,9 @@ class CardViewModel {
     
     var photo : UIImage?
     
-    var firstPhoto : UIImage {
-        return user.photos.first!
-    }
+//    var firstPhoto : UIImage {
+//        return user.photos.first!
+//    }
     
     init(user: User) {
         self.user = user
@@ -39,16 +39,16 @@ class CardViewModel {
         
     }
     
-    func nextPhoto() {
-        guard indexPhoto < user.photos.count - 1 else { return }
-        indexPhoto += 1
-        self.photo = self.user.photos[indexPhoto]
-    }
-    
-    func previousPhoto() {
-        guard indexPhoto > 0 else { return }
-        indexPhoto -= 1
-        self.photo = self.user.photos[indexPhoto]
-    }
+//    func nextPhoto() {
+//        guard indexPhoto < user.photos.count - 1 else { return }
+//        indexPhoto += 1
+//        self.photo = self.user.photos[indexPhoto]
+//    }
+//
+//    func previousPhoto() {
+//        guard indexPhoto > 0 else { return }
+//        indexPhoto -= 1
+//        self.photo = self.user.photos[indexPhoto]
+//    }
     
 }

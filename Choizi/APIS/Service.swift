@@ -47,7 +47,29 @@ extension Service {
             if let err = err {
                 completion(.failure(err))
             } else {
-                print("test -- \(snap)")
+                guard let value = snap?.data() else { return }
+                let user = User(value: value)
+                completion(.success(user))
+            }
+        }
+    }
+}
+
+//MARK: - Fetch All Users
+
+extension Service {
+    static func fetchAllUsers(completion: @escaping(Result<[User], Error>)->Void) {
+        var users : [User] = []
+        collectionUserPath.getDocuments { snapshot, err in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                snapshot?.documents.forEach({ document in
+                    let value = document.data()
+                    let user = User.init(value: value)
+                    users.insert(user, at: 0)
+                })
+                completion(.success(users))
             }
         }
     }

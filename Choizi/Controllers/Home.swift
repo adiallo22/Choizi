@@ -10,6 +10,10 @@ import UIKit
 import FirebaseAuth
 
 class Home : UIViewController {
+    
+    private var viewModels : [CardViewModel] = [] {
+        didSet { configCards() }
+    }
 
     private let nav = HomeNavBar()
     
@@ -25,12 +29,12 @@ class Home : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
-        configCards()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         fetchUser()
+        fetchAllUsers()
     }
     
 }
@@ -55,14 +59,11 @@ extension Home {
     }
     
     func configCards() {
-        let user1 = User.init(name: "dylan", age: 0, photos: [#imageLiteral(resourceName: "Wtfv8VY8I2RDhbQlIvSqORBAx1N2")])
-        let user2 = User.init(name: "amadou", age: 0, photos: [#imageLiteral(resourceName: "Wtfv8VY8I2RDhbQlIvSqORBAx1N2")])
-        let card1 = Card(viewModel: CardViewModel.init(user: user1))
-        let card2 = Card(viewModel: CardViewModel.init(user: user2))
-        deck.addSubview(card1)
-        deck.addSubview(card2)
-        card1.fillSuperview()
-        card2.fillSuperview()
+        viewModels.forEach { viewModel in
+            let card = Card.init(viewModel: viewModel)
+            deck.addSubview(card)
+            card.fillSuperview()
+        }
     }
     
     fileprivate func presentLogginScreen() {
@@ -80,7 +81,7 @@ extension Home {
 
 extension Home {
     
-    func checkLogStatus() {
+    fileprivate func checkLogStatus() {
         if Auth.auth().currentUser == nil {
             presentLogginScreen()
         } else {
@@ -88,7 +89,7 @@ extension Home {
         }
     }
     
-    func loggout() {
+    fileprivate func loggout() {
         do {
             try Auth.auth().signOut()
             presentLogginScreen()
@@ -97,12 +98,26 @@ extension Home {
         }
     }
     
-    func fetchUser() {
+    fileprivate func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Service.fetchUser(withUid: uid) { result in
             switch result {
             case .success(let user):
                 print(user.age)
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    fileprivate func fetchAllUsers() {
+        Service.fetchAllUsers { result in
+            switch result {
+            case .success(let users):
+                users.forEach { [weak self] user in
+                    let viewModel = CardViewModel.init(user: user)
+                    self?.viewModels.append(viewModel)
+                }
             case .failure(let err):
                 print(err.localizedDescription)
             }
