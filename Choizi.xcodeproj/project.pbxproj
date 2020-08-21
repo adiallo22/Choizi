@@ -15,7 +15,7 @@
 		C0095E4124D07E940000B1EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0095E3F24D07E940000B1EC /* LaunchScreen.storyboard */; };
 		C0095E5024D07F6B0000B1EC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E4F24D07F6B0000B1EC /* Home.swift */; };
 		C0095E5224D0E0D70000B1EC /* HomeNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5124D0E0D70000B1EC /* HomeNavBar.swift */; };
-		C0095E5424D0E4090000B1EC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5324D0E4090000B1EC /* Extensions.swift */; };
+		C0095E5424D0E4090000B1EC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5324D0E4090000B1EC /* View.swift */; };
 		C0095E5624D0F3DB0000B1EC /* FooterHomeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5524D0F3DB0000B1EC /* FooterHomeBar.swift */; };
 		C0095E5824D108260000B1EC /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0095E5724D108260000B1EC /* Card.swift */; };
 		C05EE6B324D8860C00C08BA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B224D8860C00C08BA8 /* User.swift */; };
@@ -27,6 +27,8 @@
 		C0A377D124EEC8FB001BA545 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */; };
 		C0A377D324EEC93D001BA545 /* UserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D224EEC93D001BA545 /* UserCredential.swift */; };
 		C0A377D524EED660001BA545 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D424EED660001BA545 /* Service.swift */; };
+		C0EA2B3624F019AD0034154B /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA2B3524F019AD0034154B /* Buttons.swift */; };
+		C0EA2B3824F019D80034154B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA2B3724F019D80034154B /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +44,7 @@
 		C0095E4224D07E940000B1EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0095E4F24D07F6B0000B1EC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		C0095E5124D0E0D70000B1EC /* HomeNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavBar.swift; sourceTree = "<group>"; };
-		C0095E5324D0E4090000B1EC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C0095E5324D0E4090000B1EC /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		C0095E5524D0F3DB0000B1EC /* FooterHomeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterHomeBar.swift; sourceTree = "<group>"; };
 		C0095E5724D108260000B1EC /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C05EE6B224D8860C00C08BA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 		C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C0A377D224EEC93D001BA545 /* UserCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredential.swift; sourceTree = "<group>"; };
 		C0A377D424EED660001BA545 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		C0EA2B3524F019AD0034154B /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		C0EA2B3724F019D80034154B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +110,7 @@
 				C0095E4B24D07F190000B1EC /* ViewModel */,
 				C0095E4C24D07F200000B1EC /* Controllers */,
 				C0095E4D24D07F290000B1EC /* APIS */,
-				C0095E4E24D07F2F0000B1EC /* Helpers */,
+				C0095E4E24D07F2F0000B1EC /* Extensions */,
 				C0095E3D24D07E940000B1EC /* Assets.xcassets */,
 				C0095E3F24D07E940000B1EC /* LaunchScreen.storyboard */,
 				C0095E4224D07E940000B1EC /* Info.plist */,
@@ -161,12 +165,14 @@
 			path = APIS;
 			sourceTree = "<group>";
 		};
-		C0095E4E24D07F2F0000B1EC /* Helpers */ = {
+		C0095E4E24D07F2F0000B1EC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C0095E5324D0E4090000B1EC /* Extensions.swift */,
+				C0095E5324D0E4090000B1EC /* View.swift */,
+				C0EA2B3524F019AD0034154B /* Buttons.swift */,
+				C0EA2B3724F019D80034154B /* TextField.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C05EE6B624D8C40500C08BA8 /* Authentication */ = {
@@ -302,13 +308,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0095E5424D0E4090000B1EC /* Extensions.swift in Sources */,
+				C0095E5424D0E4090000B1EC /* View.swift in Sources */,
 				C05EE6B824D8C41E00C08BA8 /* Login.swift in Sources */,
 				C0A377D524EED660001BA545 /* Service.swift in Sources */,
 				C0095E3524D07E8D0000B1EC /* AppDelegate.swift in Sources */,
 				C0095E5824D108260000B1EC /* Card.swift in Sources */,
 				C0095E5024D07F6B0000B1EC /* Home.swift in Sources */,
+				C0EA2B3824F019D80034154B /* TextField.swift in Sources */,
 				C05EE6B324D8860C00C08BA8 /* User.swift in Sources */,
+				C0EA2B3624F019AD0034154B /* Buttons.swift in Sources */,
 				C0095E5624D0F3DB0000B1EC /* FooterHomeBar.swift in Sources */,
 				C0095E5224D0E0D70000B1EC /* HomeNavBar.swift in Sources */,
 				C05EE6BC24DB223A00C08BA8 /* AuthViewModel.swift in Sources */,

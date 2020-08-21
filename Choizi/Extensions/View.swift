@@ -8,49 +8,6 @@
 
 import UIKit
 
-//MARK: - uitextfield
-
-extension UITextField {
-    
-    func customTextField(withPlaceholder placeholder: String, andSecureEntry: Bool? = false) {
-        let spacer = UIView()
-        spacer.setDimensions(height: 50, width: 5)
-        leftView = spacer
-        leftViewMode = .always
-        borderStyle = .none
-        textColor = .white
-        backgroundColor = UIColor.init(white: 1, alpha: 0.2)
-        layer.cornerRadius = 5
-        attributedPlaceholder = NSAttributedString.init(string: placeholder, attributes: [.foregroundColor:UIColor.init(white: 1, alpha: 0.8)])
-        heightAnchor.constraint(equalToConstant: 50).isActive = true
-        isSecureTextEntry = andSecureEntry!
-    }
-    
-}
-
-//MARK: - uibutton
-
-extension UIButton {
-    
-    func authButton(withTitle title: String) {
-        heightAnchor.constraint(equalToConstant: 50).isActive = true
-        setTitle(title, for: .normal)
-        layer.cornerRadius = 5
-        backgroundColor = UIColor.init(white: 1, alpha: 0.5)
-        tintColor = .white
-    }
-    
-    func doYouHaveAcctButton(str1: String, str2: String) {
-        let attributed = NSMutableAttributedString.init(string: str1,
-                                                        attributes: [.foregroundColor: UIColor.white,
-                                                                     .font: UIFont.systemFont(ofSize: 16)])
-        attributed.append(NSAttributedString.init(string: str2,
-                                                  attributes: [.foregroundColor: UIColor.white,
-                                                               .font: UIFont.boldSystemFont(ofSize: 16)]))
-        setAttributedTitle(attributed, for: .normal)
-    }
-}
-
 //MARK: - uiview
 
 public struct AnchoredConstraints {
