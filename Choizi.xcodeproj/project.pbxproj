@@ -30,6 +30,7 @@
 		C0EA2B3624F019AD0034154B /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA2B3524F019AD0034154B /* Buttons.swift */; };
 		C0EA2B3824F019D80034154B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA2B3724F019D80034154B /* TextField.swift */; };
 		C0EA2B3A24F01A220034154B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA2B3924F01A220034154B /* Constants.swift */; };
+		C0EA2B3C24F092510034154B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA2B3B24F092510034154B /* Setting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		C0EA2B3524F019AD0034154B /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		C0EA2B3724F019D80034154B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		C0EA2B3924F01A220034154B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C0EA2B3B24F092510034154B /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				C05EE6B624D8C40500C08BA8 /* Authentication */,
 				C0095E4F24D07F6B0000B1EC /* Home.swift */,
+				C0EA2B3B24F092510034154B /* Setting.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				C0095E3724D07E8D0000B1EC /* SceneDelegate.swift in Sources */,
 				C0A377D124EEC8FB001BA545 /* AuthenticationService.swift in Sources */,
 				C05EE6B524D8883D00C08BA8 /* CardViewModel.swift in Sources */,
+				C0EA2B3C24F092510034154B /* Setting.swift in Sources */,
 				C0A377D324EEC93D001BA545 /* UserCredential.swift in Sources */,
 				C0EA2B3A24F01A220034154B /* Constants.swift in Sources */,
 			);

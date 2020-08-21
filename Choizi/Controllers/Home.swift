@@ -104,7 +104,7 @@ extension Home {
         Service.fetchUser(withUid: uid) { result in
             switch result {
             case .success(let user):
-                print(user.age)
+                print(user)
             case .failure(let err):
                 print(err.localizedDescription)
             }
@@ -132,7 +132,8 @@ extension Home {
 extension Home : NavigationDelegate {
     
     func settingTapped() {
-        print("setting")
+        let setting = Setting()
+        present(setting, animated: true, completion: nil)
     }
     
     func conversationTapped() {
