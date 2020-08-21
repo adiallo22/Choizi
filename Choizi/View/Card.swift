@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum SwipeDirection : Int {
     case left = -1
@@ -63,6 +64,7 @@ extension Card {
         clipsToBounds = true
         addSubview(photos)
         photos.fillSuperview()
+        photos.sd_setImage(with: viewModel.photo)
         //
         gradientBottom()
         //

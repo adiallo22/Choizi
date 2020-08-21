@@ -20,7 +20,7 @@ class CardViewModel {
         return user.age
     }
     
-    var photo : UIImage?
+    var photo : URL?
     
 //    var firstPhoto : UIImage {
 //        return user.photos.first!
@@ -36,6 +36,7 @@ class CardViewModel {
                                                     .font: UIFont.systemFont(ofSize: 22),
                                                     .foregroundColor : UIColor.white]))
         self.details = attributed
+        self.photo = URL.init(string: user.images)
         
     }
     
