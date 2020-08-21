@@ -38,3 +38,17 @@ struct Service {
     }
     
 }
+
+//MARK: - Fetch User
+
+extension Service {
+    static func fetchUser(withUid uid: String, completion: @escaping(Result<User, Error>)->Void) {
+        collectionUserPath.document(uid).getDocument { snap, err in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                print("test -- \(snap)")
+            }
+        }
+    }
+}

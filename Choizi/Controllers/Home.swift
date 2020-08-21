@@ -26,7 +26,11 @@ class Home : UIViewController {
         super.viewDidLoad()
         configUI()
         configCards()
-        checkLogStatus()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchUser()
     }
     
 }
@@ -90,6 +94,18 @@ extension Home {
             presentLogginScreen()
         } catch {
             print("error signing out user")
+        }
+    }
+    
+    func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Service.fetchUser(withUid: uid) { result in
+            switch result {
+            case .success(let user):
+                print(user.age)
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
         }
     }
     
