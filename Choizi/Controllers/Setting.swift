@@ -30,6 +30,7 @@ extension Setting {
         navigationController?.navigationBar.tintColor = .black
         //
         header.frame = CGRect.init(x: 0, y: 0, width: view.layer.frame.size.width, height: 300)
+        header.delegate = self
         //
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
@@ -51,4 +52,22 @@ extension Setting {
     @objc func handleDone() {
         print("done.")
     }
+}
+
+//MARK: - PickPhotoDelegate
+
+extension Setting : PickPhotoDelegate {
+    
+    func pick1stPhoto(_ header: SettingHeader) {
+        print(header.firstPhotoButton)
+    }
+    
+    func pick2ndPhoto(_ header: SettingHeader) {
+        print(header.secondPhotoButton)
+    }
+    
+    func pick3rdPhoto(_ header: SettingHeader) {
+        print(header.thirdPohotoButton)
+    }
+    
 }

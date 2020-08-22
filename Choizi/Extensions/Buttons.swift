@@ -29,4 +29,13 @@ extension UIButton {
                                                                .font: UIFont.boldSystemFont(ofSize: 16)]))
         setAttributedTitle(attributed, for: .normal)
     }
+    
+    func createPhotoButton() {
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        imageView?.contentMode = .scaleAspectFill
+        backgroundColor = .white
+        setTitle("Select Photo", for: .normal)
+        setTitleColor(.black, for: .normal)
+    }
 }

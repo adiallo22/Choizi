@@ -8,11 +8,33 @@
 
 import UIKit
 
+protocol PickPhotoDelegate : class {
+    func pick1stPhoto(_ header: SettingHeader)
+    func pick2ndPhoto(_ header: SettingHeader)
+    func pick3rdPhoto(_ header: SettingHeader)
+}
+
 class SettingHeader : UIView {
+    
+    weak var delegate : PickPhotoDelegate?
+    
+    var firstPhotoButton : UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    var secondPhotoButton : UIButton = {
+        let button = UIButton()
+        return button
+    }()
+    var thirdPohotoButton : UIButton = {
+        let button = UIButton()
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .orange
+        backgroundColor = .systemGroupedBackground
+        customizeButtons()
         configUI()
     }
     
@@ -27,10 +49,6 @@ class SettingHeader : UIView {
 extension SettingHeader {
     
     fileprivate func configUI() {
-        let firstPhotoButton = createPhotoBuntton()
-        let secondPhotoButton = createPhotoBuntton()
-        let thirdPohotoButton = createPhotoBuntton()
-        //
         addSubview(firstPhotoButton)
         firstPhotoButton.anchor(top: topAnchor,
                                 left: leftAnchor,
@@ -58,14 +76,14 @@ extension SettingHeader {
                      paddingRight: 16)
     }
     
-    fileprivate func createPhotoBuntton() -> UIButton {
-        let button = UIButton()
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        button.imageView?.contentMode = .scaleAspectFill
-        button.addTarget(self, action: #selector(handleTapped), for: .touchUpInside)
-        button.backgroundColor = .white
-        return button
+    fileprivate func customizeButtons() {
+        firstPhotoButton.createPhotoButton()
+        secondPhotoButton.createPhotoButton()
+        thirdPohotoButton.createPhotoButton()
+        //
+        firstPhotoButton.addTarget(self, action: #selector(firstBtnTapped), for: .touchUpInside)
+        secondPhotoButton.addTarget(self, action: #selector(secondtBtnTapped), for: .touchUpInside)
+        thirdPohotoButton.addTarget(self, action: #selector(thirdBtnTapped), for: .touchUpInside)
     }
     
 }
@@ -73,7 +91,13 @@ extension SettingHeader {
 //MARK: - selectors
 
 extension SettingHeader {
-    @objc func handleTapped() {
-        print("tapped..")
+    @objc func firstBtnTapped() {
+        delegate?.pick1stPhoto(self)
+    }
+    @objc func secondtBtnTapped() {
+        delegate?.pick2ndPhoto(self)
+    }
+    @objc func thirdBtnTapped() {
+        delegate?.pick3rdPhoto(self)
     }
 }
