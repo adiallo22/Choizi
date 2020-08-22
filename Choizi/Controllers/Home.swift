@@ -104,7 +104,7 @@ extension Home {
         Service.fetchUser(withUid: uid) { result in
             switch result {
             case .success(let user):
-                print(user)
+                print()
             case .failure(let err):
                 print(err.localizedDescription)
             }
