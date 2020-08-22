@@ -133,7 +133,9 @@ extension Home : NavigationDelegate {
     
     func settingTapped() {
         let setting = Setting()
-        present(setting, animated: true, completion: nil)
+        let nav = UINavigationController.init(rootViewController: setting)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
     
     func conversationTapped() {
