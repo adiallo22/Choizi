@@ -35,6 +35,7 @@ class Home : UIViewController {
         super.viewWillAppear(true)
         fetchUser()
         fetchAllUsers()
+//        loggout()
     }
     
 }

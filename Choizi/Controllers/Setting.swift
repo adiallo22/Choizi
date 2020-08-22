@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let reusableIdentifier = "SettingCell"
+
 class Setting : UITableViewController {
     
     private let header = SettingHeader()
@@ -43,6 +45,7 @@ extension Setting {
     fileprivate func configTable() {
         tableView.separatorStyle = .none
         tableView.tableHeaderView = header
+        tableView.register(SettingCell.self, forCellReuseIdentifier: reusableIdentifier)
     }
     
     fileprivate func setHeaderButtonIMG(withImage image: UIImage?, atIndex index: Int) {
@@ -70,6 +73,24 @@ extension Setting {
     }
     @objc func handleDone() {
         print("done.")
+    }
+}
+
+//MARK: - delegate and datasource
+
+extension Setting {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier, for: indexPath) as! SettingCell
+        return cell
     }
 }
 
