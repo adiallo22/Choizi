@@ -46,6 +46,7 @@ extension Setting {
         tableView.separatorStyle = .none
         tableView.tableHeaderView = header
         tableView.register(SettingCell.self, forCellReuseIdentifier: reusableIdentifier)
+        tableView.sectionHeaderHeight = 32
     }
     
     fileprivate func setHeaderButtonIMG(withImage image: UIImage?, atIndex index: Int) {
@@ -81,7 +82,7 @@ extension Setting {
 extension Setting {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return SettingSections.allCases.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,6 +92,11 @@ extension Setting {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier, for: indexPath) as! SettingCell
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let title = SettingSections.init(rawValue: section)?.description else { return nil }
+        return title
     }
 }
 
