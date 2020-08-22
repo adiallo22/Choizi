@@ -11,6 +11,9 @@ import UIKit
 class Setting : UITableViewController {
     
     private let header = SettingHeader()
+    private let picker = UIImagePickerController()
+    
+    private var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,7 @@ extension Setting {
         //
         header.frame = CGRect.init(x: 0, y: 0, width: view.layer.frame.size.width, height: 300)
         header.delegate = self
+        picker.delegate = self
         //
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
@@ -39,6 +43,21 @@ extension Setting {
     fileprivate func configTable() {
         tableView.separatorStyle = .none
         tableView.tableHeaderView = header
+    }
+    
+    fileprivate func setHeaderButtonIMG(withImage image: UIImage?, atIndex index: Int) {
+        if index == 0 {
+            header.firstPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+            return
+        }
+        if index == 1 {
+            header.secondPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+            return
+        }
+        if index == 2 {
+            header.thirdPohotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+            return
+        }
     }
     
 }
@@ -59,15 +78,28 @@ extension Setting {
 extension Setting : PickPhotoDelegate {
     
     func pick1stPhoto(_ header: SettingHeader) {
-        print(header.firstPhotoButton)
+        index = 0
+        present(picker, animated: true, completion: nil)
     }
     
     func pick2ndPhoto(_ header: SettingHeader) {
-        print(header.secondPhotoButton)
+        index = 1
+        present(picker, animated: true, completion: nil)
     }
     
     func pick3rdPhoto(_ header: SettingHeader) {
-        print(header.thirdPohotoButton)
+        index = 2
+        present(picker, animated: true, completion: nil)
     }
     
+}
+
+//MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
+
+extension Setting : UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else { return }
+        setHeaderButtonIMG(withImage: image, atIndex: index)
+        dismiss(animated: true, completion: nil)
+    }
 }
