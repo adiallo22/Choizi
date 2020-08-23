@@ -47,6 +47,7 @@ extension Setting {
         tableView.tableHeaderView = header
         tableView.register(SettingCell.self, forCellReuseIdentifier: reusableIdentifier)
         tableView.sectionHeaderHeight = 32
+        tableView.backgroundColor = .systemGroupedBackground
     }
     
     fileprivate func setHeaderButtonIMG(withImage image: UIImage?, atIndex index: Int) {
@@ -86,7 +87,7 @@ extension Setting {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
