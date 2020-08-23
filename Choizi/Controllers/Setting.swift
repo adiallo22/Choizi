@@ -99,6 +99,11 @@ extension Setting {
         guard let title = SettingSections.init(rawValue: section)?.description else { return nil }
         return title
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let sec = SettingSections.init(rawValue: indexPath.section) else { return 0 }
+        return sec == .seekingRangeAge ? 96 : 44
+    }
 }
 
 //MARK: - PickPhotoDelegate
