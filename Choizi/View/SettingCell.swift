@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol EditTextFieldDelegate: class {
+    func finishedEditing(_ cell: SettingCell, withText text: String, andSetting setting: SettingSections)
+}
+
 class SettingCell : UITableViewCell {
+    
+    weak var delegate : EditTextFieldDelegate?
     
     var viewModel : SettingViewModel? {
         didSet { configViewModel() }
@@ -109,7 +115,9 @@ extension SettingCell {
 //MARK: - selector
 
 extension SettingCell {
-    @objc func didFinishEditingTF() {
-        
+    @objc func didFinishEditingTF(sender: UITextField) {
+        guard let text = sender.text,
+            let setting = viewModel?.setting else { return }
+        delegate?.finishedEditing(self, withText: text, andSetting: setting)
     }
 }
