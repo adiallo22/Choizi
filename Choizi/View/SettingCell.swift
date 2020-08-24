@@ -10,6 +10,7 @@ import UIKit
 
 protocol EditTextFieldDelegate: class {
     func finishedEditing(_ cell: SettingCell, withText text: String, andSetting setting: SettingSections)
+    func settingCellSlider(_ cell: SettingCell, withSlider slider: UISlider)
 }
 
 class SettingCell : UITableViewCell {
@@ -34,12 +35,10 @@ class SettingCell : UITableViewCell {
     
     private var minLabel : UILabel = {
         let label = UILabel()
-        label.text = "Min"
         return label
     }()
     private var maxLabel : UILabel = {
         let label = UILabel()
-        label.text = "Max"
         return label
     }()
     
@@ -65,6 +64,8 @@ class SettingCell : UITableViewCell {
 extension SettingCell {
     
     fileprivate func configUI() {
+        selectionStyle = .none
+        //
         addSubview(input)
         input.fillSuperview()
         input.addTarget(self, action: #selector(didFinishEditingTF), for: .editingDidEnd)
@@ -74,6 +75,7 @@ extension SettingCell {
         let slider = UISlider()
         slider.minimumValue = 18
         slider.maximumValue = 60
+        slider.addTarget(self, action: #selector(editSlider), for: .valueChanged)
         return slider
     }
     
@@ -104,10 +106,16 @@ extension SettingCell {
     
     fileprivate func configViewModel() {
         guard let viewModel = viewModel else { return }
-        input.isHidden = viewModel.shouldHideInput
         stack.isHidden = viewModel.shouldHideSlider
+        input.isHidden = viewModel.shouldHideInput
         input.placeholder = viewModel.placeholder
         input.text = viewModel.val
+        //
+        minLabel.text = viewModel.minAgeSeekingLabel(value: viewModel.minAgeSlider)
+        maxLabel.text = viewModel.maxAgeSeekingLabel(value: viewModel.maxAgeSlider)
+        //
+        minSlider.setValue(viewModel.minAgeSlider, animated: true)
+        maxSlider.setValue(viewModel.maxAgeSlider, animated: true)
     }
     
 }
@@ -119,5 +127,13 @@ extension SettingCell {
         guard let text = sender.text,
             let setting = viewModel?.setting else { return }
         delegate?.finishedEditing(self, withText: text, andSetting: setting)
+    }
+    @objc func editSlider(sender: UISlider) {
+        if sender == minSlider {
+            minLabel.text = viewModel?.minAgeSeekingLabel(value: sender.value)
+        } else {
+            maxLabel.text = viewModel?.maxAgeSeekingLabel(value: sender.value)
+        }
+        delegate?.settingCellSlider(self, withSlider: sender)
     }
 }

@@ -46,8 +46,8 @@
             filePath = "Choizi/View/SettingCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
             landmarkName = "SettingCell"
             landmarkType = "3">
             <Locations>
@@ -118,7 +118,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6D658741-7E54-4FEE-940E-F52F3F04DC77"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Choizi/Controllers/Setting.swift"
@@ -143,6 +143,22 @@
             startingLineNumber = "159"
             endingLineNumber = "159"
             landmarkName = "settingUpdated(_:withUser:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9C4566E2-6005-4FE8-B62D-11E0F18ECF23"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/Controllers/Setting.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "handleDone()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

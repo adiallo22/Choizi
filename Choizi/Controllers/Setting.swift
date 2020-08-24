@@ -165,6 +165,14 @@ extension Setting : UIImagePickerControllerDelegate & UINavigationControllerDele
 
 extension Setting : EditTextFieldDelegate {
     
+    func settingCellSlider(_ cell: SettingCell, withSlider slider: UISlider) {
+        if slider == cell.minSlider {
+            user.seekingMinAge = Int(slider.value)
+        } else {
+            user.seekingMaxAge = Int(slider.value)
+        }
+    }
+    
     func finishedEditing(_ cell: SettingCell, withText text: String, andSetting setting: SettingSections) {
         switch setting {
         case .name:

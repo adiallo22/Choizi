@@ -53,6 +53,12 @@ struct SettingViewModel {
             return "\(user.seekingMinAge) \(user.seekingMaxAge)"
         }
     }
+    var minAgeSlider : Float {
+        return Float(user.seekingMinAge)
+    }
+    var maxAgeSlider : Float {
+        return Float(user.seekingMaxAge)
+    }
     var shouldHideSlider : Bool {
         return setting != .seekingRangeAge
     }
@@ -64,6 +70,13 @@ struct SettingViewModel {
         self.user = user
         self.setting = setting
         self.placeholder = "Enter \(setting.description) ..."
+    }
+    
+    func minAgeSeekingLabel(value: Float) -> String {
+        return "Min: \(Int(value))"
+    }
+    func maxAgeSeekingLabel(value: Float) -> String {
+        return "Max: \(Int(value))"
     }
     
 }
