@@ -138,6 +138,7 @@ extension Home : NavigationDelegate {
     func settingTapped() {
         guard let user = user else { return }
         let setting = Setting(user: user)
+        setting.delegate = self
         let nav = UINavigationController.init(rootViewController: setting)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -150,4 +151,13 @@ extension Home : NavigationDelegate {
         present(nav, animated: true, completion: nil)
     }
     
+}
+
+//MARK: - SettingDelegate
+
+extension Home : SettingDelegate {
+    func settingUpdated(_ setting: Setting, withUser user: User) {
+        self.user = user
+        setting.dismiss(animated: true, completion: nil)
+    }
 }

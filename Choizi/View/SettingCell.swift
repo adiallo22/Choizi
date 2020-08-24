@@ -29,7 +29,6 @@ class SettingCell : UITableViewCell {
         view.setDimensions(height: 44, width: 20)
         tf.leftView = view
         tf.leftViewMode = .always
-        tf.addTarget(self, action: #selector(didFinishEditingTF), for: .editingDidEnd)
         return tf
     }()
     
@@ -68,6 +67,7 @@ extension SettingCell {
     fileprivate func configUI() {
         addSubview(input)
         input.fillSuperview()
+        input.addTarget(self, action: #selector(didFinishEditingTF), for: .editingDidEnd)
     }
     
     fileprivate func creayeSlider() -> UISlider {

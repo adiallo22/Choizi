@@ -32,7 +32,117 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
             endingLineNumber = "106"
-            landmarkName = "fetchCurrentUser()"
+            landmarkName = "loggout()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0CFD908E-9DAC-482D-818D-FFE1F1A92BC2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/View/SettingCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "SettingCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "0CFD908E-9DAC-482D-818D-FFE1F1A92BC2 - f702cabdb6008a4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Choizi.SettingCell.delegate.getter : Swift.Optional&lt;Choizi.EditTextFieldDelegate&gt;"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/View/SettingCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "135">
+               </Location>
+               <Location
+                  uuid = "0CFD908E-9DAC-482D-818D-FFE1F1A92BC2 - 1def7ea6eda29898"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Choizi.SettingCell.delegate.setter : Swift.Optional&lt;Choizi.EditTextFieldDelegate&gt;"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/View/SettingCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "181">
+               </Location>
+               <Location
+                  uuid = "0CFD908E-9DAC-482D-818D-FFE1F1A92BC2 - 48cda3e065da9ca9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Choizi.SettingCell.delegate.modify : Swift.Optional&lt;Choizi.EditTextFieldDelegate&gt;"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/View/SettingCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  uuid = "0CFD908E-9DAC-482D-818D-FFE1F1A92BC2 - 1329faf931366e3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Choizi.SettingCell.delegate.modify : Swift.Optional&lt;Choizi.EditTextFieldDelegate&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/View/SettingCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D658741-7E54-4FEE-940E-F52F3F04DC77"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/Controllers/Setting.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "handleDone()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AE699386-82F4-4F18-A744-B0270129A597"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/Controllers/Home.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "settingUpdated(_:withUser:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

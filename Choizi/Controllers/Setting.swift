@@ -10,13 +10,22 @@ import UIKit
 
 private let reusableIdentifier = "SettingCell"
 
+protocol SettingDelegate : class {
+    func settingUpdated(_ setting: Setting, withUser user: User)
+}
+
 class Setting : UITableViewController {
+    
+    //MARK: - properties
     
     private var user : User
     private let header = SettingHeader()
     private let picker = UIImagePickerController()
+    weak var delegate : SettingDelegate?
     
     private var index = 0
+    
+    //MARK: - init
     
     init(user: User) {
         self.user = user
@@ -35,7 +44,7 @@ class Setting : UITableViewController {
     
 }
 
-//MARK: - helpers
+//MARK: - helpers and configurations
 
 extension Setting {
     
@@ -84,7 +93,8 @@ extension Setting {
         self.dismiss(animated: true, completion: nil)
     }
     @objc func handleDone() {
-        print("done.")
+        view.endEditing(true)
+        delegate?.settingUpdated(self, withUser: user)
     }
 }
 
@@ -105,6 +115,7 @@ extension Setting {
         guard let setting = SettingSections.init(rawValue: indexPath.section) else { return cell }
         let viewModel = SettingViewModel(user: user, setting: setting)
         cell.viewModel = viewModel
+        cell.delegate = self
         return cell
     }
     
@@ -148,4 +159,25 @@ extension Setting : UIImagePickerControllerDelegate & UINavigationControllerDele
         setHeaderButtonIMG(withImage: image, atIndex: index)
         dismiss(animated: true, completion: nil)
     }
+}
+
+//MARK: - EditTextFieldDelegate
+
+extension Setting : EditTextFieldDelegate {
+    
+    func finishedEditing(_ cell: SettingCell, withText text: String, andSetting setting: SettingSections) {
+        switch setting {
+        case .name:
+            user.name = text
+        case .profession:
+            user.profession = text
+        case .age:
+            user.age = Int(text) ?? user.age
+        case .bio:
+            user.bio = text
+        case .seekingRangeAge:
+            break
+        }
+    }
+    
 }
