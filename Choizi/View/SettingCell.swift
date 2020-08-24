@@ -23,6 +23,7 @@ class SettingCell : UITableViewCell {
         view.setDimensions(height: 44, width: 20)
         tf.leftView = view
         tf.leftViewMode = .always
+        tf.addTarget(self, action: #selector(didFinishEditingTF), for: .editingDidEnd)
         return tf
     }()
     
@@ -103,4 +104,12 @@ extension SettingCell {
         input.text = viewModel.val
     }
     
+}
+
+//MARK: - selector
+
+extension SettingCell {
+    @objc func didFinishEditingTF() {
+        
+    }
 }
