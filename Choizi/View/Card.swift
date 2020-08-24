@@ -64,7 +64,7 @@ extension Card {
         clipsToBounds = true
         addSubview(photos)
         photos.fillSuperview()
-        photos.sd_setImage(with: viewModel.photo)
+        photos.sd_setImage(with: viewModel.frontPhoto)
         //
         gradientBottom()
         //
