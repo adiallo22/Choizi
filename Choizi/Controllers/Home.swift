@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class Home : UIViewController {
     
+    private var user : User?
+    
     private var viewModels : [CardViewModel] = [] {
         didSet { configCards() }
     }
@@ -29,13 +31,14 @@ class Home : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
+        checkLogStatus()
+        fetchCurrentUser()
+        fetchAllUsers()
+//        loggout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fetchUser()
-        fetchAllUsers()
-//        loggout()
     }
     
 }
@@ -84,7 +87,7 @@ extension Home {
 extension Home {
     
     fileprivate func checkLogStatus() {
-        if Auth.auth().currentUser == nil {
+        if Auth.auth().currentUser?.uid == nil {
             presentLogginScreen()
         } else {
             print("user IS logged in")
@@ -100,12 +103,12 @@ extension Home {
         }
     }
     
-    fileprivate func fetchUser() {
+    fileprivate func fetchCurrentUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        Service.fetchUser(withUid: uid) { result in
+        Service.fetchUser(withUid: uid) { [weak self] result in
             switch result {
             case .success(let user):
-                print()
+                self?.user = user
             case .failure(let err):
                 print(err.localizedDescription)
             }
@@ -133,7 +136,8 @@ extension Home {
 extension Home : NavigationDelegate {
     
     func settingTapped() {
-        let setting = Setting()
+        guard let user = user else { return }
+        let setting = Setting(user: user)
         let nav = UINavigationController.init(rootViewController: setting)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)

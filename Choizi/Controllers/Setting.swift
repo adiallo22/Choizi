@@ -12,10 +12,20 @@ private let reusableIdentifier = "SettingCell"
 
 class Setting : UITableViewController {
     
+    private var user : User
     private let header = SettingHeader()
     private let picker = UIImagePickerController()
     
     private var index = 0
+    
+    init(user: User) {
+        self.user = user
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +102,9 @@ extension Setting {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier, for: indexPath) as! SettingCell
+        guard let setting = SettingSections.init(rawValue: indexPath.section) else { return cell }
+        let viewModel = SettingViewModel(user: user, setting: setting)
+        cell.viewModel = viewModel
         return cell
     }
     
