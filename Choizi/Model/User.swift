@@ -15,6 +15,10 @@ struct User {
     var email : String
     var images : String
     var uid : String
+    var bio : String
+    var profession : String
+    var seekingMinAge : Int
+    var seekingMaxAge : Int
     
     init(value : [String:Any]) {
         self.name = value["fullname"] as? String ?? ""
@@ -22,6 +26,10 @@ struct User {
         self.email = value["email"] as? String ?? ""
         self.images = value["images"] as? String ?? ""
         self.uid = value["uid"] as? String ?? ""
+        self.bio = value["bio"] as? String ?? ""
+        self.profession = value["profession"] as? String ?? ""
+        self.seekingMinAge = value["seekingMinAge"] as? Int ?? 18
+        self.seekingMaxAge = value["seekingMaxAge"] as? Int ?? 45
     }
     
 }
