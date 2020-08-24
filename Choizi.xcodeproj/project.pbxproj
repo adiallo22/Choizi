@@ -22,6 +22,7 @@
 		C05EE6B824D8C41E00C08BA8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B724D8C41D00C08BA8 /* Login.swift */; };
 		C05EE6BA24D8C44200C08BA8 /* SingUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B924D8C44200C08BA8 /* SingUp.swift */; };
 		C05EE6BC24DB223A00C08BA8 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6BB24DB223A00C08BA8 /* AuthViewModel.swift */; };
+		C06FCF0024F368DD00DDC078 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FCEFF24F368DD00DDC078 /* Conversation.swift */; };
 		C0A377CF24EEC2CB001BA545 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0A377CE24EEC2CB001BA545 /* GoogleService-Info.plist */; };
 		C0A377D124EEC8FB001BA545 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */; };
 		C0A377D324EEC93D001BA545 /* UserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D224EEC93D001BA545 /* UserCredential.swift */; };
@@ -55,6 +56,7 @@
 		C05EE6B724D8C41D00C08BA8 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		C05EE6B924D8C44200C08BA8 /* SingUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUp.swift; sourceTree = "<group>"; };
 		C05EE6BB24DB223A00C08BA8 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		C06FCEFF24F368DD00DDC078 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		C0A377CE24EEC2CB001BA545 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C0A377D224EEC93D001BA545 /* UserCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredential.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				C05EE6B624D8C40500C08BA8 /* Authentication */,
 				C0095E4F24D07F6B0000B1EC /* Home.swift */,
 				C0EA2B3B24F092510034154B /* Setting.swift */,
+				C06FCEFF24F368DD00DDC078 /* Conversation.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			files = (
 				C0095E5424D0E4090000B1EC /* View.swift in Sources */,
 				C05EE6B824D8C41E00C08BA8 /* Login.swift in Sources */,
+				C06FCF0024F368DD00DDC078 /* Conversation.swift in Sources */,
 				C0A377D524EED660001BA545 /* Service.swift in Sources */,
 				C0095E3524D07E8D0000B1EC /* AppDelegate.swift in Sources */,
 				C0095E5824D108260000B1EC /* Card.swift in Sources */,
