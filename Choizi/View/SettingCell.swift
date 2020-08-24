@@ -18,7 +18,6 @@ class SettingCell : UITableViewCell {
         let tf = UITextField()
         tf.font = UIFont.systemFont(ofSize: 16)
         tf.borderStyle = .none
-        tf.placeholder = "Enter here.."
         //
         let view = UIView()
         view.setDimensions(height: 44, width: 20)
@@ -100,6 +99,8 @@ extension SettingCell {
         guard let viewModel = viewModel else { return }
         input.isHidden = viewModel.shouldHideInput
         stack.isHidden = viewModel.shouldHideSlider
+        input.placeholder = viewModel.placeholder
+        input.text = viewModel.val
     }
     
 }

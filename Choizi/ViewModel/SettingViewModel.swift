@@ -38,6 +38,21 @@ struct SettingViewModel {
     private let user : User
     private let setting : SettingSections
     
+    var placeholder : String
+    var val : String? {
+        switch setting {
+        case .name:
+            return user.name
+        case .profession:
+            return user.profession
+        case .age:
+            return "\(user.age)"
+        case .bio:
+            return user.bio
+        case .seekingRangeAge:
+            return "\(user.seekingMinAge) \(user.seekingMaxAge)"
+        }
+    }
     var shouldHideSlider : Bool {
         return setting != .seekingRangeAge
     }
@@ -48,6 +63,7 @@ struct SettingViewModel {
     init(user: User, setting: SettingSections) {
         self.user = user
         self.setting = setting
+        self.placeholder = "Enter \(setting.description) ..."
     }
     
 }
