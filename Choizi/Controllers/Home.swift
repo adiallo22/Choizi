@@ -166,3 +166,13 @@ extension Home : SettingDelegate {
         setting.dismiss(animated: true, completion: nil)
     }
 }
+
+//MARK: - CardDelegate
+
+extension Home : CardDelegate {
+    
+    func handleShowProfile(fromCard card: Card, andUser user: User) {
+        <#code#>
+    }
+    
+}

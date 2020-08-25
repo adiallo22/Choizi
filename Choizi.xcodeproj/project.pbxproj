@@ -36,6 +36,7 @@
 		C0EA2B3C24F092510034154B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA2B3B24F092510034154B /* Setting.swift */; };
 		C0F1CF4D24F49EEA0052488D /* SettingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1CF4C24F49EEA0052488D /* SettingFooter.swift */; };
 		C0F1CF5124F584410052488D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1CF5024F584410052488D /* Color.swift */; };
+		C0F1CF5324F5905D0052488D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1CF5224F5905D0052488D /* Profile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		C0EA2B3B24F092510034154B /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		C0F1CF4C24F49EEA0052488D /* SettingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooter.swift; sourceTree = "<group>"; };
 		C0F1CF5024F584410052488D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		C0F1CF5224F5905D0052488D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				C05EE6B624D8C40500C08BA8 /* Authentication */,
 				C0095E4F24D07F6B0000B1EC /* Home.swift */,
+				C0F1CF5224F5905D0052488D /* Profile.swift */,
 				C0EA2B3B24F092510034154B /* Setting.swift */,
 				C06FCEFF24F368DD00DDC078 /* Conversation.swift */,
 			);
@@ -339,6 +342,7 @@
 				C0095E5424D0E4090000B1EC /* View.swift in Sources */,
 				C05EE6B824D8C41E00C08BA8 /* Login.swift in Sources */,
 				C06FCF0024F368DD00DDC078 /* Conversation.swift in Sources */,
+				C0F1CF5324F5905D0052488D /* Profile.swift in Sources */,
 				C0F1CF4D24F49EEA0052488D /* SettingFooter.swift in Sources */,
 				C0A377D524EED660001BA545 /* Service.swift in Sources */,
 				C0095E3524D07E8D0000B1EC /* AppDelegate.swift in Sources */,
