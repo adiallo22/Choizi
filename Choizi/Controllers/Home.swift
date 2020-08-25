@@ -24,7 +24,7 @@ class Home : UIViewController {
     private let deck : UIView = {
         let view = UIView()
         view.layer.cornerRadius = 5
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         return view
     }()
     
@@ -34,7 +34,6 @@ class Home : UIViewController {
         checkLogStatus()
         fetchCurrentUser()
         fetchAllUsers()
-//        loggout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -156,6 +155,12 @@ extension Home : NavigationDelegate {
 //MARK: - SettingDelegate
 
 extension Home : SettingDelegate {
+    
+    func handleLoggout(_ controller: Setting) {
+        controller.dismiss(animated: true, completion: nil)
+        loggout()
+    }
+    
     func settingUpdated(_ setting: Setting, withUser user: User) {
         self.user = user
         setting.dismiss(animated: true, completion: nil)

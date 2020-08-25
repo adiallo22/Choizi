@@ -99,13 +99,14 @@ extension Card {
 extension Card {
     
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
-//        let position = sender.location(in: nil).x
-//        let shouldShowNextPhoto = position > self.frame.width / 2
-//        if shouldShowNextPhoto {
-//            viewModel.nextPhoto()
-//        } else {
-//            viewModel.previousPhoto()
-//        }
+        let position = sender.location(in: nil).x
+        let shouldShowNextPhoto = position > self.frame.width / 2
+        if shouldShowNextPhoto {
+            viewModel.nextPhoto()
+        } else {
+            viewModel.previousPhoto()
+        }
+        photos.sd_setImage(with: viewModel.frontPhoto)
     }
     
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {

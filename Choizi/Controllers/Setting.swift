@@ -13,6 +13,7 @@ private let reusableIdentifier = "SettingCell"
 
 protocol SettingDelegate : class {
     func settingUpdated(_ setting: Setting, withUser user: User)
+    func handleLoggout(_ controller: Setting)
 }
 
 class Setting : UITableViewController {
@@ -21,6 +22,7 @@ class Setting : UITableViewController {
     
     private var user : User
     private lazy var header = SettingHeader(user: user)
+    private let footer = SettingFooter()
     private let picker = UIImagePickerController()
     weak var delegate : SettingDelegate?
     
@@ -58,6 +60,9 @@ extension Setting {
         header.delegate = self
         picker.delegate = self
         //
+        footer.frame = CGRect.init(x: 0, y: 0, width: view.layer.frame.size.width, height: 90)
+        footer.delegate = self
+        //
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
     }
@@ -68,6 +73,7 @@ extension Setting {
         tableView.register(SettingCell.self, forCellReuseIdentifier: reusableIdentifier)
         tableView.sectionHeaderHeight = 32
         tableView.backgroundColor = .systemGroupedBackground
+        tableView.tableFooterView = footer
     }
     
     fileprivate func setHeaderButtonIMG(withImage image: UIImage?, atIndex index: Int) {
@@ -216,4 +222,12 @@ extension Setting : EditTextFieldDelegate {
         }
     }
     
+}
+
+//MARK: - SettingFooterDelegate
+
+extension Setting : SettingFooterDelegate {
+    func handleLogout() {
+        delegate?.handleLoggout(self)
+    }
 }

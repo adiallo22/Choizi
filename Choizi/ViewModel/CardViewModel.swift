@@ -38,16 +38,16 @@ class CardViewModel {
         self.frontPhoto = URL.init(string: self.photos[0])
     }
     
-//    func nextPhoto() {
-//        guard indexPhoto < user.photos.count - 1 else { return }
-//        indexPhoto += 1
-//        self.photo = self.user.photos[indexPhoto]
-//    }
-//
-//    func previousPhoto() {
-//        guard indexPhoto > 0 else { return }
-//        indexPhoto -= 1
-//        self.photo = self.user.photos[indexPhoto]
-//    }
+    func nextPhoto() {
+        guard indexPhoto < photos.count - 1 else { return }
+        indexPhoto += 1
+        frontPhoto = URL.init(string: photos[indexPhoto])
+    }
+
+    func previousPhoto() {
+        guard indexPhoto > 0 else { return }
+        indexPhoto -= 1
+        frontPhoto = URL.init(string: photos[indexPhoto])
+    }
     
 }

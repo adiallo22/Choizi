@@ -14,7 +14,7 @@ protocol SettingFooterDelegate : class {
 
 class SettingFooter : UIView {
     
-    weal var delegate : SettingFooterDelegate?
+    weak var delegate : SettingFooterDelegate?
     
     private lazy var loggoutButton : UIButton = {
         let button = UIButton()
