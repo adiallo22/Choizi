@@ -14,7 +14,13 @@ enum SwipeDirection : Int {
     case right = 1
 }
 
+protocol CardDelegate : class {
+    func handleShowProfile(fromCard card: Card, andUser user: User)
+}
+
 class Card : UIView {
+    
+    weak var delegate : CardDelegate?
     
     private let gradient = CAGradientLayer()
     
@@ -35,6 +41,7 @@ class Card : UIView {
     private lazy var detailsButton : UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(detailsBtnPressed), for: .touchUpInside)
         return button
     }()
     
@@ -85,8 +92,6 @@ extension Card {
         detailsButton.anchor(right: rightAnchor, paddingRight: 16)
         detailsButton.centerY(inView: info)
         detailsButton.setDimensions(height: 40, width: 40)
-        //
-//        photos.image = viewModel.firstPhoto
     }
     
     fileprivate func gradientBottom() {
@@ -105,7 +110,7 @@ extension Card {
     fileprivate func configBarStack() {
         (0 ..< viewModel.photos.count).forEach({ indice in
             let bar = UIView()
-            bar.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+            bar.backgroundColor = .barDeselectedColor
             barStack.addArrangedSubview(bar)
         })
         barStack.subviews.first?.backgroundColor = .white
@@ -117,36 +122,6 @@ extension Card {
                         paddingTop: 8,
                         paddingLeft: 8,
                         paddingRight: 8)
-    }
-    
-}
-
-//MARK: - selectors
-
-extension Card {
-    
-    @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
-        let position = sender.location(in: nil).x
-        let shouldShowNextPhoto = position > self.frame.width / 2
-        if shouldShowNextPhoto {
-            viewModel.nextPhoto()
-        } else {
-            viewModel.previousPhoto()
-        }
-        photos.sd_setImage(with: viewModel.frontPhoto)
-    }
-    
-    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-        switch sender.state {
-        case .began:
-            superview?.subviews.forEach({ $0.layer.removeAllAnimations() })
-        case .changed:
-            swipeCard(sender)
-        case .ended:
-            returnCardPosition(sender)
-        default:
-            break
-        }
     }
     
     fileprivate func swipeCard(_ sender: UIPanGestureRecognizer) {
@@ -172,6 +147,42 @@ extension Card {
             if shouldDismissCard {
                 self.removeFromSuperview()
             }
+        }
+    }
+    
+}
+
+//MARK: - selectors
+
+extension Card {
+    
+    @objc func detailsBtnPressed() {
+        delegate?.handleShowProfile(fromCard: self, andUser: viewModel.user)
+    }
+    
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
+        let position = sender.location(in: nil).x
+        let shouldShowNextPhoto = position > self.frame.width / 2
+        if shouldShowNextPhoto {
+            viewModel.nextPhoto()
+        } else {
+            viewModel.previousPhoto()
+        }
+        photos.sd_setImage(with: viewModel.frontPhoto)
+        barStack.arrangedSubviews.forEach({ $0.backgroundColor = .barDeselectedColor})
+        barStack.arrangedSubviews[viewModel.index].backgroundColor = .white
+    }
+    
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            superview?.subviews.forEach({ $0.layer.removeAllAnimations() })
+        case .changed:
+            swipeCard(sender)
+        case .ended:
+            returnCardPosition(sender)
+        default:
+            break
         }
     }
     

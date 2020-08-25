@@ -10,9 +10,11 @@ import UIKit
 
 class CardViewModel {
     
-    private let user : User
+    let user : User
     
     private var indexPhoto = 0
+    
+    var index : Int { return indexPhoto }
     
     var details : NSAttributedString
     
