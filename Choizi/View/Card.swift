@@ -38,6 +38,14 @@ class Card : UIView {
         return button
     }()
     
+    private var barStack : UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 16
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        return stack
+    }()
+    
     init(viewModel: CardViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
@@ -66,6 +74,8 @@ extension Card {
         photos.fillSuperview()
         photos.sd_setImage(with: viewModel.frontPhoto)
         //
+        configBarStack()
+        //
         gradientBottom()
         //
         addSubview(info)
@@ -90,6 +100,23 @@ extension Card {
         let pan = UIPanGestureRecognizer.init(target: self, action: #selector(handlePanGesture))
         addGestureRecognizer(tap)
         addGestureRecognizer(pan)
+    }
+    
+    fileprivate func configBarStack() {
+        (0 ..< viewModel.photos.count).forEach({ indice in
+            let bar = UIView()
+            bar.backgroundColor = UIColor.init(white: 0, alpha: 0.1)
+            barStack.addArrangedSubview(bar)
+        })
+        barStack.subviews.first?.backgroundColor = .white
+        addSubview(barStack)
+        barStack.setDimensions(height: 4)
+        barStack.anchor(top: topAnchor,
+                        left: leftAnchor,
+                        right: rightAnchor,
+                        paddingTop: 8,
+                        paddingLeft: 8,
+                        paddingRight: 8)
     }
     
 }

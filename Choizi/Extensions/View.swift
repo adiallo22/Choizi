@@ -87,11 +87,15 @@ extension UIView {
            }
        }
        
-       func setDimensions(height: CGFloat, width: CGFloat) {
-           translatesAutoresizingMaskIntoConstraints = false
-           heightAnchor.constraint(equalToConstant: height).isActive = true
-           widthAnchor.constraint(equalToConstant: width).isActive = true
-       }
+    func setDimensions(height: CGFloat?=nil, width: CGFloat?=nil) {
+        translatesAutoresizingMaskIntoConstraints = false
+        if let height = height {
+            heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+        if let width = width {
+            widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+    }
     
     @discardableResult
     open func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) -> AnchoredConstraints {
