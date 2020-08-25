@@ -125,6 +125,7 @@ extension SignUp {
     
     @objc func signupTapped(){
         register()
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func segueToLogin() {

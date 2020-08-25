@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
             endingLineNumber = "106"
-            landmarkName = "loggout()"
+            landmarkName = "fetchCurrentUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -124,8 +124,8 @@
             filePath = "Choizi/Controllers/Setting.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "handleDone()"
             landmarkType = "7">
          </BreakpointContent>
@@ -156,10 +156,104 @@
             filePath = "Choizi/Controllers/Setting.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "handleDone()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AFCE00F6-ABFB-4062-8C6E-643A04F2107F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/View/SettingHeader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "loadImages()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "90AF1B53-4F93-4AC9-B70C-847E3B583AC7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/Controllers/Setting.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "Setting"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "90AF1B53-4F93-4AC9-B70C-847E3B583AC7 - d7fd4db852e3a0d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Choizi.Setting.(header in _5C88B30B21F577BEEF09D2BC031FC9A6).getter : Choizi.SettingHeader"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/Controllers/Setting.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "261">
+               </Location>
+               <Location
+                  uuid = "90AF1B53-4F93-4AC9-B70C-847E3B583AC7 - 1000762acaa1021"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Choizi.Setting.(header in _5C88B30B21F577BEEF09D2BC031FC9A6).setter : Choizi.SettingHeader"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/Controllers/Setting.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "90AF1B53-4F93-4AC9-B70C-847E3B583AC7 - 42d08eac514f64d0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Choizi.Setting.(header in _5C88B30B21F577BEEF09D2BC031FC9A6).modify : Choizi.SettingHeader"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/Controllers/Setting.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "26">
+               </Location>
+               <Location
+                  uuid = "90AF1B53-4F93-4AC9-B70C-847E3B583AC7 - c9036ab4a6df0147"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Choizi.Setting.(header in _5C88B30B21F577BEEF09D2BC031FC9A6).modify : Choizi.SettingHeader with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/Controllers/Setting.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

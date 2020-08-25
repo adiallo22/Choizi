@@ -74,3 +74,21 @@ extension Service {
         }
     }
 }
+
+//MARK: - Upload data
+
+extension Service {
+    static func saveData(withUser user: User, completion: @escaping(Error?)->Void) {
+        let data : [String:Any] = [
+            "fullname":user.name,
+            "email":user.email,
+            "age":user.age,
+            "image":user.images,
+            "bio":user.bio,
+            "profession":user.profession,
+            "seekingMinAge":user.seekingMinAge,
+            "seekingMaxAge":user.seekingMaxAge
+        ]
+        collectionUserPath.document(user.uid).setData(data, completion: completion)
+    }
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol PickPhotoDelegate : class {
     func pick1stPhoto(_ header: SettingHeader)
@@ -17,6 +18,8 @@ protocol PickPhotoDelegate : class {
 class SettingHeader : UIView {
     
     weak var delegate : PickPhotoDelegate?
+    
+    private var user : User
     
     var firstPhotoButton : UIButton = {
         let button = UIButton()
@@ -30,12 +33,15 @@ class SettingHeader : UIView {
         let button = UIButton()
         return button
     }()
+//    private lazy var buttons = [firstPhotoButton, secondPhotoButton, thirdPohotoButton]
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(user: User) {
+        self.user = user
+        super.init(frame: .zero)
         backgroundColor = .systemGroupedBackground
         customizeButtons()
         configUI()
+        loadImages()
     }
     
     required init?(coder: NSCoder) {
@@ -84,6 +90,21 @@ extension SettingHeader {
         firstPhotoButton.addTarget(self, action: #selector(firstBtnTapped), for: .touchUpInside)
         secondPhotoButton.addTarget(self, action: #selector(secondtBtnTapped), for: .touchUpInside)
         thirdPohotoButton.addTarget(self, action: #selector(thirdBtnTapped), for: .touchUpInside)
+    }
+    
+    fileprivate func loadImages() {
+        let URLs = user.images.map({ URL.init(string: $0) })
+        for (index, value) in URLs.enumerated() {
+            SDWebImageManager.shared.loadImage(with: value, options: .continueInBackground, progress: nil) { (image, _, _, _, _, _) in
+                if index == 0 {
+                    self.firstPhotoButton.setImage(image, for: .normal)
+                } else if index == 1 {
+                    self.secondPhotoButton.setImage(image, for: .normal)
+                } else {
+                    self.thirdPohotoButton.setImage(image, for: .normal)
+                }
+            }
+        }
     }
     
 }

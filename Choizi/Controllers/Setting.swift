@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 private let reusableIdentifier = "SettingCell"
 
@@ -19,7 +20,7 @@ class Setting : UITableViewController {
     //MARK: - properties
     
     private var user : User
-    private let header = SettingHeader()
+    private lazy var header = SettingHeader(user: user)
     private let picker = UIImagePickerController()
     weak var delegate : SettingDelegate?
     
@@ -94,7 +95,33 @@ extension Setting {
     }
     @objc func handleDone() {
         view.endEditing(true)
-        delegate?.settingUpdated(self, withUser: user)
+        let hud = JGProgressHUD.init(style: .dark)
+        hud.textLabel.text = "Saving photo.."
+        hud.show(in: view)
+        Service.saveData(withUser: user) { [weak self] err in
+            guard let self = self else { return }
+            self.delegate?.settingUpdated(self, withUser: self.user)
+        }
+        hud.dismiss()
+    }
+}
+
+//MARK: - API
+
+extension Setting {
+    fileprivate func uploadImages(image: UIImage) {
+        let hud = JGProgressHUD.init(style: .dark)
+        hud.textLabel.text = "Saving photo.."
+        hud.show(in: view)
+        Service.uploadImage(image: image) { result in
+            switch result {
+            case .success(let url):
+                self.user.images.append(url)
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+        hud.dismiss()
     }
 }
 
@@ -157,6 +184,7 @@ extension Setting : UIImagePickerControllerDelegate & UINavigationControllerDele
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
         setHeaderButtonIMG(withImage: image, atIndex: index)
+        uploadImages(image: image)
         dismiss(animated: true, completion: nil)
     }
 }
