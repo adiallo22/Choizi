@@ -65,6 +65,7 @@ extension Home {
     func configCards() {
         viewModels.forEach { viewModel in
             let card = Card.init(viewModel: viewModel)
+            card.delegate = self
             deck.addSubview(card)
             card.fillSuperview()
         }
@@ -172,7 +173,10 @@ extension Home : SettingDelegate {
 extension Home : CardDelegate {
     
     func handleShowProfile(fromCard card: Card, andUser user: User) {
-        <#code#>
+        let profile = Profile.init(user: user)
+        let nav = UINavigationController.init(rootViewController: profile)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
     
 }
