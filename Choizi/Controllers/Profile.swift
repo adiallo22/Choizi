@@ -15,7 +15,7 @@ class Profile : UIViewController {
     private var user : User
     
     private lazy var collectionView : UICollectionView = {
-        let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: 350)
+        let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.width+100)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: frame, collectionViewLayout: layout)
@@ -36,7 +36,6 @@ class Profile : UIViewController {
     private var infoLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.text = "Neymar JR. - 27"
         label.numberOfLines = 0
         return label
     }()
@@ -44,14 +43,12 @@ class Profile : UIViewController {
     private var professionLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.text = "Professional Stricker at PSG"
         return label
     }()
     
     private var bioLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.text = "I am a soccer player"
         label.numberOfLines = 0
         return label
     }()
@@ -167,7 +164,7 @@ extension Profile : UICollectionViewDelegate, UICollectionViewDataSource {
 extension Profile : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 350)
+        return .init(width: view.frame.width, height: view.frame.width+100)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
