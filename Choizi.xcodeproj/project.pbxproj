@@ -37,6 +37,7 @@
 		C0F1CF4D24F49EEA0052488D /* SettingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1CF4C24F49EEA0052488D /* SettingFooter.swift */; };
 		C0F1CF5124F584410052488D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1CF5024F584410052488D /* Color.swift */; };
 		C0F1CF5324F5905D0052488D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1CF5224F5905D0052488D /* Profile.swift */; };
+		C0F1CF5524F6B5D60052488D /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F1CF5424F6B5D60052488D /* ProfileCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		C0F1CF4C24F49EEA0052488D /* SettingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooter.swift; sourceTree = "<group>"; };
 		C0F1CF5024F584410052488D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C0F1CF5224F5905D0052488D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		C0F1CF5424F6B5D60052488D /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				C0095E5124D0E0D70000B1EC /* HomeNavBar.swift */,
 				C0095E5524D0F3DB0000B1EC /* FooterHomeBar.swift */,
 				C0095E5724D108260000B1EC /* Card.swift */,
+				C0F1CF5424F6B5D60052488D /* ProfileCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				C0F1CF5324F5905D0052488D /* Profile.swift in Sources */,
 				C0F1CF4D24F49EEA0052488D /* SettingFooter.swift in Sources */,
 				C0A377D524EED660001BA545 /* Service.swift in Sources */,
+				C0F1CF5524F6B5D60052488D /* ProfileCell.swift in Sources */,
 				C0095E3524D07E8D0000B1EC /* AppDelegate.swift in Sources */,
 				C0095E5824D108260000B1EC /* Card.swift in Sources */,
 				C0ADE19924F16E73009183A0 /* SettingHeader.swift in Sources */,

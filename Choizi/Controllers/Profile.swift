@@ -22,6 +22,7 @@ class Profile : UIViewController {
         collection.delegate = self
         collection.dataSource = self
         collection.isPagingEnabled = true
+        collection.register(ProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         return collection
     }()
     
@@ -63,7 +64,7 @@ extension Profile : UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProfileCell
         return cell
     }
     
