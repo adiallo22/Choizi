@@ -58,16 +58,19 @@ class Profile : UIViewController {
     
     private lazy var dislikeButton : UIButton = {
         let button = createButton(withImage: #imageLiteral(resourceName: "dismiss_circle"))
+        button.addTarget(self, action: #selector(handleDislike), for: .touchUpInside)
         return button
     }()
     
     private lazy var superlikeButton : UIButton = {
         let button = createButton(withImage: #imageLiteral(resourceName: "super_like_circle"))
+        button.addTarget(self, action: #selector(handleSuperlike), for: .touchUpInside)
         return button
     }()
     
     private lazy var likeButton : UIButton = {
         let button = createButton(withImage: #imageLiteral(resourceName: "like_circle"))
+        button.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
         return button
     }()
     
@@ -101,7 +104,7 @@ extension Profile {
         dismissButton.setDimensions(height: 40, width: 40)
         dismissButton.anchor(top: collectionView.bottomAnchor,
                              right: view.rightAnchor,
-                             paddingTop: -20,
+                             paddingTop: -24,
                              paddingRight: 20)
         //
         let stack : UIStackView = {
@@ -138,9 +141,9 @@ extension Profile {
         }()
         view.addSubview(stack)
         stack.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                     paddingBottom: 20)
+                     paddingBottom: 30)
         stack.centerX(inView: view)
-        stack.setDimensions(height: 50)
+//        stack.setDimensions(height: 60)
     }
 }
 
@@ -180,6 +183,19 @@ extension Profile : UICollectionViewDelegateFlowLayout {
 //MARK: - selectors
 
 extension Profile {
+    
+    @objc func handleDislike() {
+        print("dislike")
+    }
+    
+    @objc func handleSuperlike() {
+        print("superlike")
+    }
+    
+    @objc func handleLike() {
+        print("like")
+    }
+    
     @objc func handleDismiss() {
         self.dismiss(animated: true, completion: nil)
     }
