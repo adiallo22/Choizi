@@ -173,8 +173,8 @@
 			children = (
 				C05EE6B624D8C40500C08BA8 /* Authentication */,
 				C0095E4F24D07F6B0000B1EC /* Home.swift */,
-				C0F1CF5224F5905D0052488D /* Profile.swift */,
 				C0EA2B3B24F092510034154B /* Setting.swift */,
+				C0F1CF5224F5905D0052488D /* Profile.swift */,
 				C06FCEFF24F368DD00DDC078 /* Conversation.swift */,
 			);
 			path = Controllers;

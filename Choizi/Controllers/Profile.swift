@@ -33,6 +33,44 @@ class Profile : UIViewController {
         return button
     }()
     
+    private var infoLabel : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.text = "Neymar JR. - 27"
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private var professionLabel : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.text = "Professional Stricker at PSG"
+        return label
+    }()
+    
+    private var bioLabel : UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.text = "I am a soccer player"
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private lazy var dislikeButton : UIButton = {
+        let button = createButton(withImage: #imageLiteral(resourceName: "dismiss_circle"))
+        return button
+    }()
+    
+    private lazy var superlikeButton : UIButton = {
+        let button = createButton(withImage: #imageLiteral(resourceName: "super_like_circle"))
+        return button
+    }()
+    
+    private lazy var likeButton : UIButton = {
+        let button = createButton(withImage: #imageLiteral(resourceName: "like_circle"))
+        return button
+    }()
+    
     init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -65,8 +103,45 @@ extension Profile {
                              right: view.rightAnchor,
                              paddingTop: -20,
                              paddingRight: 20)
+        //
+        let stack : UIStackView = {
+            let stack = UIStackView(arrangedSubviews: [infoLabel, professionLabel, bioLabel])
+            stack.spacing = 5
+            stack.axis = .vertical
+            return stack
+        }()
+        view.addSubview(stack)
+        stack.anchor(top: collectionView.bottomAnchor,
+                     left: view.leftAnchor,
+                     right: view.rightAnchor,
+                     paddingTop: 20,
+                     paddingLeft: 16,
+                     paddingRight: 16)
+        configStackButtons()
+        
     }
     
+    fileprivate func createButton(withImage image: UIImage) -> UIButton {
+        let button = UIButton()
+        button.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        return button
+    }
+    
+    fileprivate func configStackButtons() {
+        let stack : UIStackView = {
+            let stack = UIStackView.init(arrangedSubviews: [dislikeButton, superlikeButton, likeButton])
+            stack.axis = .horizontal
+            stack.alignment = .center
+            stack.spacing = 30
+            return stack
+        }()
+        view.addSubview(stack)
+        stack.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                     paddingBottom: 20)
+        stack.centerX(inView: view)
+        stack.setDimensions(height: 50)
+    }
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
