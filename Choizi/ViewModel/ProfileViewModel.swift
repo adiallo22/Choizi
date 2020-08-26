@@ -30,6 +30,11 @@ struct ProfileViewModel {
         return user.profession
     }
     
+    var imageURLs : [URL] {
+        let url = user.images.map({ URL.init(string: $0)! })
+        return url
+    }
+    
     init(user: User) {
         self.user = user
     }

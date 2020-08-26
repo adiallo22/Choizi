@@ -163,6 +163,7 @@ extension Profile : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProfileCell
+        cell.userIMG.sd_setImage(with: viewModel.imageURLs[indexPath.row])
         return cell
     }
     
