@@ -8,9 +8,22 @@
 
 import UIKit
 
+private var reuseIdentifier = "ProfileCell"
+
 class Profile : UIViewController {
     
     private var user : User
+    
+    private lazy var collectionView : UICollectionView = {
+        let frame = CGRect.init(x: 0, y: 0, width: 200, height: 300)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collection = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collection.delegate = self
+        collection.dataSource = self
+        collection.isPagingEnabled = true
+        return collection
+    }()
     
     init(user: User) {
         self.user = user
@@ -23,6 +36,35 @@ class Profile : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configUI()
+    }
+    
+}
+
+//MARK: - helpers
+
+extension Profile {
+    
+    fileprivate func configUI() {
+        view.backgroundColor = .white
+        navigationController?.navigationBar.isHidden = true
+        //
+        view.addSubview(collectionView)
+    }
+    
+}
+
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+extension Profile : UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return user.images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        return cell
     }
     
 }
