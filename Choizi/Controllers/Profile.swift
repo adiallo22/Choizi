@@ -15,7 +15,7 @@ class Profile : UIViewController {
     private var user : User
     
     private lazy var collectionView : UICollectionView = {
-        let frame = CGRect.init(x: 0, y: 0, width: 200, height: 300)
+        let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: 350)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: frame, collectionViewLayout: layout)
@@ -24,6 +24,13 @@ class Profile : UIViewController {
         collection.isPagingEnabled = true
         collection.register(ProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         return collection
+    }()
+    
+    private var dismissButton : UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "dismiss_down_arrow").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+        return button
     }()
     
     init(user: User) {
@@ -51,6 +58,13 @@ extension Profile {
         navigationController?.navigationBar.isHidden = true
         //
         view.addSubview(collectionView)
+        //
+        view.addSubview(dismissButton)
+        dismissButton.setDimensions(height: 40, width: 40)
+        dismissButton.anchor(top: collectionView.bottomAnchor,
+                             right: view.rightAnchor,
+                             paddingTop: -20,
+                             paddingRight: 20)
     }
     
 }
@@ -68,4 +82,30 @@ extension Profile : UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension Profile : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: view.frame.width, height: 350)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+}
+
+//MARK: - selectors
+
+extension Profile {
+    @objc func handleDismiss() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
