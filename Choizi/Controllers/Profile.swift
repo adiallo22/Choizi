@@ -14,6 +14,8 @@ class Profile : UIViewController {
     
     private var user : User
     
+    private lazy var viewModel = ProfileViewModel.init(user: user)
+    
     private lazy var collectionView : UICollectionView = {
         let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.width+100)
         let layout = UICollectionViewFlowLayout()
@@ -83,6 +85,7 @@ class Profile : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
+        configViewModel()
     }
     
 }
@@ -90,6 +93,12 @@ class Profile : UIViewController {
 //MARK: - helpers
 
 extension Profile {
+    
+    fileprivate func configViewModel() {
+        infoLabel.attributedText = viewModel.userInfo
+        bioLabel.text = viewModel.bio
+        professionLabel.text = viewModel.profession
+    }
     
     fileprivate func configUI() {
         view.backgroundColor = .white
@@ -149,7 +158,7 @@ extension Profile {
 extension Profile : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return user.images.count
+        return viewModel.imagesCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
