@@ -8,7 +8,17 @@
 
 import UIKit
 
+protocol FooterBarDelegate : class {
+    func handleSuperLike()
+    func handleLike()
+    func handleDisLike()
+    func handleBoost()
+    func handleRefresh()
+}
+
 class FooterHomeBar : UIStackView {
+    
+    weak var delegate : FooterBarDelegate?
     
     var refreshBtn : UIButton = {
         let button = UIButton()
@@ -38,14 +48,47 @@ class FooterHomeBar : UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        heightAnchor.constraint(equalToConstant: 100).isActive = true
-        [refreshBtn, dislikeBtn, superLikeBtn, likeBtn, boostBtn].forEach { view in
-            addArrangedSubview(view)
-        }
+        configUI()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+//MARK: - helpers
+
+extension FooterHomeBar {
+    fileprivate func configUI() {
+        setDimensions(height: 100)
+        [refreshBtn, dislikeBtn, superLikeBtn, likeBtn, boostBtn].forEach { view in
+            addArrangedSubview(view)
+        }
+        refreshBtn.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
+        superLikeBtn.addTarget(self, action: #selector(handleSuperlike), for: .touchUpInside)
+        dislikeBtn.addTarget(self, action: #selector(handleDislike), for: .touchUpInside)
+        likeBtn.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
+        boostBtn.addTarget(self, action: #selector(handleBoost), for: .touchUpInside)
+    }
+}
+
+//MARK: - selectors
+
+extension FooterHomeBar {
+    @objc func handleRefresh() {
+        delegate?.handleRefresh()
+    }
+    @objc func handleSuperlike() {
+        delegate?.handleSuperLike()
+    }
+    @objc func handleLike() {
+        delegate?.handleLike()
+    }
+    @objc func handleDislike() {
+        delegate?.handleDisLike()
+    }
+    @objc func handleBoost() {
+        delegate?.handleBoost()
+    }
 }
