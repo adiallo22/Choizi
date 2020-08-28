@@ -16,6 +16,8 @@ class Profile : UIViewController {
     
     private lazy var viewModel = ProfileViewModel.init(user: user)
     
+    private lazy var barStack = SegmentBar.init(elementsCount: viewModel.imagesCount)
+    
     private lazy var collectionView : UICollectionView = {
         let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.width+100)
         let layout = UICollectionViewFlowLayout()
@@ -24,6 +26,7 @@ class Profile : UIViewController {
         collection.delegate = self
         collection.dataSource = self
         collection.isPagingEnabled = true
+        collection.showsHorizontalScrollIndicator = false
         collection.register(ProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         return collection
     }()
@@ -102,7 +105,6 @@ extension Profile {
     
     fileprivate func configUI() {
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
         //
         view.addSubview(collectionView)
         //
@@ -127,7 +129,7 @@ extension Profile {
                      paddingLeft: 16,
                      paddingRight: 16)
         configStackButtons()
-        
+        configBarStack()
     }
     
     fileprivate func createButton(withImage image: UIImage) -> UIButton {
@@ -149,7 +151,16 @@ extension Profile {
         stack.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
                      paddingBottom: 30)
         stack.centerX(inView: view)
-//        stack.setDimensions(height: 60)
+    }
+    
+    fileprivate func configBarStack() {
+        barStack.setDimensions(height: 4)
+        barStack.anchor(top: view.topAnchor,
+                        left: view.leftAnchor,
+                        right: view.rightAnchor,
+                        paddingTop: 8,
+                        paddingLeft: 8,
+                        paddingRight: 8)
     }
 }
 
@@ -177,11 +188,11 @@ extension Profile : UICollectionViewDelegateFlowLayout {
         return .init(width: view.frame.width, height: view.frame.width+100)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
