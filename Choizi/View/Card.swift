@@ -26,8 +26,6 @@ class Card : UIView {
     
     private let viewModel : CardViewModel
     
-    private lazy var barStack = SegmentBar.init(elementsCount: viewModel.photos.count)
-    
     private let photos : UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
@@ -45,6 +43,14 @@ class Card : UIView {
         button.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(detailsBtnPressed), for: .touchUpInside)
         return button
+    }()
+    
+    private var barStack : UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 16
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        return stack
     }()
     
     init(viewModel: CardViewModel) {
@@ -102,6 +108,13 @@ extension Card {
     }
     
     fileprivate func configBarStack() {
+        (0 ..< viewModel.photos.count).forEach({ indice in
+            let bar = UIView()
+            bar.backgroundColor = .barDeselectedColor
+            barStack.addArrangedSubview(bar)
+        })
+        barStack.subviews.first?.backgroundColor = .white
+        addSubview(barStack)
         barStack.setDimensions(height: 4)
         barStack.anchor(top: topAnchor,
                         left: leftAnchor,
@@ -156,7 +169,8 @@ extension Card {
             viewModel.previousPhoto()
         }
         photos.sd_setImage(with: viewModel.frontPhoto)
-        barStack.highlight(atIndex: viewModel.index)
+        barStack.arrangedSubviews.forEach({ $0.backgroundColor = .barDeselectedColor})
+        barStack.arrangedSubviews[viewModel.index].backgroundColor = .white
     }
     
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {

@@ -16,7 +16,13 @@ class Profile : UIViewController {
     
     private lazy var viewModel = ProfileViewModel.init(user: user)
     
-    private lazy var barStack = SegmentBar.init(elementsCount: viewModel.imagesCount)
+    private var barStack : UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 16
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        return stack
+    }()
     
     private lazy var collectionView : UICollectionView = {
         let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.width+100)
@@ -154,11 +160,18 @@ extension Profile {
     }
     
     fileprivate func configBarStack() {
+        (0 ..< viewModel.imagesCount).forEach({ indice in
+            let bar = UIView()
+            bar.backgroundColor = .barDeselectedColor
+            barStack.addArrangedSubview(bar)
+        })
+        barStack.subviews.first?.backgroundColor = .white
+        view.addSubview(barStack)
         barStack.setDimensions(height: 4)
         barStack.anchor(top: view.topAnchor,
                         left: view.leftAnchor,
                         right: view.rightAnchor,
-                        paddingTop: 8,
+                        paddingTop: 50,
                         paddingLeft: 8,
                         paddingRight: 8)
     }
@@ -176,6 +189,11 @@ extension Profile : UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProfileCell
         cell.userIMG.sd_setImage(with: viewModel.imageURLs[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        barStack.arrangedSubviews.forEach({ $0.backgroundColor = .barDeselectedColor})
+        barStack.arrangedSubviews[indexPath.row].backgroundColor = .white
     }
     
 }
