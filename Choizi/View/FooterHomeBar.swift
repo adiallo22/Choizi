@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol FooterBarDelegate : class {
+protocol FooterHomeBarDelegate : class {
     func handleSuperLike()
     func handleLike()
     func handleDisLike()
@@ -18,7 +18,7 @@ protocol FooterBarDelegate : class {
 
 class FooterHomeBar : UIStackView {
     
-    weak var delegate : FooterBarDelegate?
+    weak var delegate : FooterHomeBarDelegate?
     
     var refreshBtn : UIButton = {
         let button = UIButton()

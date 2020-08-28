@@ -50,6 +50,7 @@ extension Home {
     
     func configUI() {
         nav.delegate = self
+        footer.delegate = self
         let stack : UIStackView = {
             let stack = UIStackView(arrangedSubviews: [nav, deck, footer])
             stack.axis = .vertical
@@ -177,6 +178,32 @@ extension Home : CardDelegate {
         let profile = Profile.init(user: user)
         profile.modalPresentationStyle = .fullScreen
         present(profile, animated: true, completion: nil)
+    }
+    
+}
+
+//MARK: - FooterHomeBarDelegate
+
+extension Home : FooterHomeBarDelegate {
+    
+    func handleSuperLike() {
+        print("super like")
+    }
+    
+    func handleLike() {
+        print("like")
+    }
+    
+    func handleDisLike() {
+        print("dislike")
+    }
+    
+    func handleBoost() {
+        print("boost")
+    }
+    
+    func handleRefresh() {
+        print("refresh")
     }
     
 }
