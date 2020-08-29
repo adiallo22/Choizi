@@ -48,6 +48,14 @@ class Login : UIViewController {
         return button
     }()
     
+    private var errorLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
@@ -56,6 +64,7 @@ class Login : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.navigationBar.barStyle = .black
+        errorLabel.alpha = 0
     }
     
 }
@@ -85,6 +94,12 @@ extension Login {
                      paddingLeft: 32,
                      paddingRight: 32)
         //
+        view.addSubview(errorLabel)
+        errorLabel.anchor(top: loginButton.bottomAnchor,
+                          paddingTop: 16)
+        errorLabel.setDimensions(height: 100, width: view.frame.width - 64)
+        errorLabel.centerX(inView: self.view)
+        //
         view.addSubview(signupButton)
         signupButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 8)
         signupButton.centerX(inView: view)
@@ -100,6 +115,11 @@ extension Login {
         }
     }
     
+    fileprivate func setError(withDescription description : String) {
+        errorLabel.text = description
+        errorLabel.alpha = 1
+    }
+    
 }
 
 //MARK: - selectors
@@ -109,12 +129,12 @@ extension Login {
     @objc func loginTaped() {
         guard let email = email.text,
             let pwd = password.text else { return }
-        AuthenticationService.signIn(withEmail: email, andPassword: pwd) { result, err in
+        AuthenticationService.signIn(withEmail: email, andPassword: pwd) { [weak self] result, err in
             if let err = err {
-                print(err.localizedDescription)
+                self?.setError(withDescription: err.localizedDescription)
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self?.dismiss(animated: true, completion: nil)
         }
     }
     
