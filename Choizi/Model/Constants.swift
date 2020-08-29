@@ -9,3 +9,4 @@
 import FirebaseFirestore
 
 let collectionUserPath = Firestore.firestore().collection("users")
+let collectionUserSwipes = Firestore.firestore().collection("swipes")

@@ -8,6 +8,7 @@
 
 import UIKit.UIImage
 import FirebaseStorage
+import FirebaseAuth
 
 let ref = Storage.storage()
 
@@ -90,5 +91,25 @@ extension Service {
             "seekingMaxAge":user.seekingMaxAge
         ]
         collectionUserPath.document(user.uid).setData(data, completion: completion)
+    }
+}
+
+//MARK: - save swipes
+
+extension Service {
+    static func saveSwipe(onUser user: User, isLike like: Bool, completion: @escaping(Error?)->Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        collectionUserSwipes.document(uid).getDocument { snapshot, error in
+            if let error = error {
+                completion(error)
+            } else {
+                let data = ["isLiked":like]
+                if snapshot?.exists == true {
+                    collectionUserSwipes.document(uid).updateData(data)
+                } else {
+                    collectionUserSwipes.document(uid).setData(data)
+                }
+            }
+        }
     }
 }
