@@ -16,6 +16,7 @@ enum SwipeDirection : Int {
 
 protocol CardDelegate : class {
     func handleShowProfile(fromCard card: Card, andUser user: User)
+    func perfomPersistingSwipe(fromCard card: Card, withLike like: Bool)
 }
 
 class Card : UIView {
@@ -149,7 +150,8 @@ extension Card {
             }
         }) {_ in
             if shouldDismissCard {
-                self.removeFromSuperview()
+                let like = direction == .right
+                self.delegate?.perfomPersistingSwipe(fromCard: self, withLike: like)
             }
         }
     }

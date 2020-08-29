@@ -10,7 +10,15 @@ import UIKit
 
 private var reuseIdentifier = "ProfileCell"
 
+protocol ProfileDelegate : class {
+    func handleLike(_ controller: Profile, onUser user: User)
+    func handleDisLike(_ controller: Profile, onUser user: User)
+    func handleSuperLike(_ controller: Profile, onUser user: User)
+}
+
 class Profile : UIViewController {
+    
+    weak var delegate : ProfileDelegate?
     
     private var user : User
     
@@ -221,15 +229,15 @@ extension Profile : UICollectionViewDelegateFlowLayout {
 extension Profile {
     
     @objc func handleDislike() {
-        print("dislike")
+        delegate?.handleDisLike(self, onUser: user)
     }
     
     @objc func handleSuperlike() {
-        print("superlike")
+        delegate?.handleSuperLike(self, onUser: user)
     }
     
     @objc func handleLike() {
-        print("like")
+        delegate?.handleLike(self, onUser: user)
     }
     
     @objc func handleDismiss() {

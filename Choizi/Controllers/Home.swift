@@ -149,6 +149,7 @@ extension Home {
         Service.fetchAllUsers { result in
             switch result {
             case .success(let users):
+                print(users.count)
                 users.forEach { [weak self] user in
                     let viewModel = CardViewModel.init(user: user)
                     self?.viewModels.append(viewModel)
@@ -159,13 +160,17 @@ extension Home {
         }
     }
     
-    fileprivate func persistSwipe(onUser user: User, withLike like: Bool) {
+    fileprivate func persistSwipe(onUser user: User, withLike like: Bool, withAnimation: Bool) {
         Service.saveSwipe(onUser: user, isLike: like) { err in
             if err != nil {
                 print(err!.localizedDescription)
             }
         }
-        performAnimationOnSwipe(shouldLike: like)
+        if withAnimation == true {
+            performAnimationOnSwipe(shouldLike: like)
+        } else {
+            self.frontCard = cardViews.last
+        }
     }
     
 }
@@ -211,6 +216,13 @@ extension Home : SettingDelegate {
 
 extension Home : CardDelegate {
     
+    func perfomPersistingSwipe(fromCard card: Card, withLike like: Bool) {
+        card.removeFromSuperview()
+        self.cardViews.removeAll(where: { card == $0 })
+        guard let usr = frontCard?.user else { return }
+        persistSwipe(onUser: usr, withLike: like, withAnimation: false)
+    }
+    
     func handleShowProfile(fromCard card: Card, andUser user: User) {
         let profile = Profile.init(user: user)
         profile.modalPresentationStyle = .fullScreen
@@ -229,13 +241,13 @@ extension Home : FooterHomeBarDelegate {
     
     func handleLike() {
         guard let front = frontCard else { return }
-        persistSwipe(onUser: front.user, withLike: true)
+        persistSwipe(onUser: front.user, withLike: true, withAnimation: true)
         
     }
     
     func handleDisLike() {
         guard let front = frontCard else { return }
-        persistSwipe(onUser: front.user, withLike: false)
+        persistSwipe(onUser: front.user, withLike: false, withAnimation: true)
     }
     
     func handleBoost() {
