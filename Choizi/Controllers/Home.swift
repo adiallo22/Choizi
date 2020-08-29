@@ -16,6 +16,9 @@ class Home : UIViewController {
     private var viewModels : [CardViewModel] = [] {
         didSet { configCards() }
     }
+    
+    var frontCard : Card?
+    var cardViews = [Card]()
 
     private let nav = HomeNavBar()
     
@@ -64,13 +67,15 @@ extension Home {
         
     }
     
-    func configCards() {
+    fileprivate func configCards() {
         viewModels.forEach { viewModel in
             let card = Card.init(viewModel: viewModel)
             card.delegate = self
             deck.addSubview(card)
             card.fillSuperview()
         }
+        cardViews = deck.subviews.map({ $0 as! Card})
+        frontCard = cardViews.last
     }
     
     fileprivate func presentLogginScreen() {
@@ -79,6 +84,29 @@ extension Home {
             let nav = UINavigationController.init(rootViewController: loginvc)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
+        }
+    }
+    
+    fileprivate func performAnimationOnSwipe(shouldLike: Bool) {
+        let transtion = shouldLike ? 800 : -800
+        UIView.animate(withDuration: 1.0,
+                       delay: 0,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0.1,
+                       options: .curveEaseOut,
+                       animations: {
+                        if let height = self.frontCard?.frame.height, let width = self.frontCard?.frame.width {
+                            self.frontCard?.frame = CGRect.init(x: CGFloat(transtion),
+                                                                y: 0,
+                                                                width: width,
+                                                                height: height)
+                        }
+        })
+        { _ in
+            self.frontCard?.removeFromSuperview()
+            guard !self.cardViews.isEmpty else { return }
+            self.cardViews.remove(at: self.cardViews.count - 1)
+            self.frontCard = self.cardViews.last
         }
     }
     
@@ -191,11 +219,14 @@ extension Home : FooterHomeBarDelegate {
     }
     
     func handleLike() {
-        print("like")
+        guard let _ = frontCard else { return }
+        performAnimationOnSwipe(shouldLike: true)
+        
     }
     
     func handleDisLike() {
-        print("dislike")
+        guard let _ = frontCard else { return }
+        performAnimationOnSwipe(shouldLike: false)
     }
     
     func handleBoost() {

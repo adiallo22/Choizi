@@ -26,6 +26,10 @@ class Card : UIView {
     
     private let viewModel : CardViewModel
     
+    var user : User {
+        return viewModel.user
+    }
+    
     private let photos : UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
