@@ -81,6 +81,7 @@ extension Service {
 extension Service {
     static func saveData(withUser user: User, completion: @escaping(Error?)->Void) {
         let data : [String:Any] = [
+            "uid":user.uid,
             "fullname":user.name,
             "email":user.email,
             "age":user.age,
@@ -103,7 +104,7 @@ extension Service {
             if let error = error {
                 completion(error)
             } else {
-                let data = ["isLiked":like]
+                let data = [user.uid:like]
                 if snapshot?.exists == true {
                     collectionUserSwipes.document(uid).updateData(data)
                 } else {

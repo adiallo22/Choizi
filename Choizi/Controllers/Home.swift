@@ -159,6 +159,15 @@ extension Home {
         }
     }
     
+    fileprivate func persistSwipe(onUser user: User, withLike like: Bool) {
+        Service.saveSwipe(onUser: user, isLike: like) { err in
+            if err != nil {
+                print(err!.localizedDescription)
+            }
+        }
+        performAnimationOnSwipe(shouldLike: like)
+    }
+    
 }
 
 //MARK: - NavigationDelegate
@@ -219,14 +228,14 @@ extension Home : FooterHomeBarDelegate {
     }
     
     func handleLike() {
-        guard let _ = frontCard else { return }
-        performAnimationOnSwipe(shouldLike: true)
+        guard let front = frontCard else { return }
+        persistSwipe(onUser: front.user, withLike: true)
         
     }
     
     func handleDisLike() {
-        guard let _ = frontCard else { return }
-        performAnimationOnSwipe(shouldLike: false)
+        guard let front = frontCard else { return }
+        persistSwipe(onUser: front.user, withLike: false)
     }
     
     func handleBoost() {
