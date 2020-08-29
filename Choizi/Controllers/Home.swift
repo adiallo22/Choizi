@@ -149,7 +149,6 @@ extension Home {
         Service.fetchAllUsers { result in
             switch result {
             case .success(let users):
-                print(users.count)
                 users.forEach { [weak self] user in
                     let viewModel = CardViewModel.init(user: user)
                     self?.viewModels.append(viewModel)
@@ -226,6 +225,7 @@ extension Home : CardDelegate {
     func handleShowProfile(fromCard card: Card, andUser user: User) {
         let profile = Profile.init(user: user)
         profile.modalPresentationStyle = .fullScreen
+        profile.delegate = self
         present(profile, animated: true, completion: nil)
     }
     
@@ -258,4 +258,27 @@ extension Home : FooterHomeBarDelegate {
         print("refresh")
     }
     
+}
+
+//MARK: - ProfileDelegate
+
+extension Home : ProfileDelegate {
+    
+    func handleLike(_ controller: Profile, onUser user: User) {
+        controller.dismiss(animated: true) { [weak self] in
+            self?.persistSwipe(onUser: user, withLike: true, withAnimation: true)
+        }
+    }
+    
+    func handleDisLike(_ controller: Profile, onUser user: User) {
+        controller.dismiss(animated: true) { [weak self] in
+            self?.persistSwipe(onUser: user, withLike: false, withAnimation: true)
+        }
+    }
+    
+    func handleSuperLike(_ controller: Profile, onUser user: User) {
+        controller.dismiss(animated: true) {
+            print("super liked..")
+        }
+    }
 }
