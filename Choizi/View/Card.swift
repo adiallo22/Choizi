@@ -80,6 +80,7 @@ class Card : UIView {
 extension Card {
     
     fileprivate func configUI() {
+        backgroundColor = .black
         layer.cornerRadius = 5
         clipsToBounds = true
         addSubview(photos)

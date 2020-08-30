@@ -142,7 +142,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
             endingLineNumber = "208"
-            landmarkName = "handleLoggout(_:)"
+            landmarkName = "settingUpdated(_:withUser:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -314,8 +314,8 @@
             filePath = "Choizi/View/Card.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "configBarStack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -332,7 +332,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "handleSuperLike()"
+            landmarkName = "handleLike()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -348,7 +348,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "248"
             endingLineNumber = "248"
-            landmarkName = "handleLike()"
+            landmarkName = "handleDisLike()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -364,8 +364,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
             endingLineNumber = "241"
-            landmarkName = "handleSuperLike()"
-            landmarkType = "7">
+            landmarkName = "Home"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

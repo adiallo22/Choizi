@@ -12,6 +12,7 @@ target 'Choizi' do
 	pod 'Firebase/Firestore'
 	pod 'Firebase/Core'
 	pod 'Firebase/Storage'
+  pod 'Firebase/Analytics'
 	pod 'SDWebImage'
 	pod 'JGProgressHUD'
 
