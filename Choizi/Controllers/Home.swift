@@ -36,7 +36,7 @@ class Home : UIViewController {
         configUI()
         checkLogStatus()
         fetchCurrentUser()
-        fetchAllUsers()
+//        fetchAllUsers()
 //        loggout()
     }
     
@@ -81,6 +81,7 @@ extension Home {
     fileprivate func presentLogginScreen() {
         DispatchQueue.main.async {
             let loginvc = Login()
+            loginvc.delegate = self
             let nav = UINavigationController.init(rootViewController: loginvc)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
@@ -139,6 +140,7 @@ extension Home {
             switch result {
             case .success(let user):
                 self?.user = user
+                self?.fetchAllUsers()
             case .failure(let err):
                 print(err.localizedDescription)
             }
@@ -172,6 +174,15 @@ extension Home {
         }
     }
     
+}
+
+//MARK: - AuthenticateDelegate
+
+extension Home : AuthenticateDelegate {
+    func finishedAuthenticating() {
+        fetchCurrentUser()
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 //MARK: - NavigationDelegate

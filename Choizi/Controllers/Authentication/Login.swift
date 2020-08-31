@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class Login : UIViewController {
     
+    weak var delegate : AuthenticateDelegate?
+    
     private var viewModel = LoginViewModel()
     
     private var logo : UIImageView = {
@@ -134,12 +136,15 @@ extension Login {
                 self?.setError(withDescription: err.localizedDescription)
                 return
             }
-            self?.dismiss(animated: true, completion: nil)
+//            self?.dismiss(animated: true, completion: nil)
+            self?.delegate?.finishedAuthenticating()
         }
     }
     
     @objc func segueToSignUp() {
-        navigationController?.pushViewController(SignUp(), animated: true)
+        let signup = SignUp()
+        signup.delegate = delegate
+        navigationController?.pushViewController(signup, animated: true)
     }
     
     @objc func emailOrPwdEdited(sender: UITextField) {
@@ -153,6 +158,5 @@ extension Login {
         }
         buttonStatus()
     }
-    
     
 }

@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol AuthenticateDelegate : class {
+    func finishedAuthenticating()
+}
+
 class SignUp : UIViewController {
+    
+    weak var delegate : AuthenticateDelegate?
     
     private var viewModel = SignUpViewModel()
     
@@ -125,7 +131,7 @@ extension SignUp {
     
     @objc func signupTapped(){
         register()
-        navigationController?.popToRootViewController(animated: true)
+        delegate?.finishedAuthenticating()
     }
     
     @objc func segueToLogin() {
