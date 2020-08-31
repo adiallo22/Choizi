@@ -36,8 +36,6 @@ class Home : UIViewController {
         configUI()
         checkLogStatus()
         fetchCurrentUser()
-//        fetchAllUsers()
-//        loggout()
     }
     
     override func viewWillAppear(_ animated: Bool) {

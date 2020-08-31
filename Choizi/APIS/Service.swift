@@ -60,6 +60,7 @@ extension Service {
 
 extension Service {
     static func fetchAllUsers(completion: @escaping(Result<[User], Error>)->Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         var users : [User] = []
         collectionUserPath.getDocuments { snapshot, err in
             if let err = err {
@@ -68,7 +69,9 @@ extension Service {
                 snapshot?.documents.forEach({ document in
                     let value = document.data()
                     let user = User.init(value: value)
-                    users.insert(user, at: 0)
+                    if user.uid != uid {
+                        users.insert(user, at: 0)
+                    }
                 })
                 completion(.success(users))
             }
