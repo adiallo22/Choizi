@@ -135,6 +135,8 @@ extension MatchView {
     }
     
     fileprivate func configBackground() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismiss))
+        blurView.addGestureRecognizer(tap)
         addSubview(blurView)
         blurView.fillSuperview()
         blurView.alpha = 0
@@ -150,6 +152,16 @@ extension MatchView {
 //MARK: - selectors
 
 extension MatchView {
+    
+    @objc func handleDismiss() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1,
+                       options: .curveEaseOut,
+                       animations: {
+                        self.alpha = 0
+        }) { _ in
+            self.removeFromSuperview()
+        }
+    }
     
     @objc func handleSendMsg() {
         print("send message")
