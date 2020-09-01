@@ -146,7 +146,8 @@ extension Home {
     }
     
     fileprivate func fetchAllUsers() {
-        Service.fetchAllUsers { result in
+        guard let user = user else { return }
+        Service.fetchAllUsers(fromCurrentUser: user) { result in
             switch result {
             case .success(let users):
                 users.forEach { [weak self] user in

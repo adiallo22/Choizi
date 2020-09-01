@@ -59,10 +59,12 @@ extension Service {
 //MARK: - Fetch All Users
 
 extension Service {
-    static func fetchAllUsers(completion: @escaping(Result<[User], Error>)->Void) {
+    static func fetchAllUsers(fromCurrentUser user: User, completion: @escaping(Result<[User], Error>)->Void) {
+        let query = collectionUserPath.whereField("age", isGreaterThanOrEqualTo: user.seekingMinAge)
+            .whereField("age", isLessThanOrEqualTo: user.seekingMaxAge)
         guard let uid = Auth.auth().currentUser?.uid else { return }
         var users : [User] = []
-        collectionUserPath.getDocuments { snapshot, err in
+        query.getDocuments { snapshot, err in
             if let err = err {
                 completion(.failure(err))
             } else {
@@ -113,6 +115,23 @@ extension Service {
                 } else {
                     collectionUserSwipes.document(uid).setData(data)
                 }
+            }
+        }
+    }
+}
+
+//MARK: - check for matching
+
+extension Service {
+    static func isThereAMatch(withUser user: User, completion: @escaping(Bool)->Void) {
+        guard let currentUID = Auth.auth().currentUser?.uid else { return }
+        collectionUserSwipes.document(user.uid).getDocument { snap, err in
+            if err != nil {
+                return
+            } else {
+                guard let data = snap?.data() else { return }
+                guard let match = data[currentUID] as? Bool else { return }
+                completion(match)
             }
         }
     }
