@@ -22,6 +22,7 @@ class MatchView : UIView {
     
     private var descriptionLabel : UILabel = {
         let label = UILabel()
+        label.text = "You and a User has liked each other!"
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .white
@@ -84,10 +85,53 @@ class MatchView : UIView {
 extension MatchView {
     
     fileprivate func configUI() {
-        let views = [matchIMG, descriptionLabel, currentUSRimg, matchIMG, sendMSGbtn, continueSwipe]
-        views.forEach { view in
-            addSubview(view)
-        }
+        addSubview(currentUSRimg)
+        currentUSRimg.anchor(left: centerXAnchor, paddingLeft: 16)
+        currentUSRimg.setDimensions(height: 140, width: 140)
+        currentUSRimg.layer.cornerRadius = 70
+        currentUSRimg.centerY(inView: self)
+        //
+        addSubview(matchedUSERimg)
+        matchedUSERimg.anchor(right: centerXAnchor, paddingRight: 16)
+        matchedUSERimg.setDimensions(height: 140, width: 140)
+        matchedUSERimg.layer.cornerRadius = 70
+        matchedUSERimg.centerY(inView: self)
+        //
+        addSubview(sendMSGbtn)
+        sendMSGbtn.anchor(top: matchedUSERimg.bottomAnchor,
+                          left: leftAnchor,
+                          right: rightAnchor,
+                          paddingTop: 48,
+                          paddingLeft: 48,
+                          paddingRight: 48)
+        sendMSGbtn.setDimensions(height: 50)
+        //
+        addSubview(continueSwipe)
+        continueSwipe.anchor(top: sendMSGbtn.bottomAnchor,
+                          left: leftAnchor,
+                          right: rightAnchor,
+                          paddingTop: 16,
+                          paddingLeft: 48,
+                          paddingRight: 48)
+        continueSwipe.setDimensions(height: 50)
+        //
+        addSubview(descriptionLabel)
+        descriptionLabel.anchor(left: leftAnchor,
+                                bottom: currentUSRimg.topAnchor,
+                                right: rightAnchor,
+                                paddingLeft: 48,
+                                paddingBottom: 48,
+                                paddingRight: 48)
+        descriptionLabel.setDimensions(height: 50)
+        //
+        addSubview(matchIMG)
+        matchIMG.anchor(left: leftAnchor,
+                                bottom: descriptionLabel.topAnchor,
+                                right: rightAnchor,
+                                paddingLeft: 48,
+                                paddingBottom: 16,
+                                paddingRight: 48)
+        matchIMG.setDimensions(height: 50)
     }
     
     fileprivate func configBackground() {
@@ -108,11 +152,11 @@ extension MatchView {
 extension MatchView {
     
     @objc func handleSendMsg() {
-        
+        print("send message")
     }
     
     @objc func handleSwipping() {
-        
+        print("keep swipping")
     }
     
 }
