@@ -160,15 +160,17 @@ extension Home {
         }
     }
     
-    fileprivate func persistSwipe(onUser user: User, withLike like: Bool, withAnimation: Bool) {
+    fileprivate func persistSwipeAndMatch(onUser user: User, withLike like: Bool, withAnimation: Bool) {
         Service.saveSwipe(onUser: user, isLike: like) { err in
             if err != nil {
                 print(err!.localizedDescription)
             }
-            // check for match once swipe is successully persisted..
         }
-        Service.isThereAMatch(withUser: user) { match in
-            print("there is match between \(self.user?.name) and \(user.name)")
+        // check for matches only with swipe is right side
+        if like == true {
+            Service.isThereAMatch(withUser: user) { match in
+                print("there is match between \(self.user?.name) and \(user.name)")
+            }
         }
         if withAnimation == true {
             performAnimationOnSwipe(shouldLike: like)
@@ -233,7 +235,7 @@ extension Home : CardDelegate {
         card.removeFromSuperview()
         self.cardViews.removeAll(where: { card == $0 })
         guard let usr = frontCard?.user else { return }
-        persistSwipe(onUser: usr, withLike: like, withAnimation: false)
+        persistSwipeAndMatch(onUser: usr, withLike: like, withAnimation: false)
     }
     
     func handleShowProfile(fromCard card: Card, andUser user: User) {
@@ -255,13 +257,13 @@ extension Home : FooterHomeBarDelegate {
     
     func handleLike() {
         guard let front = frontCard else { return }
-        persistSwipe(onUser: front.user, withLike: true, withAnimation: true)
+        persistSwipeAndMatch(onUser: front.user, withLike: true, withAnimation: true)
         
     }
     
     func handleDisLike() {
         guard let front = frontCard else { return }
-        persistSwipe(onUser: front.user, withLike: false, withAnimation: true)
+        persistSwipeAndMatch(onUser: front.user, withLike: false, withAnimation: true)
     }
     
     func handleBoost() {
@@ -280,13 +282,13 @@ extension Home : ProfileDelegate {
     
     func handleLike(_ controller: Profile, onUser user: User) {
         controller.dismiss(animated: true) { [weak self] in
-            self?.persistSwipe(onUser: user, withLike: true, withAnimation: true)
+            self?.persistSwipeAndMatch(onUser: user, withLike: true, withAnimation: true)
         }
     }
     
     func handleDisLike(_ controller: Profile, onUser user: User) {
         controller.dismiss(animated: true) { [weak self] in
-            self?.persistSwipe(onUser: user, withLike: false, withAnimation: true)
+            self?.persistSwipeAndMatch(onUser: user, withLike: false, withAnimation: true)
         }
     }
     
