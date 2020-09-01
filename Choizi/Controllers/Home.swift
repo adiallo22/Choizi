@@ -109,6 +109,13 @@ extension Home {
         }
     }
     
+    fileprivate func presentMatchView(forUser user: User) {
+        guard let currentUSR = self.user else { return }
+        let matchView = MatchView(currentUser: currentUSR, matchedUser: user)
+        view.addSubview(matchView)
+        matchView.fillSuperview()
+    }
+    
 }
 
 //MARK: - APIS
@@ -168,8 +175,8 @@ extension Home {
         }
         // check for matches only with swipe is right side
         if like == true {
-            Service.isThereAMatch(withUser: user) { match in
-                print("there is match between \(self.user?.name) and \(user.name)")
+            Service.isThereAMatch(withUser: user) { [weak self] match in
+                self?.presentMatchView(forUser: user)
             }
         }
         if withAnimation == true {

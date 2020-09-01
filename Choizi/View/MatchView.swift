@@ -17,6 +17,7 @@ class MatchView : UIView {
         self.currentUser = currentUser
         self.matchedUser = matchedUser
         super.init(frame: .zero)
+        backgroundColor = .orange
     }
     
     required init?(coder: NSCoder) {
