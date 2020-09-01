@@ -63,11 +63,14 @@ class MatchView : UIView {
         return button
     }()
     
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     init(currentUser: User, matchedUser: User) {
         self.currentUser = currentUser
         self.matchedUser = matchedUser
         super.init(frame: .zero)
-        backgroundColor = .orange
+        configBackground()
+        configUI()
     }
     
     required init?(coder: NSCoder) {
@@ -81,7 +84,21 @@ class MatchView : UIView {
 extension MatchView {
     
     fileprivate func configUI() {
-        
+        let views = [matchIMG, descriptionLabel, currentUSRimg, matchIMG, sendMSGbtn, continueSwipe]
+        views.forEach { view in
+            addSubview(view)
+        }
+    }
+    
+    fileprivate func configBackground() {
+        addSubview(blurView)
+        blurView.fillSuperview()
+        blurView.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1,
+                       options: .curveEaseOut,
+                       animations: {
+                        self.blurView.alpha = 1
+        }, completion: nil)
     }
     
 }
