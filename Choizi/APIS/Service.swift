@@ -125,13 +125,15 @@ extension Service {
 extension Service {
     static func isThereAMatch(withUser user: User, completion: @escaping(Bool)->Void) {
         guard let currentUID = Auth.auth().currentUser?.uid else { return }
-        collectionUserSwipes.document(user.uid).getDocument { snap, err in
-            if err != nil {
+        collectionUserSwipes.document(user.uid).getDocument { snapshot, error in
+            if error != nil {
                 return
             } else {
-                guard let data = snap?.data() else { return }
+                guard let data = snapshot?.data() else { return }
                 guard let match = data[currentUID] as? Bool else { return }
-                completion(match)
+                if match == true {
+                    completion(match)
+                }
             }
         }
     }

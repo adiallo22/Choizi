@@ -165,6 +165,10 @@ extension Home {
             if err != nil {
                 print(err!.localizedDescription)
             }
+            // check for match once swipe is successully persisted..
+        }
+        Service.isThereAMatch(withUser: user) { match in
+            print("there is match between \(self.user?.name) and \(user.name)")
         }
         if withAnimation == true {
             performAnimationOnSwipe(shouldLike: like)

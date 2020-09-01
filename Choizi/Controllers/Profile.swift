@@ -33,7 +33,7 @@ class Profile : UIViewController {
     }()
     
     private lazy var collectionView : UICollectionView = {
-        let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.width+100)
+        let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: 350)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: frame, collectionViewLayout: layout)
@@ -211,7 +211,7 @@ extension Profile : UICollectionViewDelegate, UICollectionViewDataSource {
 extension Profile : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: view.frame.width+100)
+        return .init(width: view.frame.width, height: 350)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
