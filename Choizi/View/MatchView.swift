@@ -10,8 +10,7 @@ import UIKit
 
 class MatchView : UIView {
     
-    private let currentUser: User
-    private let matchedUser: User
+    private let viewModel : MatchViewModel
     
     private var matchIMG : UIImageView = {
         let view = UIImageView()
@@ -22,7 +21,6 @@ class MatchView : UIView {
     
     private var descriptionLabel : UILabel = {
         let label = UILabel()
-        label.text = "You and a User has liked each other!"
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .white
@@ -66,12 +64,10 @@ class MatchView : UIView {
     
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
-//    private lazy var views = [MatchView]
-    
-    init(currentUser: User, matchedUser: User) {
-        self.currentUser = currentUser
-        self.matchedUser = matchedUser
+    init(viewModel: MatchViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
+        configViewModel()
         configBackground()
         configUI()
         configAnimation()
@@ -86,6 +82,12 @@ class MatchView : UIView {
 //MARK: - helpers
 
 extension MatchView {
+    
+    fileprivate func configViewModel() {
+        descriptionLabel.text = viewModel.matchLabel
+        currentUSRimg.sd_setImage(with: viewModel.currentUserIMG)
+        matchedUSERimg.sd_setImage(with: viewModel.matchedUsrImg)
+    }
     
     fileprivate func configUI() {
         addSubview(currentUSRimg)

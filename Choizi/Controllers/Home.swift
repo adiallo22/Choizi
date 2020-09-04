@@ -111,7 +111,8 @@ extension Home {
     
     fileprivate func presentMatchView(forUser user: User) {
         guard let currentUSR = self.user else { return }
-        let matchView = MatchView(currentUser: currentUSR, matchedUser: user)
+        let viewModel = MatchViewModel.init(currentUser: currentUSR, matchedUser: user)
+        let matchView = MatchView(viewModel: viewModel)
         view.addSubview(matchView)
         matchView.fillSuperview()
     }
