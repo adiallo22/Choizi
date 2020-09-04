@@ -30,7 +30,7 @@ class MatchView : UIView {
     
     private var currentUSRimg : UIImageView = {
         let view = UIImageView()
-        view.image = #imageLiteral(resourceName: "Wtfv8VY8I2RDhbQlIvSqORBAx1N2")
+        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 2
@@ -39,7 +39,7 @@ class MatchView : UIView {
     
     private var matchedUSERimg : UIImageView = {
         let view = UIImageView()
-        view.image = #imageLiteral(resourceName: "Wtfv8VY8I2RDhbQlIvSqORBAx1N2")
+        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 2
