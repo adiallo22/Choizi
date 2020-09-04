@@ -113,6 +113,7 @@ extension Home {
         guard let currentUSR = self.user else { return }
         let viewModel = MatchViewModel.init(currentUser: currentUSR, matchedUser: user)
         let matchView = MatchView(viewModel: viewModel)
+        matchView.delegate = self
         view.addSubview(matchView)
         matchView.fillSuperview()
     }
@@ -305,4 +306,14 @@ extension Home : ProfileDelegate {
             print("super liked..")
         }
     }
+}
+
+//MARK: - MatchViewDelegate
+
+extension Home : MatchViewDelegate {
+    
+    func handleMessaging(toUser user: User) {
+        print("sending a message to \(user.name)")
+    }
+    
 }

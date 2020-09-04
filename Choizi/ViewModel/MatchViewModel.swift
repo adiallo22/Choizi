@@ -23,6 +23,10 @@ struct MatchViewModel {
         return url
     }
     
+    var matchUser : User {
+        return self.matchedUser
+    }
+    
     var matchLabel : String {
         return "You and \(matchedUser.name) have liked each other!"
     }

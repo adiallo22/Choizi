@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol MatchViewDelegate : class {
+    func handleMessaging(toUser user: User)
+}
+
 class MatchView : UIView {
+    
+    weak var delegate : MatchViewDelegate?
     
     private let viewModel : MatchViewModel
     
@@ -58,7 +64,7 @@ class MatchView : UIView {
         let button = UIButton()
         button.setTitle("Keep Swiping", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(handleSwipping), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
         return button
     }()
     
@@ -134,7 +140,7 @@ extension MatchView {
                                 bottom: descriptionLabel.topAnchor,
                                 right: rightAnchor,
                                 paddingLeft: 48,
-                                paddingBottom: 16,
+                                paddingBottom: 26,
                                 paddingRight: 48)
         matchIMG.setDimensions(height: 50)
         configButtons()
@@ -208,11 +214,7 @@ extension MatchView {
     }
     
     @objc func handleSendMsg() {
-        print("send message")
-    }
-    
-    @objc func handleSwipping() {
-        print("keep swipping")
+        delegate?.handleMessaging(toUser: viewModel.matchUser)
     }
     
 }
