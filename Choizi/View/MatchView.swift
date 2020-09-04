@@ -163,12 +163,6 @@ extension MatchView {
     }
     
     fileprivate func configAnimation() {
-//        matchIMG.alpha = 1
-//        matchedUSERimg.alpha = 1
-//        currentUSRimg.alpha = 1
-//        sendMSGbtn.alpha = 1
-//        continueSwipe.alpha = 1
-        //
         let angle = 30 * CGFloat.pi / 180
         currentUSRimg.transform = CGAffineTransform(rotationAngle: angle).concatenating(CGAffineTransform(translationX: -200, y: 0))
         matchedUSERimg.transform = CGAffineTransform(rotationAngle: -angle).concatenating(CGAffineTransform(translationX: 200, y: 0))
@@ -191,7 +185,8 @@ extension MatchView {
         UIView.animate(withDuration: 0.75, delay: 1.3 * 0.6, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             self.sendMSGbtn.transform = .identity
             self.continueSwipe.transform = .identity
-        }, completion: nil)
+        },
+        completion: nil)
     }
     
 }
