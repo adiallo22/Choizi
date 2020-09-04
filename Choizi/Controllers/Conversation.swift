@@ -8,11 +8,90 @@
 
 import UIKit
 
-class Conversation : UIViewController {
+private let reuseIdentifier = "conversationCell"
+
+class Conversation : UITableViewController {
+    
+    private var user : User
+    
+//    private let header = ConversationHeader()
+    
+    init(user: User) {
+        self.user = user
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dismiss(animated: true, completion: nil)
+        configUI()
+        configNavBar()
     }
     
+}
+
+//MARK: - helpers
+
+extension Conversation {
+    
+    fileprivate func configUI() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = 50
+        tableView.tableFooterView = UIView()
+    }
+    
+    fileprivate func configNavBar() {
+        let leftBtn = UIImageView(image:  #imageLiteral(resourceName: "app_icon").withRenderingMode(.alwaysTemplate))
+        leftBtn.isUserInteractionEnabled = true
+        leftBtn.tintColor = .lightGray
+        leftBtn.setDimensions(height: 28, width: 28)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleDismiss))
+        leftBtn.addGestureRecognizer(tap)
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftBtn)
+        //
+        let centerBtn = UIImageView.init(image: #imageLiteral(resourceName: "top_right_messages").withRenderingMode(.alwaysTemplate))
+        centerBtn.tintColor = .systemPink
+        navigationItem.titleView = centerBtn
+    }
+    
+}
+
+//MARK: - datasource and delegate
+
+extension Conversation {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        let label = UILabel()
+        label.text = "New Matches"
+        label.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        view.addSubview(label)
+        label.anchor(top: view.topAnchor,
+                     left: view.leftAnchor,
+                     paddingTop: 6,
+                     paddingLeft: 12)
+        return view
+    }
+    
+}
+
+//MARK: - selectors
+
+extension Conversation {
+    @objc func handleDismiss() {
+        dismiss(animated: true, completion: nil)
+    }
 }
