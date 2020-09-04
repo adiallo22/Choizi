@@ -60,22 +60,23 @@ extension Service {
 
 extension Service {
     static func fetchAllUsers(fromCurrentUser user: User, completion: @escaping(Result<[User], Error>)->Void) {
+        var users : [User] = []
         let query = collectionUserPath.whereField("age", isGreaterThanOrEqualTo: user.seekingMinAge)
             .whereField("age", isLessThanOrEqualTo: user.seekingMaxAge)
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        var users : [User] = []
-        query.getDocuments { snapshot, err in
-            if let err = err {
-                completion(.failure(err))
-            } else {
-                snapshot?.documents.forEach({ document in
-                    let value = document.data()
-                    let user = User.init(value: value)
-                    if user.uid != uid {
+        fetchSwipes { AlreadySwipedUsers in
+            query.getDocuments { snapshot, err in
+                if let err = err {
+                    completion(.failure(err))
+                } else {
+                    snapshot?.documents.forEach({ document in
+                        let value = document.data()
+                        let user = User.init(value: value)
+                        guard user.uid != Auth.auth().currentUser?.uid else { return }
+                        guard AlreadySwipedUsers[user.uid] == nil else { return }
                         users.insert(user, at: 0)
-                    }
-                })
-                completion(.success(users))
+                    })
+                    completion(.success(users))
+                }
             }
         }
     }
@@ -142,7 +143,7 @@ extension Service {
 //MARK: - fetch swipes
 
 extension Service {
-    static func fetchSwipes(completion: @escaping([String:Bool])->Void) {
+    private static func fetchSwipes(completion: @escaping([String:Bool])->Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         collectionUserSwipes.document(uid).getDocument { snapshot, error in
             guard let data = snapshot?.data() as? [String:Bool] else {
