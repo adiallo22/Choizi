@@ -66,12 +66,15 @@ class MatchView : UIView {
     
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
+//    private lazy var views = [MatchView]
+    
     init(currentUser: User, matchedUser: User) {
         self.currentUser = currentUser
         self.matchedUser = matchedUser
         super.init(frame: .zero)
         configBackground()
         configUI()
+        configAnimation()
     }
     
     required init?(coder: NSCoder) {
@@ -132,6 +135,7 @@ extension MatchView {
                                 paddingBottom: 16,
                                 paddingRight: 48)
         matchIMG.setDimensions(height: 50)
+        configButtons()
     }
     
     fileprivate func configBackground() {
@@ -144,6 +148,49 @@ extension MatchView {
                        options: .curveEaseOut,
                        animations: {
                         self.blurView.alpha = 1
+        }, completion: nil)
+    }
+    
+    fileprivate func configButtons() {
+        sendMSGbtn.layer.cornerRadius = 25
+        sendMSGbtn.layer.borderWidth = 2
+        sendMSGbtn.layer.masksToBounds = true
+        sendMSGbtn.layer.borderColor = UIColor.white.cgColor
+        //
+        continueSwipe.layer.cornerRadius = 25
+        continueSwipe.layer.borderColor = UIColor.white.cgColor
+        continueSwipe.layer.borderWidth = 2
+    }
+    
+    fileprivate func configAnimation() {
+//        matchIMG.alpha = 1
+//        matchedUSERimg.alpha = 1
+//        currentUSRimg.alpha = 1
+//        sendMSGbtn.alpha = 1
+//        continueSwipe.alpha = 1
+        //
+        let angle = 30 * CGFloat.pi / 180
+        currentUSRimg.transform = CGAffineTransform(rotationAngle: angle).concatenating(CGAffineTransform(translationX: -200, y: 0))
+        matchedUSERimg.transform = CGAffineTransform(rotationAngle: -angle).concatenating(CGAffineTransform(translationX: 200, y: 0))
+        //
+        sendMSGbtn.transform = CGAffineTransform(translationX: -500, y: 0)
+        continueSwipe.transform = CGAffineTransform(translationX: 500, y: 0)
+        //
+        UIView.animateKeyframes(withDuration: 1.3, delay: 0, options: .calculationModeCubic, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.45) {
+                self.currentUSRimg.transform = CGAffineTransform(rotationAngle: -angle)
+                self.matchedUSERimg.transform = CGAffineTransform(rotationAngle: -angle)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.4) {
+                self.currentUSRimg.transform = .identity
+                self.matchedUSERimg.transform = .identity
+            }
+        },
+        completion: nil)
+        //
+        UIView.animate(withDuration: 0.75, delay: 1.3 * 0.6, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+            self.sendMSGbtn.transform = .identity
+            self.continueSwipe.transform = .identity
         }, completion: nil)
     }
     

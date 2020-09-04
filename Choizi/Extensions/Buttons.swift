@@ -38,4 +38,16 @@ extension UIButton {
         setTitle("Select Photo", for: .normal)
         setTitleColor(.black, for: .normal)
     }
+    
+    func sendAMessageButton() {
+        let gradient = CAGradientLayer()
+        let leftColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        let rightColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        gradient.colors = [leftColor.cgColor, rightColor.cgColor]
+        gradient.startPoint = CGPoint.init(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint.init(x: 1, y: 0.5)
+        self.layer.insertSublayer(gradient, at: 0)
+        layer.cornerRadius = layer.frame.size.height / 2
+        layer.masksToBounds = true
+    }
 }
