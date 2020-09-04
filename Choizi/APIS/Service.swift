@@ -138,3 +138,18 @@ extension Service {
         }
     }
 }
+
+//MARK: - fetch swipes
+
+extension Service {
+    static func fetchSwipes(completion: @escaping([String:Bool])->Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        collectionUserSwipes.document(uid).getDocument { snapshot, error in
+            guard let data = snapshot?.data() as? [String:Bool] else {
+                completion([String:Bool]())
+                return
+            }
+            completion(data)
+        }
+    }
+}
