@@ -29,9 +29,9 @@ class Conversation : UITableViewController {
         super.viewDidLoad()
         configUI()
         configNavBar()
-        Service.fetchLikedUser { (users) in
-            print("users are - \(users)")
-        }
+//        Service.fetchLikedUser { (users) in
+//            print("users are - \(users)")
+//        }
     }
     
 }
@@ -43,7 +43,7 @@ extension Conversation {
     fileprivate func configUI() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 50
-        tableView.sectionHeaderHeight = 100
+        tableView.sectionHeaderHeight = 200
         tableView.tableFooterView = UIView()
     }
     
