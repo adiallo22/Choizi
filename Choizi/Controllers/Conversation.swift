@@ -29,6 +29,9 @@ class Conversation : UITableViewController {
         super.viewDidLoad()
         configUI()
         configNavBar()
+        Service.fetchLikedUser { (users) in
+            print("users are - \(users)")
+        }
     }
     
 }

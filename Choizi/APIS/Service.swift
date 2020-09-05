@@ -154,3 +154,25 @@ extension Service {
         }
     }
 }
+
+//MARK: - fetch liked users
+
+extension Service {
+    static func fetchLikedUser(completion: @escaping([User]?) -> Void) {
+        var users : [User] = []
+        fetchSwipes { SwipedUsers in
+            SwipedUsers.forEach { key, value in
+                guard value == true else { return }
+                fetchUser(withUid: key) { result in
+                    switch result {
+                    case .success(let user):
+                        users.append(user)
+                    case .failure(_):
+                        completion(nil)
+                    }
+                }
+                completion(users)
+            }
+        }
+    }
+}

@@ -416,5 +416,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1317B632-2F44-4F10-99F5-1F4E64E7A3DD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/APIS/Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "fetchLikedUser(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1317B632-2F44-4F10-99F5-1F4E64E7A3DD - b752be4965cafd20"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String, Swift.Bool) -&gt; () in closure #1 (Swift.Dictionary&lt;Swift.String, Swift.Bool&gt;) -&gt; () in static Choizi.Service.fetchLikedUser(completion: (Swift.Optional&lt;Swift.Array&lt;Choizi.User&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/APIS/Service.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "187">
+               </Location>
+               <Location
+                  uuid = "1317B632-2F44-4F10-99F5-1F4E64E7A3DD - d54438af587bb9c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Choizi.User, Swift.Error&gt;) -&gt; () in closure #1 (Swift.String, Swift.Bool) -&gt; () in closure #1 (Swift.Dictionary&lt;Swift.String, Swift.Bool&gt;) -&gt; () in static Choizi.Service.fetchLikedUser(completion: (Swift.Optional&lt;Swift.Array&lt;Choizi.User&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Choizi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abduldiallo/Desktop/Choizi/Choizi/APIS/Service.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "157">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9278115-1BD9-4EC4-B3AD-EC322025D5F7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/APIS/Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "fetchLikedUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
