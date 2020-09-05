@@ -12,6 +12,10 @@ private let reuseIdentifier = "MatchCell"
 
 class ConversationHeader : UIView {
     
+    var matches : [Match] = [] {
+        didSet { collectionView.reloadData() }
+    }
+    
     private var NMlabel : UILabel = {
         let label = UILabel()
         label.text = "New Matches"
@@ -24,8 +28,8 @@ class ConversationHeader : UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
         cv.register(MatchCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        cv.backgroundColor = .white
         cv.delegate = self
         cv.dataSource = self
         return cv
@@ -85,11 +89,12 @@ extension ConversationHeader {
 extension ConversationHeader : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return matches.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MatchCell
+        cell.match = matches[indexPath.row]
         return cell
     }
     

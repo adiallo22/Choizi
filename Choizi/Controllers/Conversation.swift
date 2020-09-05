@@ -29,9 +29,7 @@ class Conversation : UITableViewController {
         super.viewDidLoad()
         configUI()
         configNavBar()
-//        Service.fetchLikedUser { (users) in
-//            print("users are - \(users)")
-//        }
+        fetchMatches()
     }
     
 }
@@ -87,5 +85,15 @@ extension Conversation {
 extension Conversation {
     @objc func handleDismiss() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: - API
+
+extension Conversation {
+    fileprivate func fetchMatches() {
+        Service.fetchMatches { [weak self] matches in
+            self?.header.matches = matches
+        }
     }
 }

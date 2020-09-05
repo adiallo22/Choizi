@@ -199,3 +199,18 @@ extension Service {
         collectionMatchesMsg.document(matchedUser.uid).collection("matches").document(currentUser.uid).setData(currentUsrData)
     }
 }
+
+
+//MARK: - fetch matches
+
+extension Service {
+    static func fetchMatches(completion: @escaping([Match]) -> Void) {
+        var matches : [Match] = []
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        collectionMatchesMsg.document(uid).collection("matches").getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents else { return }
+            matches = documents.map({ Match.init(data: $0.data()) })
+            completion(matches)
+        }
+    }
+}
