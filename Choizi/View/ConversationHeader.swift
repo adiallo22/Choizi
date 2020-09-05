@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let reuseIdentifier = "MatchCell"
+
 class ConversationHeader : UIView {
     
     private var NMlabel : UILabel = {
@@ -22,7 +24,10 @@ class ConversationHeader : UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .orange
+        cv.backgroundColor = .white
+        cv.register(MatchCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        cv.delegate = self
+        cv.dataSource = self
         return cv
     }()
     
@@ -72,5 +77,28 @@ extension ConversationHeader {
                      paddingLeft: 12,
                      paddingBottom: 6,
                      paddingRight: 12)
+    }
+}
+
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+extension ConversationHeader : UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MatchCell
+        return cell
+    }
+    
+}
+
+//MARK: - flow layout
+
+extension ConversationHeader : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize.init(width: 80, height: 100)
     }
 }
