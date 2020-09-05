@@ -116,6 +116,8 @@ extension Home {
         matchView.delegate = self
         view.addSubview(matchView)
         matchView.fillSuperview()
+        //upload matches to database
+        Service.uploadMatch(currentUser: currentUSR, matchedUser: user)
     }
     
 }

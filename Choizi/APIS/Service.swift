@@ -176,3 +176,26 @@ extension Service {
         }
     }
 }
+
+//MARK: - upload matches
+
+extension Service {
+    static func uploadMatch(currentUser: User, matchedUser: User) {
+        guard let matchedURL = matchedUser.images.first else { return }
+        guard let currentUSRurl = currentUser.images.first else { return }
+        //upload match from current user standpoint
+        let matchUsrData = [
+            "name":matchedUser.name,
+            "uid":matchedUser.uid,
+            "profileIMGurl":matchedURL
+        ]
+        collectionMatchesMsg.document(currentUser.uid).collection("matches").document(matchedUser.uid).setData(matchUsrData)
+        //upload match from matched user standpoint
+        let currentUsrData = [
+            "name":currentUser.name,
+            "uid":currentUser.uid,
+            "profileIMGurl":currentUSRurl
+        ]
+        collectionMatchesMsg.document(matchedUser.uid).collection("matches").document(currentUser.uid).setData(currentUsrData)
+    }
+}
