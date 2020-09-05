@@ -10,7 +10,13 @@ import UIKit
 
 private let reuseIdentifier = "MatchCell"
 
+protocol ConversationHeaderDelegate: class {
+    func openConversation(_ header: ConversationHeader, withUser uid: String)
+}
+
 class ConversationHeader : UIView {
+    
+    weak var delegate : ConversationHeaderDelegate?
     
     var matches : [Match] = [] {
         didSet { collectionView.reloadData() }
@@ -100,7 +106,8 @@ extension ConversationHeader : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        let uid = matches[indexPath.row].uid
+        delegate?.openConversation(self, withUser: uid)
     }
     
 }

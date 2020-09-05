@@ -94,6 +94,22 @@ extension Conversation {
     fileprivate func fetchMatches() {
         Service.fetchMatches { [weak self] matches in
             self?.header.matches = matches
+            self?.header.delegate = self
+        }
+    }
+}
+
+//MARK: - ConversationHeaderDelegate
+
+extension Conversation : ConversationHeaderDelegate {
+    func openConversation(_ header: ConversationHeader, withUser uid: String) {
+        Service.fetchUser(withUid: uid) { result in
+            switch result {
+            case .success(let user):
+                print("start a conversation with the \(user.name)")
+            case .failure(_):
+                print("")
+            }
         }
     }
 }
