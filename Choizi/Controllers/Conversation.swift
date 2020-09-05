@@ -14,7 +14,7 @@ class Conversation : UITableViewController {
     
     private var user : User
     
-//    private let header = ConversationHeader()
+    private let header = ConversationHeader()
     
     init(user: User) {
         self.user = user
@@ -40,6 +40,7 @@ extension Conversation {
     fileprivate func configUI() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 50
+        tableView.sectionHeaderHeight = 100
         tableView.tableFooterView = UIView()
     }
     
@@ -73,17 +74,7 @@ extension Conversation {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        let label = UILabel()
-        label.text = "New Matches"
-        label.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        view.addSubview(label)
-        label.anchor(top: view.topAnchor,
-                     left: view.leftAnchor,
-                     paddingTop: 6,
-                     paddingLeft: 12)
-        return view
+        return header
     }
     
 }
