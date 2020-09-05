@@ -76,7 +76,7 @@ extension ConversationHeader {
                               right: rightAnchor,
                               paddingLeft: 12,
                               paddingRight: 12)
-        collectionView.setDimensions(height: 100)
+        collectionView.setDimensions(height: 105)
         //
         addSubview(label)
         label.anchor(top: collectionView.bottomAnchor,
@@ -116,6 +116,6 @@ extension ConversationHeader : UICollectionViewDelegate, UICollectionViewDataSou
 
 extension ConversationHeader : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 80, height: 100)
+        return CGSize.init(width: 86, height: 105)
     }
 }

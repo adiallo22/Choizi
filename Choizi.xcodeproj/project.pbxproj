@@ -168,11 +168,10 @@
 			children = (
 				C0F1CF4B24F49EC90052488D /* Setting */,
 				C0B430D72503F98D004BFFC5 /* Home */,
+				C0B430DE25043E00004BFFC5 /* Conversation */,
 				C0F1CF5424F6B5D60052488D /* ProfileCell.swift */,
 				C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */,
 				C0B430A424FEBEDA004BFFC5 /* MatchView.swift */,
-				C0B430D52502FD66004BFFC5 /* ConversationHeader.swift */,
-				C0B430D82503F9C4004BFFC5 /* MatchCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +238,15 @@
 				C0095E5724D108260000B1EC /* Card.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		C0B430DE25043E00004BFFC5 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				C0B430D52502FD66004BFFC5 /* ConversationHeader.swift */,
+				C0B430D82503F9C4004BFFC5 /* MatchCell.swift */,
+			);
+			path = Conversation;
 			sourceTree = "<group>";
 		};
 		C0F1CF4B24F49EC90052488D /* Setting */ = {

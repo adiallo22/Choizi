@@ -161,10 +161,7 @@ extension Home {
         Service.fetchAllUsers(fromCurrentUser: user) { result in
             switch result {
             case .success(let users):
-                users.forEach { [weak self] user in
-                    let viewModel = CardViewModel.init(user: user)
-                    self?.viewModels.append(viewModel)
-                }
+                self.viewModels = users.map({ CardViewModel.init(user: $0) })
             case .failure(let err):
                 print(err.localizedDescription)
             }

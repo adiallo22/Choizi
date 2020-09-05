@@ -31,7 +31,7 @@ class MatchCell : UICollectionViewCell {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
