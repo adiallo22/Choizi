@@ -94,8 +94,13 @@ extension ConversationHeader : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MatchCell
-        cell.match = matches[indexPath.row]
+        let viewModel = MatchCellViewModel.init(match: matches[indexPath.row])
+        cell.matchViewModel = viewModel
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
     }
     
 }

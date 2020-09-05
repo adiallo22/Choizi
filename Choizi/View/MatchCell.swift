@@ -11,7 +11,7 @@ import SDWebImage
 
 class MatchCell : UICollectionViewCell {
     
-    var match : Match? {
+    var matchViewModel : MatchCellViewModel? {
         didSet { configData() }
     }
     
@@ -64,9 +64,8 @@ extension MatchCell {
     }
     
     fileprivate func configData() {
-        guard let match = match else { return }
-        let viewModel = MatchCellViewModel.init(match: match)
-        profileIMG.sd_setImage(with: viewModel.imageURL)
-        label.text = viewModel.name
+        guard let matchVM = matchViewModel else { return }
+        profileIMG.sd_setImage(with: matchVM.imageURL)
+        label.text = matchVM.name
     }
 }
