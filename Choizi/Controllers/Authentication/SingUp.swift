@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 protocol AuthenticateDelegate : class {
     func finishedAuthenticating()
+    func finishedSigningUp(withUID uid: String)
 }
 
 class SignUp : UIViewController {
@@ -48,7 +50,7 @@ class SignUp : UIViewController {
     }()
     
     private var signupButton : UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.authButton(withTitle: "Sign Up")
         button.addTarget(self, action: #selector(signupTapped), for: .touchUpInside)
         return button
@@ -131,7 +133,6 @@ extension SignUp {
     
     @objc func signupTapped(){
         register()
-        delegate?.finishedAuthenticating()
     }
     
     @objc func segueToLogin() {
@@ -176,15 +177,22 @@ extension SignUp {
             let email = email.text,
             let password = password.text,
             let profileIMG = profile else { return }
+        let hud = JGProgressHUD.init(style: .dark)
+        hud.show(in: view)
         let credential = UserCredential(fullname: fullname,
                                         email: email,
                                         password: password,
                                         profileIMG: profileIMG)
-        AuthenticationService.register(withCredentials: credential) { err in
+        AuthenticationService.register(withCredentials: credential) { [weak self] uid, err  in
             if let err = err {
                 print(err.localizedDescription)
+                hud.dismiss()
                 return
             }
+            hud.dismiss()
+            guard let uid = uid else { return }
+            self?.delegate?.finishedSigningUp(withUID: uid)
+            self?.delegate?.finishedAuthenticating()
             print("successfully signed up \(credential.fullname)")
         }
     }

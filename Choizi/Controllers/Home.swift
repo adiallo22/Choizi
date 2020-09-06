@@ -33,8 +33,8 @@ class Home : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
         checkLogStatus()
+        configUI()
         fetchCurrentUser()
     }
     
@@ -192,10 +192,24 @@ extension Home {
 //MARK: - AuthenticateDelegate
 
 extension Home : AuthenticateDelegate {
+    
+    func finishedSigningUp(withUID uid: String) {
+        Service.fetchUser(withUid: uid) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.user = user
+                self?.fetchAllUsers()
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
     func finishedAuthenticating() {
         fetchCurrentUser()
         dismiss(animated: true, completion: nil)
     }
+    
 }
 
 //MARK: - NavigationDelegate

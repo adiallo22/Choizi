@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class Login : UIViewController {
     
@@ -37,7 +38,7 @@ class Login : UIViewController {
     }()
     
     private let loginButton : UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.authButton(withTitle: "Login")
         button.addTarget(self, action: #selector(loginTaped), for: .touchUpInside)
         return button
@@ -131,12 +132,16 @@ extension Login {
     @objc func loginTaped() {
         guard let email = email.text,
             let pwd = password.text else { return }
+        let hud = JGProgressHUD.init(style: .dark)
+        hud.show(in: view)
         AuthenticationService.signIn(withEmail: email, andPassword: pwd) { [weak self] result, err in
             if let err = err {
                 self?.setError(withDescription: err.localizedDescription)
+                hud.dismiss()
                 return
             }
 //            self?.dismiss(animated: true, completion: nil)
+            hud.dismiss()
             self?.delegate?.finishedAuthenticating()
         }
     }
