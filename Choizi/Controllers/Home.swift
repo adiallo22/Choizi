@@ -294,7 +294,7 @@ extension Home : FooterHomeBarDelegate {
     }
     
     func handleRefresh() {
-        print("refresh")
+        fetchAllUsers()
     }
     
 }
