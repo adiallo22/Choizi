@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let reuseIdentifier = "MessageCell"
+
 class Chat : UICollectionViewController {
     
     private let user : User
@@ -29,7 +31,8 @@ class Chat : UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        configUI()
+        configCollection()
     }
     
     override var inputAccessoryView: UIView? {
@@ -47,8 +50,33 @@ class Chat : UICollectionViewController {
 extension Chat {
     
     fileprivate func configUI() {
-//        navigationItem.title = "\(user.name)"
+        navigationItem.title = "\(user.name)"
         view.backgroundColor = .white
+    }
+    
+    fileprivate func configCollection() {
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.alwaysBounceVertical = true
+    }
+    
+}
+
+//MARK: - delegate and data source
+
+extension Chat {
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected at \(indexPath.row)")
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        return cell
     }
     
 }

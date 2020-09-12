@@ -40,6 +40,7 @@ class CustomInputChatField : UIView {
         backgroundColor = .white
         configUI()
         addShadowOnLayer()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleInputChange), name: UITextView.textDidChangeNotification, object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -93,5 +94,9 @@ extension CustomInputChatField {
 extension CustomInputChatField {
     @objc func handleSendMessage() {
         print("\(String(describing: inputTextField.text)) message is sent")
+    }
+    @objc func handleInputChange() {
+        // placeholder is hidden is true only when input textfield is not empty
+        placeholder.isHidden = !inputTextField.text.isEmpty
     }
 }
