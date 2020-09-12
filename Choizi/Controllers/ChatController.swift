@@ -1,16 +1,16 @@
 //
-//  Chat.swift
+//  ChatController.swift
 //  Choizi
 //
-//  Created by Abdul Diallo on 9/11/20.
+//  Created by Abdul Diallo on 9/12/20.
 //  Copyright © 2020 Abdul Diallo. All rights reserved.
 //
 
 import UIKit
 
-class Chat : UICollectionViewController {
+class ChatController : UIViewController {
     
-    private let user : User
+    var user: User?
     
     private lazy var customInputChatField : CustomInputChatField = {
         let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: 50)
@@ -18,18 +18,8 @@ class Chat : UICollectionViewController {
         return view
     }()
     
-    init(user: User) {
-        self.user = user
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
     }
     
     override var inputAccessoryView: UIView? {
@@ -38,17 +28,6 @@ class Chat : UICollectionViewController {
     
     override var canBecomeFirstResponder: Bool {
         return true
-    }
-    
-}
-
-//MARK: - helpers
-
-extension Chat {
-    
-    fileprivate func configUI() {
-//        navigationItem.title = "\(user.name)"
-        view.backgroundColor = .white
     }
     
 }

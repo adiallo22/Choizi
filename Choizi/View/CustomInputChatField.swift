@@ -10,7 +10,7 @@ import UIKit
 
 class CustomInputChatField : UIView {
     
-    var inputTextField : UITextView = {
+    private var inputTextField : UITextView = {
         let tf = UITextView()
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.isScrollEnabled = false
@@ -24,6 +24,14 @@ class CustomInputChatField : UIView {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.addTarget(self, action: #selector(handleSendMessage), for: .touchUpInside)
         return button
+    }()
+    
+    private var placeholder: UILabel = {
+        let placeholder = UILabel()
+        placeholder.text = "Type your message here.."
+        placeholder.font = UIFont.systemFont(ofSize: 16)
+        placeholder.textColor = .lightGray
+        return placeholder
     }()
     
     override init(frame: CGRect) {

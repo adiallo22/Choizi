@@ -60,7 +60,10 @@ extension Conversation {
     }
     
     fileprivate func openChat(withUser user: User) {
-        let chat = Chat(user: user)
+//        let chat = Chat(user: user)
+//        navigationController?.pushViewController(chat, animated: true)
+        let chat = ChatController()
+        chat.user = user
         navigationController?.pushViewController(chat, animated: true)
     }
     
