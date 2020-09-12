@@ -41,6 +41,27 @@ class CustomInputChatField : UIView {
     
 }
 
+//MARK: - helpers
+
+extension CustomInputChatField {
+    fileprivate func configUI() {
+        addSubview(sendButton)
+        sendButton.anchor(top: topAnchor,
+                          right: rightAnchor,
+                          paddingTop: 4,
+                          paddingRight: 8)
+        sendButton.setDimensions(height: 50, width: 50)
+        inputTextField.anchor(top: topAnchor,
+                              left: leftAnchor,
+                              bottom: safeAreaLayoutGuide.bottomAnchor,
+                              right: sendButton.leftAnchor,
+                              paddingTop: 4,
+                              paddingLeft: 8,
+                              paddingBottom: 4,
+                              paddingRight: 8)
+    }
+}
+
 //MARK: - selectors
 
 extension CustomInputChatField {
