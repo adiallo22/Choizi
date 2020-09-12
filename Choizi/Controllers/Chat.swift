@@ -23,6 +23,17 @@ class Chat : UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configUI()
+    }
+    
+}
+
+//MARK: - helpers
+
+extension Chat {
+    
+    fileprivate func configUI() {
+        view.backgroundColor = .orange
     }
     
 }

@@ -59,6 +59,13 @@ extension Conversation {
         navigationItem.titleView = centerBtn
     }
     
+    fileprivate func openChat(withUser user: User) {
+        let chat = Chat(user: user)
+        let nav = UINavigationController.init(rootViewController: chat)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
+    }
+    
 }
 
 //MARK: - datasource and delegate
@@ -91,25 +98,31 @@ extension Conversation {
 //MARK: - API
 
 extension Conversation {
+    
     fileprivate func fetchMatches() {
         Service.fetchMatches { [weak self] matches in
             self?.header.matches = matches
             self?.header.delegate = self
         }
     }
+    
+    fileprivate func fetchUserAndOpenChat(withUID uid: String) {
+        Service.fetchUser(withUid: uid) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.openChat(withUser: user)
+            case .failure(_):
+                print("")
+            }
+        }
+    }
+    
 }
 
 //MARK: - ConversationHeaderDelegate
 
 extension Conversation : ConversationHeaderDelegate {
     func openConversation(_ header: ConversationHeader, withUser uid: String) {
-        Service.fetchUser(withUid: uid) { result in
-            switch result {
-            case .success(let user):
-                print("start a conversation with the \(user.name)")
-            case .failure(_):
-                print("")
-            }
-        }
+        fetchUserAndOpenChat(withUID: uid)
     }
 }
