@@ -33,7 +33,7 @@ class Chat : UICollectionViewController {
 extension Chat {
     
     fileprivate func configUI() {
-        view.backgroundColor = .orange
+        navigationItem.title = "\(user.name)"
     }
     
 }

@@ -61,9 +61,7 @@ extension Conversation {
     
     fileprivate func openChat(withUser user: User) {
         let chat = Chat(user: user)
-        let nav = UINavigationController.init(rootViewController: chat)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true, completion: nil)
+        navigationController?.pushViewController(chat, animated: true)
     }
     
 }
