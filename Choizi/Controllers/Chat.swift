@@ -29,7 +29,7 @@ class Chat : UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
+        view.backgroundColor = .white
     }
     
     override var inputAccessoryView: UIView? {

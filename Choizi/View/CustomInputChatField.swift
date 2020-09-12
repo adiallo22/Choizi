@@ -37,6 +37,9 @@ class CustomInputChatField : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         autoresizingMask = .flexibleHeight
+        backgroundColor = .white
+        configUI()
+        addShadowOnLayer()
     }
     
     required init?(coder: NSCoder) {
@@ -52,6 +55,7 @@ class CustomInputChatField : UIView {
 //MARK: - helpers
 
 extension CustomInputChatField {
+    
     fileprivate func configUI() {
         addSubview(sendButton)
         sendButton.anchor(top: topAnchor,
@@ -59,21 +63,35 @@ extension CustomInputChatField {
                           paddingTop: 4,
                           paddingRight: 8)
         sendButton.setDimensions(height: 50, width: 50)
+        //
+        addSubview(inputTextField)
         inputTextField.anchor(top: topAnchor,
                               left: leftAnchor,
                               bottom: safeAreaLayoutGuide.bottomAnchor,
                               right: sendButton.leftAnchor,
-                              paddingTop: 4,
+                              paddingTop: 8,
                               paddingLeft: 8,
                               paddingBottom: 4,
                               paddingRight: 8)
+        //
+        addSubview(placeholder)
+        placeholder.centerY(inView: inputTextField)
+        placeholder.anchor(left: inputTextField.leftAnchor, paddingLeft: 4)
     }
+    
+    fileprivate func addShadowOnLayer() {
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOpacity = 0.25
+        layer.shadowRadius = 10
+        layer.shadowOffset = .init(width: 0, height: -8)
+    }
+    
 }
 
 //MARK: - selectors
 
 extension CustomInputChatField {
     @objc func handleSendMessage() {
-        print("\(inputTextField.text) message is isent")
+        print("\(String(describing: inputTextField.text)) message is sent")
     }
 }
