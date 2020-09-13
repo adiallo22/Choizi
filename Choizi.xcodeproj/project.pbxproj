@@ -22,6 +22,7 @@
 		C015DF10250D1DE5008ED583 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF0F250D1DE5008ED583 /* MessageCell.swift */; };
 		C015DF12250E49F5008ED583 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF11250E49F5008ED583 /* Message.swift */; };
 		C015DF14250E5971008ED583 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF13250E5971008ED583 /* MessageViewModel.swift */; };
+		C015DF16250E6ABA008ED583 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF15250E6ABA008ED583 /* MessageService.swift */; };
 		C03C4EE024F89C4B00475B4D /* SegmentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */; };
 		C05EE6B324D8860C00C08BA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B224D8860C00C08BA8 /* User.swift */; };
 		C05EE6B524D8883D00C08BA8 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */; };
@@ -73,6 +74,7 @@
 		C015DF0F250D1DE5008ED583 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		C015DF11250E49F5008ED583 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C015DF13250E5971008ED583 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		C015DF15250E6ABA008ED583 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentBar.swift; sourceTree = "<group>"; };
 		C05EE6B224D8860C00C08BA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */,
 				C0A377D424EED660001BA545 /* Service.swift */,
+				C015DF15250E6ABA008ED583 /* MessageService.swift */,
 			);
 			path = APIS;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				C0095E3724D07E8D0000B1EC /* SceneDelegate.swift in Sources */,
 				C0B430DB250407EE004BFFC5 /* Match.swift in Sources */,
 				C015DF10250D1DE5008ED583 /* MessageCell.swift in Sources */,
+				C015DF16250E6ABA008ED583 /* MessageService.swift in Sources */,
 				C0F1CF5124F584410052488D /* Color.swift in Sources */,
 				C0A377D124EEC8FB001BA545 /* AuthenticationService.swift in Sources */,
 				C05EE6B524D8883D00C08BA8 /* CardViewModel.swift in Sources */,

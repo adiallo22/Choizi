@@ -100,15 +100,27 @@ extension Chat : UICollectionViewDelegateFlowLayout {
     
 }
 
+//MARK: - APIS
+
+extension Chat {
+    fileprivate func uploadMessage(message: String, to user: User) {
+        MessageService.shared.uploadMessage(message, to: user) { error in
+            if let error = error {
+                print("error uploading message - \(error.localizedDescription)")
+            }
+            print("succesfully sent a message to \(user.name)")
+            print("message is \(message)")
+        }
+    }
+}
+
 //MARK: - CustomInputChatFieldDelegate
 
 extension Chat : CustomInputChatFieldDelegate {
     
     func handleSendMessage(_ view: CustomInputChatField, withMessage message: String) {
+        uploadMessage(message: message, to: user)
         view.inputTextField.text = ""
-        isCurrentUser.toggle()
-        let newMessage = Message.init(content: message, isCurrentUser: isCurrentUser)
-        messages.append(newMessage)
         collectionView.reloadData()
     }
 }
