@@ -59,7 +59,8 @@ extension Chat {
     
     fileprivate func configUI() {
         navigationItem.title = "\(user.name)"
-        view.backgroundColor = .white
+        collectionView.allowsSelection = false
+        collectionView.keyboardDismissMode = .interactive
     }
     
     fileprivate func configCollection() {
@@ -72,10 +73,6 @@ extension Chat {
 //MARK: - delegate and data source
 
 extension Chat {
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
@@ -126,6 +123,7 @@ extension Chat {
             switch result {
             case .success(let messages):
                 self?.messages = messages
+                self?.collectionView.scrollToItem(at: [0, self?.messages.count ?? 0 - 1], at: .bottom, animated: true)
             case .failure(let error):
                 print(error.localizedDescription)
             }
