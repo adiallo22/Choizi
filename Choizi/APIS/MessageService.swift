@@ -18,7 +18,6 @@ struct MessageService {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let data = [
             "content":message,
-//            "isCurrentUser":true,
             "timestamp":Timestamp.init(date: Date()),
             "fromID":uid,
             "toID":user.uid,
@@ -28,4 +27,27 @@ struct MessageService {
         }
     }
     
+}
+
+//MARK: - fetch Messages with a specific user
+
+extension MessageService {
+    func fetchMessage(for user: User, completion: @escaping(Result<[Message], Error>) -> Void) {
+        var messages : [Message] = []
+        guard let currentUID =  Auth.auth().currentUser?.uid else { return }
+        let query = collectionMatchesMsg.document(currentUID).collection(user.uid).order(by: "timestamp")
+        query.addSnapshotListener { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                snapshot?.documentChanges.forEach({ change in
+                    if change.type == .added {
+                        let data = change.document.data()
+                        messages.append(Message.init(data: data))
+                    }
+                    completion(.success(messages))
+                })
+            }
+        }
+    }
 }

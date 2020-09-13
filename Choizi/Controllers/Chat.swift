@@ -14,7 +14,9 @@ class Chat : UICollectionViewController {
     
     private let user : User
     
-    private var messages : [Message] = []
+    private var messages : [Message] = [] {
+        didSet { collectionView.reloadData() }
+    }
     
     private var isCurrentUser : Bool = false
     
@@ -38,6 +40,7 @@ class Chat : UICollectionViewController {
         super.viewDidLoad()
         configUI()
         configCollection()
+        fetchMessages()
     }
     
     override var inputAccessoryView: UIView? {
@@ -107,6 +110,17 @@ extension Chat {
         MessageService.shared.uploadMessage(message, to: user) { error in
             if let error = error {
                 print("error uploading message - \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    fileprivate func fetchMessages() {
+        MessageService.shared.fetchMessage(for: user) { [weak self] result in
+            switch result {
+            case .success(let messages):
+                self?.messages = messages
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
