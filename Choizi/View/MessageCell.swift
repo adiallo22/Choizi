@@ -64,7 +64,8 @@ extension MessageCell {
         userIMG.layer.cornerRadius = 32 / 2
         //
         addSubview(bubble)
-        bubble.anchor(top: topAnchor)
+        bubble.anchor(top: topAnchor,
+                      bottom: bottomAnchor)
         bubbleLeftAnchor = bubble.leftAnchor.constraint(equalTo: userIMG.rightAnchor, constant: 8)
         bubbleLeftAnchor.isActive = false
         bubbleRightAnchor = bubble.rightAnchor.constraint(equalTo: rightAnchor, constant: -8)

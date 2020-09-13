@@ -99,7 +99,13 @@ extension Chat : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: self.view.frame.width, height: 50)
+        let frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 50)
+        let estimatedCellSize = MessageCell.init(frame: frame)
+        estimatedCellSize.message = messages[indexPath.row]
+        estimatedCellSize.layoutIfNeeded()
+        let targetSize = CGSize.init(width: self.view.frame.width, height: 1000)
+        let estimatedSize = estimatedCellSize.systemLayoutSizeFitting(targetSize)
+        return .init(width: self.view.frame.width, height: estimatedSize.height)
     }
     
 }
