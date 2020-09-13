@@ -54,3 +54,32 @@ extension MessageService {
         }
     }
 }
+
+//MARK: - fetch conversations
+
+extension MessageService {
+    func fetchConversations(completion: @escaping(Result<[ConversationModel], Error>) -> Void) {
+        var conversations : [ConversationModel] = []
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let query  = collectionMatchesMsg.document(uid).collection("recent_messages").order(by: "timestamp")
+        query.addSnapshotListener { snapshot, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                snapshot?.documentChanges.forEach({ change in
+                    let data = change.document.data()
+                    let msg = Message.init(data: data)
+                    Service.fetchUser(withUid: uid) { result in
+                        switch result {
+                        case .success(let user):
+                            conversations.append(ConversationModel.init(user: user, message: msg))
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
+                    }
+                    completion(.success(conversations))
+                })
+            }
+        }
+    }
+}
