@@ -16,7 +16,7 @@ class CustomInputChatField : UIView {
     
     weak var delegate : CustomInputChatFieldDelegate?
     
-    var inputTextField : UITextView = {
+    private var inputTextField : UITextView = {
         let tf = UITextView()
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.isScrollEnabled = false
@@ -91,6 +91,11 @@ extension CustomInputChatField {
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 10
         layer.shadowOffset = .init(width: 0, height: -8)
+    }
+    
+    func clearMessageField() {
+        inputTextField.text = nil
+        placeholder.isHidden = false
     }
     
 }

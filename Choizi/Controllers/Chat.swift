@@ -108,8 +108,6 @@ extension Chat {
             if let error = error {
                 print("error uploading message - \(error.localizedDescription)")
             }
-            print("succesfully sent a message to \(user.name)")
-            print("message is \(message)")
         }
     }
 }
@@ -120,7 +118,7 @@ extension Chat : CustomInputChatFieldDelegate {
     
     func handleSendMessage(_ view: CustomInputChatField, withMessage message: String) {
         uploadMessage(message: message, to: user)
-        view.inputTextField.text = ""
+        view.clearMessageField()
         collectionView.reloadData()
     }
 }
