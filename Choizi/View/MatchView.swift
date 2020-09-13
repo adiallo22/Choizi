@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MatchViewDelegate : class {
-    func handleMessaging(toUser user: User)
+    func handleMessaging(_ view: MatchView, toUser user: User)
 }
 
 class MatchView : UIView {
@@ -214,7 +214,7 @@ extension MatchView {
     }
     
     @objc func handleSendMsg() {
-        delegate?.handleMessaging(toUser: viewModel.matchUser)
+        delegate?.handleMessaging(self, toUser: viewModel.matchUser)
     }
     
 }

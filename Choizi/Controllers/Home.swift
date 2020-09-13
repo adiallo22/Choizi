@@ -326,8 +326,12 @@ extension Home : ProfileDelegate {
 
 extension Home : MatchViewDelegate {
     
-    func handleMessaging(toUser user: User) {
-        print("sending a message to \(user.name)")
+    func handleMessaging(_ view: MatchView, toUser user: User) {
+        view.removeFromSuperview()
+        let chat = Chat.init(user: user)
+        let nav = UINavigationController.init(rootViewController: chat)
+        present(nav, animated: true, completion: nil)
+        nav.modalPresentationStyle = .fullScreen
     }
     
 }
