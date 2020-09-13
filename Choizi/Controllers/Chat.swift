@@ -14,9 +14,14 @@ class Chat : UICollectionViewController {
     
     private let user : User
     
+    private var messages : [Message] = []
+    
+    private var isCurrentUser : Bool = false
+    
     private lazy var customInputChatField : CustomInputChatField = {
         let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: 50)
         let view = CustomInputChatField(frame: frame)
+        view.delegate = self
         return view
     }()
     
@@ -71,7 +76,7 @@ extension Chat {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return messages.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -93,4 +98,17 @@ extension Chat : UICollectionViewDelegateFlowLayout {
         return .init(width: self.view.frame.width, height: 50)
     }
     
+}
+
+//MARK: - CustomInputChatFieldDelegate
+
+extension Chat : CustomInputChatFieldDelegate {
+    
+    func handleSendMessage(_ view: CustomInputChatField, withMessage message: String) {
+        view.inputTextField.text = ""
+        isCurrentUser.toggle()
+        let newMessage = Message.init(content: message, isCurrentUser: isCurrentUser)
+        messages.append(newMessage)
+        collectionView.reloadData()
+    }
 }

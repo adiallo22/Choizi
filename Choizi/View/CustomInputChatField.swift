@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol CustomInputChatFieldDelegate : class {
+    func handleSendMessage(_ view: CustomInputChatField, withMessage message: String)
+}
+
 class CustomInputChatField : UIView {
     
-    private var inputTextField : UITextView = {
+    weak var delegate : CustomInputChatFieldDelegate?
+    
+    var inputTextField : UITextView = {
         let tf = UITextView()
         tf.font = UIFont.systemFont(ofSize: 14)
         tf.isScrollEnabled = false
@@ -93,7 +99,8 @@ extension CustomInputChatField {
 
 extension CustomInputChatField {
     @objc func handleSendMessage() {
-        print("\(String(describing: inputTextField.text)) message is sent")
+        guard let contentMessage = inputTextField.text else { return }
+        delegate?.handleSendMessage(self, withMessage: contentMessage)
     }
     @objc func handleInputChange() {
         // placeholder is hidden is true only when input textfield is not empty

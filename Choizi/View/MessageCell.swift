@@ -21,7 +21,6 @@ class MessageCell : UICollectionViewCell {
     private var messageContent : UITextView = {
         let view = UITextView()
         view.backgroundColor = .clear
-        view.text = "This is a test message"
         view.textColor = .white
         view.font = UIFont.systemFont(ofSize: 16)
         view.isScrollEnabled = false
