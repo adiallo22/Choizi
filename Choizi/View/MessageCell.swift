@@ -14,6 +14,9 @@ class MessageCell : UICollectionViewCell {
         didSet { configViewModel() }
     }
     
+    var bubbleLeftAnchor : NSLayoutConstraint!
+    var bubbleRightAnchor : NSLayoutConstraint!
+    
     var userIMG : UIImageView = {
         let view = UIImageView()
         view.clipsToBounds = true
@@ -61,9 +64,11 @@ extension MessageCell {
         userIMG.layer.cornerRadius = 32 / 2
         //
         addSubview(bubble)
-        bubble.anchor(top: topAnchor,
-                      left: userIMG.rightAnchor,
-                      paddingLeft: 8)
+        bubble.anchor(top: topAnchor)
+        bubbleLeftAnchor = bubble.leftAnchor.constraint(equalTo: userIMG.rightAnchor, constant: 8)
+        bubbleLeftAnchor.isActive = false
+        bubbleRightAnchor = bubble.rightAnchor.constraint(equalTo: rightAnchor, constant: -8)
+        bubbleRightAnchor.isActive = false
         bubble.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         bubble.layer.cornerRadius = 12
         //
@@ -84,6 +89,9 @@ extension MessageCell {
         bubble.backgroundColor = viewModel.bubbleBackgroundColor
         messageContent.textColor = viewModel.messageTextColor
         messageContent.text = viewModel.content
+        bubbleLeftAnchor.isActive = viewModel.leftAnchorActive
+        bubbleRightAnchor.isActive = viewModel.rightAnchorActive
+        userIMG.isHidden = viewModel.showUserImage
     }
     
 }

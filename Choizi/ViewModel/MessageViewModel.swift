@@ -13,15 +13,27 @@ struct MessageViewModel {
     private let message : Message
     
     var bubbleBackgroundColor : UIColor {
-        return message.isCurrentUser ? .lightGray : .systemBlue
+        return message.isCurrentUser ? .systemBlue : #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
     
     var messageTextColor : UIColor {
-        return message.isCurrentUser ? .white : .lightGray
+        return message.isCurrentUser ? .white : .black
     }
     
     var content : String {
         return message.content
+    }
+    
+    var rightAnchorActive : Bool {
+        return message.isCurrentUser
+    }
+    
+    var leftAnchorActive : Bool {
+        return !message.isCurrentUser
+    }
+    
+    var showUserImage : Bool {
+        return message.isCurrentUser
     }
     
     init(message: Message) {
