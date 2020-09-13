@@ -16,6 +16,10 @@ class Conversation : UITableViewController {
     
     private let header = ConversationHeader()
     
+    private var conversations : [ConversationModel] = [] {
+        didSet { tableView.reloadData() }
+    }
+    
     init(user: User) {
         self.user = user
         super.init(style: .plain)
@@ -30,6 +34,7 @@ class Conversation : UITableViewController {
         configUI()
         configNavBar()
         fetchMatches()
+        fetchAllconversations()
     }
     
 }
@@ -71,11 +76,12 @@ extension Conversation {
 extension Conversation {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return conversations.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        cell.textLabel?.text = conversations[indexPath.row].message.content
         return cell
     }
     
@@ -111,6 +117,17 @@ extension Conversation {
                 self?.openChat(withUser: user)
             case .failure(_):
                 print("")
+            }
+        }
+    }
+    
+    fileprivate func fetchAllconversations() {
+        MessageService.shared.fetchConversations { result in
+            switch result {
+            case .success(let conversations):
+                self.conversations = conversations
+            case .failure(let error):
+                print("error fetching conversations - \(error.localizedDescription)")
             }
         }
     }
