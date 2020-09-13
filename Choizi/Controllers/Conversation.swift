@@ -75,6 +75,12 @@ extension Conversation {
 
 extension Conversation {
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let conversation = conversations[indexPath.row]
+        openChat(withUser: conversation.user)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return conversations.count
     }

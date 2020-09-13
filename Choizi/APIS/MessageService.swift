@@ -66,15 +66,12 @@ extension MessageService {
             if let error = error {
                 completion(.failure(error))
             } else {
-                print("i am inside the recent_messages")
                 snapshot?.documentChanges.forEach({ change in
                     let data = change.document.data()
                     let msg = Message.init(data: data)
-                    print(" the msg is \(msg.content)")
                     Service.fetchUser(withUid: uid) { result in
                         switch result {
                         case .success(let user):
-                            print("     user is - \(user.name)")
                             conversations.append(ConversationModel.init(user: user, message: msg))
                             completion(.success(conversations))
                         case .failure(let error):
