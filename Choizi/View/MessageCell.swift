@@ -92,6 +92,7 @@ extension MessageCell {
         bubbleLeftAnchor.isActive = viewModel.leftAnchorActive
         bubbleRightAnchor.isActive = viewModel.rightAnchorActive
         userIMG.isHidden = viewModel.showUserImage
+        userIMG.sd_setImage(with: viewModel.userProfile)
     }
     
 }
