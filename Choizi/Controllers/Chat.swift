@@ -58,6 +58,7 @@ class Chat : UICollectionViewController {
 extension Chat {
     
     fileprivate func configUI() {
+        collectionView.backgroundColor = .white
         navigationItem.title = "\(user.name)"
         collectionView.allowsSelection = false
         collectionView.keyboardDismissMode = .interactive
