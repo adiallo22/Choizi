@@ -10,7 +10,11 @@ import UIKit
 
 class MessageCell : UICollectionViewCell {
     
-    private var userIMG : UIImageView = {
+    var message : Message? {
+        didSet { configViewModel() }
+    }
+    
+    var userIMG : UIImageView = {
         let view = UIImageView()
         view.clipsToBounds = true
         view.backgroundColor = .lightGray
@@ -18,10 +22,9 @@ class MessageCell : UICollectionViewCell {
         return view
     }()
     
-    private var messageContent : UITextView = {
+    var messageContent : UITextView = {
         let view = UITextView()
         view.backgroundColor = .clear
-        view.textColor = .white
         view.font = UIFont.systemFont(ofSize: 16)
         view.isScrollEnabled = false
         view.isEditable = false
@@ -30,7 +33,6 @@ class MessageCell : UICollectionViewCell {
     
     private var bubble : UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -64,9 +66,8 @@ extension MessageCell {
                       paddingLeft: 8)
         bubble.widthAnchor.constraint(lessThanOrEqualToConstant: 250).isActive = true
         bubble.layer.cornerRadius = 12
-        bubble.layer.masksToBounds = true
         //
-        addSubview(messageContent)
+        bubble.addSubview(messageContent)
         messageContent.anchor(top: bubble.topAnchor,
                               left: bubble.leftAnchor,
                               bottom: bubble.bottomAnchor,
@@ -75,6 +76,14 @@ extension MessageCell {
                               paddingLeft: 12,
                               paddingBottom: 4,
                               paddingRight: 12)
+    }
+    
+    fileprivate func configViewModel() {
+        guard let message = message else { return }
+        let viewModel = MessageViewModel.init(message: message)
+        bubble.backgroundColor = viewModel.bubbleBackgroundColor
+        messageContent.textColor = viewModel.messageTextColor
+        messageContent.text = viewModel.content
     }
     
 }

@@ -71,7 +71,6 @@ extension Chat {
 extension Chat {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected at \(indexPath.row)")
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
@@ -81,6 +80,7 @@ extension Chat {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MessageCell
+        cell.message = messages[indexPath.row]
         return cell
     }
     
