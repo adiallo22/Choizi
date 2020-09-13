@@ -24,6 +24,9 @@ struct MessageService {
         ] as [String:Any]
         collectionMatchesMsg.document(uid).collection(user.uid).addDocument(data: data) { _ in
             collectionMatchesMsg.document(user.uid).collection(uid).addDocument(data: data, completion: completion)
+            //
+            collectionMatchesMsg.document(uid).collection("recent_messages").document(user.uid).setData(data)
+            collectionMatchesMsg.document(user.uid).collection("recent_messages").document(uid).setData(data)
         }
     }
     

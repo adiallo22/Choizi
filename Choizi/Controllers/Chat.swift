@@ -123,7 +123,7 @@ extension Chat {
             switch result {
             case .success(let messages):
                 self?.messages = messages
-                self?.collectionView.scrollToItem(at: [0, self?.messages.count ?? 0 - 1], at: .bottom, animated: true)
+                self?.collectionView.scrollToItem(at: [0, (self?.messages.count)! - 1], at: .bottom, animated: true)
             case .failure(let error):
                 print(error.localizedDescription)
             }
