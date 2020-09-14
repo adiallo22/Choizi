@@ -59,6 +59,7 @@ extension MessageService {
 
 extension MessageService {
     func fetchConversations(completion: @escaping(Result<[ConversationModel], Error>) -> Void) {
+        guard let currentUID = Auth.auth().currentUser?.uid else { return }
         var conversations : [ConversationModel] = []
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let query  = collectionMatchesMsg.document(uid).collection("recent_messages").order(by: "timestamp")
@@ -69,13 +70,25 @@ extension MessageService {
                 snapshot?.documentChanges.forEach({ change in
                     let data = change.document.data()
                     let msg = Message.init(data: data)
-                    Service.fetchUser(withUid: msg.fromID) { result in
-                        switch result {
-                        case .success(let user):
-                            conversations.append(ConversationModel.init(user: user, message: msg))
-                            completion(.success(conversations))
-                        case .failure(let error):
-                            completion(.failure(error))
+                    if msg.fromID != currentUID {
+                        Service.fetchUser(withUid: msg.fromID) { result in
+                            switch result {
+                            case .success(let user):
+                                conversations.append(ConversationModel.init(user: user, message: msg))
+                                completion(.success(conversations))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
+                        }
+                    } else {
+                        Service.fetchUser(withUid: msg.toID) { result in
+                            switch result {
+                            case .success(let user):
+                                conversations.append(ConversationModel.init(user: user, message: msg))
+                                completion(.success(conversations))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
                         }
                     }
                 })
