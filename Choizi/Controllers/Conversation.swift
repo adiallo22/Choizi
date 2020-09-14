@@ -45,7 +45,7 @@ extension Conversation {
     
     fileprivate func configUI() {
         tableView.register(ConversationCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.rowHeight = 50
+        tableView.rowHeight = 70
         tableView.sectionHeaderHeight = 200
         tableView.tableFooterView = UIView()
     }

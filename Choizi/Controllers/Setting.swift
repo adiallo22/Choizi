@@ -74,6 +74,7 @@ extension Setting {
         tableView.sectionHeaderHeight = 32
         tableView.backgroundColor = .systemGroupedBackground
         tableView.tableFooterView = footer
+        tableView.keyboardDismissMode = .interactive
     }
     
     fileprivate func setHeaderButtonIMG(withImage image: UIImage?, atIndex index: Int) {

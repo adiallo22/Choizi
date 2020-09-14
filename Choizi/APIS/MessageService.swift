@@ -69,7 +69,7 @@ extension MessageService {
                 snapshot?.documentChanges.forEach({ change in
                     let data = change.document.data()
                     let msg = Message.init(data: data)
-                    Service.fetchUser(withUid: uid) { result in
+                    Service.fetchUser(withUid: msg.fromID) { result in
                         switch result {
                         case .success(let user):
                             conversations.append(ConversationModel.init(user: user, message: msg))

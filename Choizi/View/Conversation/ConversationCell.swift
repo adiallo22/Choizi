@@ -18,7 +18,6 @@ class ConversationCell : UITableViewCell {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
-        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -26,7 +25,6 @@ class ConversationCell : UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .darkGray
-        label.text = "1h"
         return label
     }()
     
@@ -44,6 +42,7 @@ class ConversationCell : UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        configUI()
     }
     
     required init?(coder: NSCoder) {
@@ -79,12 +78,17 @@ extension ConversationCell {
         addSubview(timestamp)
         timestamp.anchor(top: topAnchor,
                          right: rightAnchor,
-                         paddingTop: 20,
+                         paddingTop: 12,
                          paddingRight: 12)
     }
     
     fileprivate func configViewModel() {
-        
+        guard let conversation = conversation else { return }
+        let viewModel = ConversationViewModel.init(conversation: conversation)
+        username.text = viewModel.username
+        message.text = viewModel.content
+        profileIMG.sd_setImage(with: viewModel.profileIMG)
+        timestamp.text = viewModel.timestamp
     }
     
 }
