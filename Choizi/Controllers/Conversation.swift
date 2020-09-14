@@ -20,7 +20,7 @@ class Conversation : UITableViewController {
         didSet { tableView.reloadData() }
     }
     
-//    private var convDictionarry : [String:ConversationModel] = [:]
+    private var convDictionarry : [String:ConversationModel] = [:]
     
     init(user: User) {
         self.user = user
@@ -131,14 +131,15 @@ extension Conversation {
     
     fileprivate func fetchAllconversations() {
         MessageService.shared.fetchConversations { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let conversations):
-                self?.conversations = conversations
-//                conversations.forEach { conversation in
-//                    let msg = conversation.message
-//                    self.convDictionarry[msg.toID] = conversation
-//                }
-//                self.conversations = Array.init(self.convDictionarry.values)
+//                self?.conversations = conversations
+                conversations.forEach { conversation in
+                    let msg = conversation.message
+                    self.convDictionarry[msg.toID] = conversation
+                }
+                self.conversations = Array.init(self.convDictionarry.values)
             case .failure(let error):
                 print("error fetching conversations - \(error.localizedDescription)")
             }
