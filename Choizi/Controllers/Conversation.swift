@@ -44,7 +44,7 @@ class Conversation : UITableViewController {
 extension Conversation {
     
     fileprivate func configUI() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ConversationCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 50
         tableView.sectionHeaderHeight = 200
         tableView.tableFooterView = UIView()
@@ -86,8 +86,8 @@ extension Conversation {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = conversations[indexPath.row].message.content
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ConversationCell
+        cell.conversation = conversations[indexPath.row]
         return cell
     }
     
@@ -121,8 +121,8 @@ extension Conversation {
             switch result {
             case .success(let user):
                 self?.openChat(withUser: user)
-            case .failure(_):
-                print("")
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
