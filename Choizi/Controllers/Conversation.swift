@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 private let reuseIdentifier = "conversationCell"
 
@@ -130,16 +131,21 @@ extension Conversation {
     }
     
     fileprivate func fetchAllconversations() {
+        //show loader
+        let hud = JGProgressHUD.init(style: .dark)
+        hud.textLabel.text = "Loading messages.."
+        hud.show(in: view)
+        //
         MessageService.shared.fetchConversations { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let conversations):
-//                self?.conversations = conversations
                 conversations.forEach { conversation in
                     let msg = conversation.message
                     self.convDictionarry[msg.toID] = conversation
                 }
                 self.conversations = Array.init(self.convDictionarry.values)
+                hud.dismiss(animated: true)
             case .failure(let error):
                 print("error fetching conversations - \(error.localizedDescription)")
             }
