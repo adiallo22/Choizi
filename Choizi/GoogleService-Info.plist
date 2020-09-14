@@ -32,5 +32,7 @@
 	<string>1:996484592345:ios:2dc4b2352244816ac444c8</string>
 	<key>DATABASE_URL</key>
 	<string>https://choizi.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-1548544246309465~8076890909</string>
 </dict>
 </plist>
