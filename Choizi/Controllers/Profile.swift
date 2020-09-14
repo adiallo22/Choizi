@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 private var reuseIdentifier = "ProfileCell"
 
@@ -17,6 +18,10 @@ protocol ProfileDelegate : class {
 }
 
 class Profile : UIViewController {
+    
+    //MARK: - properties
+    
+    private var bannerView: GADBannerView!
     
     weak var delegate : ProfileDelegate?
     
@@ -90,6 +95,8 @@ class Profile : UIViewController {
         return button
     }()
     
+    //MARK: - init
+    
     init(user: User) {
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -101,6 +108,7 @@ class Profile : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configBannerAds()
         configUI()
         configViewModel()
     }
@@ -162,8 +170,8 @@ extension Profile {
             return stack
         }()
         view.addSubview(stack)
-        stack.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                     paddingBottom: 30)
+        stack.anchor(bottom: bannerView.topAnchor,
+                     paddingBottom: 6)
         stack.centerX(inView: view)
     }
     
@@ -182,6 +190,18 @@ extension Profile {
                         paddingTop: 50,
                         paddingLeft: 8,
                         paddingRight: 8)
+    }
+    
+    fileprivate func configBannerAds() {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        view.addSubview(bannerView)
+        bannerView.setDimensions(height: 50, width: 350)
+        bannerView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        bannerView.centerX(inView: view)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
     }
 }
 
@@ -242,5 +262,16 @@ extension Profile {
     
     @objc func handleDismiss() {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: - GADBannerViewDelegate
+
+extension Profile : GADBannerViewDelegate {
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+      bannerView.alpha = 0
+      UIView.animate(withDuration: 1, animations: {
+        bannerView.alpha = 1
+      })
     }
 }
