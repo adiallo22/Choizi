@@ -65,6 +65,10 @@ class SignUp : UIViewController {
     
     private var profile : UIImage?
     
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()

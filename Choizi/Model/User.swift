@@ -22,7 +22,7 @@ struct User {
     
     init(value : [String:Any]) {
         self.name = value["fullname"] as? String ?? ""
-        self.age = value["age"] as? Int ?? 0
+        self.age = value["age"] as? Int ?? 18
         self.email = value["email"] as? String ?? ""
         self.images = value["images"] as? [String] ?? [String]()
         self.uid = value["uid"] as? String ?? ""

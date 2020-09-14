@@ -133,7 +133,6 @@ extension Conversation {
     fileprivate func fetchAllconversations() {
         //show loader
         let hud = JGProgressHUD.init(style: .dark)
-        hud.textLabel.text = "Loading messages.."
         hud.show(in: view)
         //
         MessageService.shared.fetchConversations { [weak self] result in
