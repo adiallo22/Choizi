@@ -149,6 +149,7 @@ extension Conversation {
                 print("error fetching conversations - \(error.localizedDescription)")
             }
         }
+        hud.dismiss(animated: true)
     }
     
 }

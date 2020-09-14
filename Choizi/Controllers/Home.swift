@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class Home : UIViewController {
     
@@ -66,6 +67,10 @@ extension Home {
     }
     
     fileprivate func configCards() {
+        //show loader
+        let hud = JGProgressHUD.init(style: .dark)
+        hud.show(in: view)
+        //
         viewModels.forEach { viewModel in
             let card = Card.init(viewModel: viewModel)
             card.delegate = self
@@ -74,6 +79,7 @@ extension Home {
         }
         cardViews = deck.subviews.map({ $0 as! Card})
         frontCard = cardViews.last
+        hud.dismiss(animated: true)
     }
     
     fileprivate func presentLogginScreen() {

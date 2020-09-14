@@ -132,6 +132,7 @@ extension Login {
     @objc func loginTaped() {
         guard let email = email.text,
             let pwd = password.text else { return }
+        //show loader
         let hud = JGProgressHUD.init(style: .dark)
         hud.show(in: view)
         AuthenticationService.signIn(withEmail: email, andPassword: pwd) { [weak self] result, err in
