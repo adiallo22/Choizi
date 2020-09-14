@@ -24,6 +24,7 @@
 		C015DF14250E5971008ED583 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF13250E5971008ED583 /* MessageViewModel.swift */; };
 		C015DF16250E6ABA008ED583 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF15250E6ABA008ED583 /* MessageService.swift */; };
 		C015DF18250E906C008ED583 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF17250E906C008ED583 /* ConversationModel.swift */; };
+		C015DF1A250EF650008ED583 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF19250EF650008ED583 /* ConversationCell.swift */; };
 		C03C4EE024F89C4B00475B4D /* SegmentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */; };
 		C05EE6B324D8860C00C08BA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B224D8860C00C08BA8 /* User.swift */; };
 		C05EE6B524D8883D00C08BA8 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */; };
@@ -77,6 +78,7 @@
 		C015DF13250E5971008ED583 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		C015DF15250E6ABA008ED583 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		C015DF17250E906C008ED583 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		C015DF19250EF650008ED583 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentBar.swift; sourceTree = "<group>"; };
 		C05EE6B224D8860C00C08BA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				C0B430D52502FD66004BFFC5 /* ConversationHeader.swift */,
+				C015DF19250EF650008ED583 /* ConversationCell.swift */,
 				C0B430D82503F9C4004BFFC5 /* MatchCell.swift */,
 			);
 			path = Conversation;
@@ -424,6 +427,7 @@
 				C015DF0C250CFD7F008ED583 /* CustomInputChatField.swift in Sources */,
 				C05EE6B324D8860C00C08BA8 /* User.swift in Sources */,
 				C0EA2B3624F019AD0034154B /* Buttons.swift in Sources */,
+				C015DF1A250EF650008ED583 /* ConversationCell.swift in Sources */,
 				C0095E5624D0F3DB0000B1EC /* FooterHomeBar.swift in Sources */,
 				C015DF18250E906C008ED583 /* ConversationModel.swift in Sources */,
 				C0B430A524FEBEDA004BFFC5 /* MatchView.swift in Sources */,
