@@ -57,7 +57,30 @@ class ConversationCell : UITableViewCell {
 extension ConversationCell {
     
     fileprivate func configUI() {
-        
+        addSubview(profileIMG)
+        profileIMG.setDimensions(height: 50, width: 50)
+        profileIMG.layer.cornerRadius = 25
+        profileIMG.anchor(left: leftAnchor, paddingLeft: 12)
+        profileIMG.centerY(inView: self)
+        //
+        let stack : UIStackView = {
+            let stack = UIStackView.init(arrangedSubviews: [username, message])
+            stack.spacing = 4
+            stack.axis = .vertical
+            return stack
+        }()
+        addSubview(stack)
+        stack.centerY(inView: self)
+        stack.anchor(left: profileIMG.rightAnchor,
+                     right: rightAnchor,
+                     paddingLeft: 12,
+                     paddingRight: 16)
+        //
+        addSubview(timestamp)
+        timestamp.anchor(top: topAnchor,
+                         right: rightAnchor,
+                         paddingTop: 20,
+                         paddingRight: 12)
     }
     
     fileprivate func configViewModel() {
