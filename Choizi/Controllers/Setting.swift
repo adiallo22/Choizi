@@ -8,6 +8,7 @@
 
 import UIKit
 import JGProgressHUD
+import GoogleMobileAds
 
 private let reusableIdentifier = "SettingCell"
 
@@ -60,8 +61,10 @@ extension Setting {
         header.delegate = self
         picker.delegate = self
         //
-        footer.frame = CGRect.init(x: 0, y: 0, width: view.layer.frame.size.width, height: 90)
+        footer.frame = CGRect.init(x: 0, y: 0, width: view.layer.frame.size.width, height: 140)
         footer.delegate = self
+        footer.bannerView.delegate = self
+        footer.bannerView.rootViewController = self
         //
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
@@ -228,7 +231,24 @@ extension Setting : EditTextFieldDelegate {
 //MARK: - SettingFooterDelegate
 
 extension Setting : SettingFooterDelegate {
+    
+    func handleAds(_ banner: GADBannerView) {
+        banner.delegate = self
+        banner.rootViewController = self
+    }
+    
     func handleLogout() {
         delegate?.handleLoggout(self)
+    }
+}
+
+//MARK: - GADBannerViewDelegate
+
+extension Setting : GADBannerViewDelegate {
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        footer.bannerView.alpha = 0
+        UIView.animate(withDuration: 1, animations: {
+            self.footer.bannerView.alpha = 1
+        })
     }
 }

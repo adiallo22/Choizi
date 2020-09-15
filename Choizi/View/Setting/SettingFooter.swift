@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 protocol SettingFooterDelegate : class {
     func handleLogout()
+    func handleAds(_ banner: GADBannerView)
 }
 
 class SettingFooter : UIView {
+    
+    var bannerView: GADBannerView!
     
     weak var delegate : SettingFooterDelegate?
     
@@ -45,9 +49,23 @@ extension SettingFooter {
         spacer.setDimensions(height: 30, width: frame.width)
         //
         addSubview(loggoutButton)
+        loggoutButton.setDimensions(height: 40)
         loggoutButton.anchor(top: spacer.bottomAnchor,
                              left: leftAnchor,
                              right: rightAnchor)
+        //
+        configBannerAds()
+    }
+    
+    fileprivate func configBannerAds() {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        addSubview(bannerView)
+        bannerView.setDimensions(height: 50, width: 350)
+        bannerView.anchor(top: loggoutButton.bottomAnchor,
+                          paddingTop: 8)
+        bannerView.centerX(inView: self)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.load(GADRequest())
     }
 }
 

@@ -16,15 +16,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_icon" translatesAutoresizingMaskIntoConstraints="NO" id="tlZ-qj-8PT">
-                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <rect key="frame" x="177" y="418" width="60" height="60"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="N3M-dC-6x1"/>
-                                    <constraint firstAttribute="width" constant="300" id="sLR-nS-zKA"/>
+                                    <constraint firstAttribute="height" constant="60" id="7E9-gb-7uB"/>
+                                    <constraint firstAttribute="width" constant="60" id="pvR-4f-VMt"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tlZ-qj-8PT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Iat-1Y-IWo"/>
                             <constraint firstItem="tlZ-qj-8PT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="z3t-w1-dag"/>
