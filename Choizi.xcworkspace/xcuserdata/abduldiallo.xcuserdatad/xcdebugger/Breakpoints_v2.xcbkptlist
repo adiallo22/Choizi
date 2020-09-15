@@ -490,8 +490,8 @@
             filePath = "Choizi/Controllers/Authentication/SingUp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "register()"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,8 +506,8 @@
             filePath = "Choizi/Controllers/Authentication/SingUp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "signupTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -541,22 +541,6 @@
             startingLineNumber = "216"
             endingLineNumber = "216"
             landmarkName = "handleSendMsg()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "ADA6AAE5-B8B4-4333-890E-D20DE16ED833"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Choizi/View/MessageCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "configUI()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

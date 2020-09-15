@@ -27,6 +27,14 @@ class Chat : UICollectionViewController {
         return view
     }()
     
+    private var moreBarButton : UIImageView = {
+        let view = UIImageView()
+        view.clipsToBounds = true
+        view.image = UIImage.init(systemName: "eye")?.withRenderingMode(.alwaysOriginal)
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+    
     init(user: User) {
         self.user = user
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -41,6 +49,7 @@ class Chat : UICollectionViewController {
         configUI()
         configCollection()
         fetchMessages()
+        setRightBarButton()
     }
     
     override var inputAccessoryView: UIView? {
@@ -69,6 +78,27 @@ extension Chat {
         collectionView.alwaysBounceVertical = true
     }
     
+    fileprivate func setRightBarButton() {
+        let rightBarButton = UIBarButtonItem(image: moreBarButton.image,
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(handleShowProfile))
+        navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+    fileprivate func openProfile(of user: User) {
+        let profile = Profile.init(user: user)
+        navigationController?.pushViewController(profile, animated: true)
+    }
+    
+}
+
+//MARK: - selectors
+
+extension Chat {
+    @objc func handleShowProfile() {
+        openProfile(of: user)
+    }
 }
 
 //MARK: - delegate and data source

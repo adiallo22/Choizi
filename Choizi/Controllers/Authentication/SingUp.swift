@@ -16,6 +16,8 @@ protocol AuthenticateDelegate : class {
 
 class SignUp : UIViewController {
     
+    //MARK: - properties
+    
     weak var delegate : AuthenticateDelegate?
     
     private var viewModel = SignUpViewModel()
@@ -65,13 +67,44 @@ class SignUp : UIViewController {
     
     private var profile : UIImage?
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        
-//    }
+    //MARK: - life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
+        moveKepboardUp()
+    }
+    
+}
+
+//MARK: - keyboard handler
+
+extension SignUp {
+    
+    func moveKepboardUp() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        view.resignFirstResponder()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 100
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
 }

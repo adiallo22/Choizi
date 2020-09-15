@@ -12,6 +12,8 @@ import JGProgressHUD
 
 class Login : UIViewController {
     
+    //MARK: - properties
+    
     weak var delegate : AuthenticateDelegate?
     
     private var viewModel = LoginViewModel()
@@ -59,6 +61,8 @@ class Login : UIViewController {
         return label
     }()
     
+    //MARK: - life cycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
@@ -75,6 +79,11 @@ class Login : UIViewController {
 //MARK: - helpers
 
 extension Login {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        view.resignFirstResponder()
+    }
     
     func configUI() {
         navigationController?.navigationBar.isHidden = true

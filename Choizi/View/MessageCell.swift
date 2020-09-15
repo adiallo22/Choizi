@@ -8,13 +8,7 @@
 
 import UIKit
 
-//protocol MessageCellDelegate : class {
-//    func showUserProfile(_ user: User)
-//}
-
 class MessageCell : UICollectionViewCell {
-    
-//    weak var delegate : MessageCellDelegate?
     
     var message : Message? {
         didSet { configViewModel() }
@@ -61,10 +55,6 @@ class MessageCell : UICollectionViewCell {
 extension MessageCell {
     
     fileprivate func configUI() {
-//        let tap = UIGestureRecognizer.init(target: self, action: #selector(handleShowProfile))
-//        userIMG.addGestureRecognizer(tap)
-//        userIMG.isUserInteractionEnabled = true
-        //
         addSubview(userIMG)
         userIMG.anchor(left: leftAnchor,
                        bottom: bottomAnchor,
@@ -106,13 +96,4 @@ extension MessageCell {
         userIMG.sd_setImage(with: viewModel.userProfile)
     }
     
-}
-
-//MARK: - selectores
-
-extension MessageCell {
-    @objc func handleShowProfile() {
-//        guard let user = message?.user else { return }
-//        delegate?.showUserProfile(user)
-    }
 }
