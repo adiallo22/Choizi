@@ -108,7 +108,7 @@ extension Login {
         //
         view.addSubview(errorLabel)
         errorLabel.anchor(top: loginButton.bottomAnchor,
-                          paddingTop: 16)
+                          paddingTop: 8)
         errorLabel.setDimensions(height: 100, width: view.frame.width - 64)
         errorLabel.centerX(inView: self.view)
         //
@@ -121,9 +121,10 @@ extension Login {
         switch viewModel.isValid {
         case true:
             loginButton.isEnabled = true
-            loginButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            loginButton.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         case false:
             loginButton.isEnabled = false
+            loginButton.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
         }
     }
     
@@ -150,7 +151,6 @@ extension Login {
                 hud.dismiss()
                 return
             }
-//            self?.dismiss(animated: true, completion: nil)
             hud.dismiss()
             self?.delegate?.finishedAuthenticating()
         }

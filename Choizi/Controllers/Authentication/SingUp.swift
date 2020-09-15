@@ -150,9 +150,10 @@ extension SignUp {
         switch viewModel.isValid {
         case true:
             signupButton.isEnabled = true
-            signupButton.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            signupButton.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         case false:
             signupButton.isEnabled = false
+            signupButton.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
         }
     }
     
