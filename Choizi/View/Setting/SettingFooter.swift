@@ -11,7 +11,6 @@ import GoogleMobileAds
 
 protocol SettingFooterDelegate : class {
     func handleLogout()
-    func handleAds(_ banner: GADBannerView)
 }
 
 class SettingFooter : UIView {

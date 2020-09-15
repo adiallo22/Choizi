@@ -56,16 +56,16 @@ extension Setting {
         navigationItem.title = "Setting"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .black
-        //
+        //config header
         header.frame = CGRect.init(x: 0, y: 0, width: view.layer.frame.size.width, height: 300)
         header.delegate = self
         picker.delegate = self
-        //
+        //config footer
         footer.frame = CGRect.init(x: 0, y: 0, width: view.layer.frame.size.width, height: 140)
         footer.delegate = self
         footer.bannerView.delegate = self
         footer.bannerView.rootViewController = self
-        //
+        //add bar buttons
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
     }
@@ -231,11 +231,6 @@ extension Setting : EditTextFieldDelegate {
 //MARK: - SettingFooterDelegate
 
 extension Setting : SettingFooterDelegate {
-    
-    func handleAds(_ banner: GADBannerView) {
-        banner.delegate = self
-        banner.rootViewController = self
-    }
     
     func handleLogout() {
         delegate?.handleLoggout(self)

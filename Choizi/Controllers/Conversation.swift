@@ -8,10 +8,13 @@
 
 import UIKit
 import JGProgressHUD
+import GoogleMobileAds
 
 private let reuseIdentifier = "conversationCell"
 
 class Conversation : UITableViewController {
+    
+    private var bannerView: GADBannerView!
     
     private var user : User
     
@@ -38,6 +41,7 @@ class Conversation : UITableViewController {
         configNavBar()
         fetchMatches()
         fetchAllconversations()
+        configBannerAds()
     }
     
 }
@@ -70,6 +74,18 @@ extension Conversation {
     fileprivate func openChat(withUser user: User) {
         let chat = Chat(user: user)
         navigationController?.pushViewController(chat, animated: true)
+    }
+    
+    fileprivate func configBannerAds() {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        view.addSubview(bannerView)
+        bannerView.setDimensions(height: 50, width: 350)
+        bannerView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        bannerView.centerX(inView: view)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
     }
     
 }
@@ -159,5 +175,16 @@ extension Conversation {
 extension Conversation : ConversationHeaderDelegate {
     func openConversation(_ header: ConversationHeader, withUser uid: String) {
         fetchUserAndOpenChat(withUID: uid)
+    }
+}
+
+//MARK: - GADBannerViewDelegate
+
+extension Conversation : GADBannerViewDelegate {
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+      bannerView.alpha = 0
+      UIView.animate(withDuration: 1, animations: {
+        bannerView.alpha = 1
+      })
     }
 }
