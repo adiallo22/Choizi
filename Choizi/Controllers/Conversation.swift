@@ -82,7 +82,7 @@ extension Conversation {
         bannerView.setDimensions(height: 50, width: 350)
         bannerView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
         bannerView.centerX(inView: view)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = adsID
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.delegate = self

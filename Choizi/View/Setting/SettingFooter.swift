@@ -63,7 +63,7 @@ extension SettingFooter {
         bannerView.anchor(top: loggoutButton.bottomAnchor,
                           paddingTop: 8)
         bannerView.centerX(inView: self)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = adsID
         bannerView.load(GADRequest())
     }
 }
