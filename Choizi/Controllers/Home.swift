@@ -277,14 +277,7 @@ extension Home : CardDelegate {
 extension Home : FooterHomeBarDelegate {
     
     func handleSuperLike() {
-        let alert = UIAlertController.init(title: "Alert",
-                                           message: "Superlike is not activated yet",
-                                           preferredStyle: .alert)
-        let action = UIAlertAction.init(title: "Ok", style: .default) { action in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        presentAlert(of: .Superlike)
     }
     
     func handleLike() {
@@ -299,14 +292,7 @@ extension Home : FooterHomeBarDelegate {
     }
     
     func handleBoost() {
-        let alert = UIAlertController.init(title: "Alert",
-                                           message: "Boosting is not activated yet",
-                                           preferredStyle: .alert)
-        let action = UIAlertAction.init(title: "Ok", style: .default) { action in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        presentAlert(of: .Boost)
     }
     
     func handleRefresh() {
@@ -333,14 +319,7 @@ extension Home : ProfileDelegate {
     
     func handleSuperLike(_ controller: Profile, onUser user: User) {
         controller.dismiss(animated: true) {
-            let alert = UIAlertController.init(title: "Alert",
-                                               message: "Superlike is not activated yet",
-                                               preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "Ok", style: .default) { action in
-                alert.dismiss(animated: true, completion: nil)
-            }
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            self.presentAlert(of: .Superlike)
         }
     }
 }

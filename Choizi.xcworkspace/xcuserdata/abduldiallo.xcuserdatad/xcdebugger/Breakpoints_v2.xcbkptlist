@@ -330,8 +330,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
             landmarkName = "handleLike()"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,8 +346,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "handleDisLike()"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,8 +362,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "Home"
             landmarkType = "21">
          </BreakpointContent>
@@ -522,8 +522,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "handleRefresh()"
             landmarkType = "7">
          </BreakpointContent>
