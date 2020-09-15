@@ -27,6 +27,7 @@
 		C015DF1A250EF650008ED583 /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF19250EF650008ED583 /* ConversationCell.swift */; };
 		C015DF1C250EFBCA008ED583 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF1B250EFBCA008ED583 /* ConversationViewModel.swift */; };
 		C01D2AE9250FE8AC009F6732 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01D2AE8250FE8AC009F6732 /* GoogleService-Info.plist */; };
+		C01D2AEC2511348F009F6732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01D2AEB2511348F009F6732 /* ViewController.swift */; };
 		C03C4EE024F89C4B00475B4D /* SegmentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */; };
 		C05EE6B324D8860C00C08BA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B224D8860C00C08BA8 /* User.swift */; };
 		C05EE6B524D8883D00C08BA8 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */; };
@@ -82,6 +83,7 @@
 		C015DF19250EF650008ED583 /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		C015DF1B250EFBCA008ED583 /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		C01D2AE8250FE8AC009F6732 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C01D2AEB2511348F009F6732 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentBar.swift; sourceTree = "<group>"; };
 		C05EE6B224D8860C00C08BA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				C0095E5324D0E4090000B1EC /* View.swift */,
 				C0EA2B3524F019AD0034154B /* Buttons.swift */,
+				C01D2AEB2511348F009F6732 /* ViewController.swift */,
 				C0F1CF5024F584410052488D /* Color.swift */,
 				C0EA2B3724F019D80034154B /* TextField.swift */,
 			);
@@ -439,6 +442,7 @@
 				C0095E5224D0E0D70000B1EC /* HomeNavBar.swift in Sources */,
 				C05EE6BC24DB223A00C08BA8 /* AuthViewModel.swift in Sources */,
 				C03C4EE024F89C4B00475B4D /* SegmentBar.swift in Sources */,
+				C01D2AEC2511348F009F6732 /* ViewController.swift in Sources */,
 				C05EE6BA24D8C44200C08BA8 /* SingUp.swift in Sources */,
 				C0B430D62502FD66004BFFC5 /* ConversationHeader.swift in Sources */,
 				C0095E3724D07E8D0000B1EC /* SceneDelegate.swift in Sources */,

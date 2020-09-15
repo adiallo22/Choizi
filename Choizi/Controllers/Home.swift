@@ -35,12 +35,8 @@ class Home : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLogStatus()
+        fetchCurrentUserAndAllUsers()
         configUI()
-        fetchCurrentUser()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
     }
     
 }
@@ -149,7 +145,7 @@ extension Home {
         }
     }
     
-    fileprivate func fetchCurrentUser() {
+    fileprivate func fetchCurrentUserAndAllUsers() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Service.fetchUser(withUid: uid) { [weak self] result in
             switch result {
@@ -212,7 +208,7 @@ extension Home : AuthenticateDelegate {
     }
     
     func finishedAuthenticating() {
-        fetchCurrentUser()
+        fetchCurrentUserAndAllUsers()
         dismiss(animated: true, completion: nil)
     }
     
@@ -281,7 +277,14 @@ extension Home : CardDelegate {
 extension Home : FooterHomeBarDelegate {
     
     func handleSuperLike() {
-        print("super like")
+        let alert = UIAlertController.init(title: "Alert",
+                                           message: "Superlike is not activated yet",
+                                           preferredStyle: .alert)
+        let action = UIAlertAction.init(title: "Ok", style: .default) { action in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func handleLike() {
@@ -296,11 +299,18 @@ extension Home : FooterHomeBarDelegate {
     }
     
     func handleBoost() {
-        print("boost")
+        let alert = UIAlertController.init(title: "Alert",
+                                           message: "Boosting is not activated yet",
+                                           preferredStyle: .alert)
+        let action = UIAlertAction.init(title: "Ok", style: .default) { action in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func handleRefresh() {
-        fetchAllUsers()
+        fetchCurrentUserAndAllUsers()
     }
     
 }
@@ -323,7 +333,14 @@ extension Home : ProfileDelegate {
     
     func handleSuperLike(_ controller: Profile, onUser user: User) {
         controller.dismiss(animated: true) {
-            print("super liked..")
+            let alert = UIAlertController.init(title: "Alert",
+                                               message: "Superlike is not activated yet",
+                                               preferredStyle: .alert)
+            let action = UIAlertAction.init(title: "Ok", style: .default) { action in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

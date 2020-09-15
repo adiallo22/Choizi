@@ -29,7 +29,6 @@ class Chat : UICollectionViewController {
     
     private var moreBarButton : UIImageView = {
         let view = UIImageView()
-        view.clipsToBounds = true
         view.image = UIImage.init(systemName: "eye")?.withRenderingMode(.alwaysOriginal)
         view.contentMode = .scaleAspectFill
         return view
