@@ -14,6 +14,8 @@ protocol MatchViewDelegate : class {
 
 class MatchView : UIView {
     
+    //MARK: - properties
+    
     weak var delegate : MatchViewDelegate?
     
     private let viewModel : MatchViewModel
@@ -69,6 +71,8 @@ class MatchView : UIView {
     }()
     
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
+    //MARK: - init
     
     init(viewModel: MatchViewModel) {
         self.viewModel = viewModel

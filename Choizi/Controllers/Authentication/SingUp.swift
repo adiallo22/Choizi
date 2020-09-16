@@ -51,6 +51,13 @@ class SignUp : UIViewController {
         return tf
     }()
     
+    private var age : UITextField = {
+        let tf = UITextField()
+        tf.customTextField(withPlaceholder: "Age", andSecureEntry: false)
+        tf.addTarget(self, action: #selector(tfEdited), for: .editingChanged)
+        return tf
+    }()
+    
     private var signupButton : UIButton = {
         let button = UIButton(type: .system)
         button.authButton(withTitle: "Sign Up")

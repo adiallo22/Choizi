@@ -38,7 +38,7 @@ class Profile : UIViewController {
     }()
     
     private lazy var collectionView : UICollectionView = {
-        let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: 350)
+        let frame = CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.width)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: frame, collectionViewLayout: layout)
@@ -195,7 +195,7 @@ extension Profile {
     fileprivate func configBannerAds() {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         view.addSubview(bannerView)
-        bannerView.setDimensions(height: 50, width: 350)
+        bannerView.setDimensions(height: 50, width: view.frame.width)
         bannerView.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
         bannerView.centerX(inView: view)
         bannerView.adUnitID = adsID
