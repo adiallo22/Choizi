@@ -26,6 +26,7 @@ class Profile : UIViewController {
     weak var delegate : ProfileDelegate?
     
     private var user : User
+    private var isAlradyLiked : Bool
     
     private lazy var viewModel = ProfileViewModel.init(user: user)
     
@@ -97,8 +98,9 @@ class Profile : UIViewController {
     
     //MARK: - init
     
-    init(user: User) {
+    init(user: User, isAlradyLiked: Bool) {
         self.user = user
+        self.isAlradyLiked = isAlradyLiked
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -150,7 +152,7 @@ extension Profile {
                      paddingTop: 20,
                      paddingLeft: 16,
                      paddingRight: 16)
-        configStackButtons()
+        if !isAlradyLiked { configStackButtons() }
         configBarStack()
     }
     

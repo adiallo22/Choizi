@@ -264,7 +264,7 @@ extension Home : CardDelegate {
     }
     
     func handleShowProfile(fromCard card: Card, andUser user: User) {
-        let profile = Profile.init(user: user)
+        let profile = Profile.init(user: user, isAlradyLiked: false)
         profile.modalPresentationStyle = .fullScreen
         profile.delegate = self
         present(profile, animated: true, completion: nil)

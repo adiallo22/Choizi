@@ -151,7 +151,7 @@ extension SignUp {
         }()
         //
         let stack : UIStackView = {
-           let stack = UIStackView(arrangedSubviews: [nameStack, sexAndAgeStack, signupButton])
+           let stack = UIStackView(arrangedSubviews: [nameStack, sexAndAgeStack, password, signupButton])
             stack.axis = .vertical
             stack.spacing = 12
             return stack
@@ -180,9 +180,11 @@ extension SignUp {
     fileprivate func buttonStatus() {
         switch viewModel.isValid {
         case true:
+            print("is valid, can signup")
             signupButton.isEnabled = true
             signupButton.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         case false:
+            print("is NOT valid, can NOT signup")
             signupButton.isEnabled = false
             signupButton.backgroundColor = UIColor.init(white: 1, alpha: 0.5)
         }
@@ -216,6 +218,8 @@ extension SignUp {
             viewModel.password = sender.text
         case fullname:
             viewModel.fullname = sender.text
+        case age:
+            viewModel.age = sender.text
         default:
             break
         }

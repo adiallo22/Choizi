@@ -28,9 +28,13 @@ struct SignUpViewModel {
     var email : String?
     var password : String?
     var fullname : String?
+    var age : String?
     
     var isValid : Bool {
-        return email?.isEmpty == false && password?.isEmpty == false && fullname?.isEmpty == false
+        return email?.isEmpty == false &&
+            password?.isEmpty == false &&
+            fullname?.isEmpty == false &&
+            age?.isEmpty == false
     }
     
 }

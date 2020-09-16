@@ -86,7 +86,7 @@ extension Chat {
     }
     
     fileprivate func openProfile(of user: User) {
-        let profile = Profile.init(user: user)
+        let profile = Profile.init(user: user, isAlradyLiked: true)
         navigationController?.pushViewController(profile, animated: true)
     }
     

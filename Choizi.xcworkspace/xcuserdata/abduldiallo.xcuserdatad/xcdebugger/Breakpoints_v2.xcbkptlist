@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
             endingLineNumber = "221"
-            landmarkName = "Home"
-            landmarkType = "21">
+            landmarkName = "settingTapped()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "148"
             endingLineNumber = "148"
-            landmarkName = "loggout()"
+            landmarkName = "fetchCurrentUserAndAllUsers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -142,7 +142,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "249"
             endingLineNumber = "249"
-            landmarkName = "handleLoggout(_:)"
+            landmarkName = "settingUpdated(_:withUser:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -332,7 +332,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "283"
             endingLineNumber = "283"
-            landmarkName = "handleSuperLike()"
+            landmarkName = "handleLike()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -348,7 +348,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "289"
             endingLineNumber = "289"
-            landmarkName = "handleLike()"
+            landmarkName = "handleDisLike()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -364,8 +364,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "282"
             endingLineNumber = "282"
-            landmarkName = "handleSuperLike()"
-            landmarkType = "7">
+            landmarkName = "Home"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -396,7 +396,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
             endingLineNumber = "173"
-            landmarkName = "fetchAllUsers()"
+            landmarkName = "persistSwipeAndMatch(onUser:withLike:withAnimation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -490,10 +490,10 @@
             filePath = "Choizi/Controllers/Authentication/SingUp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
-            landmarkName = "SignUp"
-            landmarkType = "21">
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "register()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -506,8 +506,8 @@
             filePath = "Choizi/Controllers/Authentication/SingUp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "signupTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -524,8 +524,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "299"
             endingLineNumber = "299"
-            landmarkName = "Home"
-            landmarkType = "21">
+            landmarkName = "handleRefresh()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -541,6 +541,22 @@
             startingLineNumber = "220"
             endingLineNumber = "220"
             landmarkName = "handleSendMsg()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1329FF0B-EA54-4998-9C3A-22B57EB19E3F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Choizi/Controllers/Authentication/SingUp.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "buttonStatus()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
