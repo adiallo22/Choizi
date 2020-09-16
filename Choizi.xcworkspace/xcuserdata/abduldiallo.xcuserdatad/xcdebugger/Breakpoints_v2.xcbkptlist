@@ -490,10 +490,10 @@
             filePath = "Choizi/Controllers/Authentication/SingUp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "SignUp"
-            landmarkType = "21">
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "register()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -506,10 +506,10 @@
             filePath = "Choizi/Controllers/Authentication/SingUp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "SignUp"
-            landmarkType = "21">
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "signupTapped()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

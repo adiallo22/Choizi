@@ -58,6 +58,13 @@ class SignUp : UIViewController {
         return tf
     }()
     
+    private var sex : UISegmentedControl = {
+        let choices = UISegmentedControl.init(items: ["M", "F"])
+        choices.backgroundColor = .white
+        choices.addTarget(self, action: #selector(handleSexPick), for: .valueChanged)
+        return choices
+    }()
+    
     private var signupButton : UIButton = {
         let button = UIButton(type: .system)
         button.authButton(withTitle: "Sign Up")
@@ -122,14 +129,29 @@ extension SignUp {
     
     fileprivate func configUI() {
         view.addSubview(photoButton)
-        photoButton.setDimensions(height: 270, width: 270)
+        photoButton.setDimensions(height: 240, width: 240)
         photoButton.centerX(inView: view)
         photoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8)
         //
+        let nameStack : UIStackView = {
+            let stack = UIStackView(arrangedSubviews: [fullname, email])
+            stack.axis = .horizontal
+            stack.spacing = 4
+            stack.distribution = .fillEqually
+            return stack
+        }()
+        let sexAndAgeStack : UIStackView = {
+            let stack = UIStackView(arrangedSubviews: [age, sex])
+            stack.axis = .horizontal
+            stack.spacing = 4
+            stack.distribution = .fillEqually
+            return stack
+        }()
+        //
         let stack : UIStackView = {
-           let stack = UIStackView(arrangedSubviews: [fullname, email, password, signupButton])
+           let stack = UIStackView(arrangedSubviews: [nameStack, sexAndAgeStack, signupButton])
             stack.axis = .vertical
-            stack.spacing = 16
+            stack.spacing = 12
             return stack
         }()
         view.addSubview(stack)
@@ -196,6 +218,18 @@ extension SignUp {
             break
         }
         buttonStatus()
+    }
+    
+    @objc func handleSexPick(sender: UISegmentedControl) {
+        print("new sex is picked by user")
+        switch sender.selectedSegmentIndex {
+        case 0 :
+            print("male")
+        case 1:
+            print("female")
+        default:
+            print("unkown sex")
+        }
     }
     
 }
