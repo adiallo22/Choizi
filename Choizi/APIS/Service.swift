@@ -70,11 +70,11 @@ extension Service {
                 } else {
                     snapshot?.documents.forEach({ document in
                         let value = document.data()
-                        let user = User.init(value: value)
-                        guard user.uid != Auth.auth().currentUser?.uid else { return }
-                        guard AlreadySwipedUsers[user.uid] == nil else { return }
-                        users.insert(user, at: 0)
-                        print("\(user.name) is \(user.sex)")
+                        let displayUser = User.init(value: value)
+                        guard displayUser.uid != Auth.auth().currentUser?.uid else { return }
+                        guard AlreadySwipedUsers[displayUser.uid] == nil else { return }
+                        guard displayUser.sex != user.sex else { return }
+                        users.insert(displayUser, at: 0)
                     })
                     completion(.success(users))
                 }
