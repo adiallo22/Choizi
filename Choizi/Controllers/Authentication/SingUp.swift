@@ -60,7 +60,9 @@ class SignUp : UIViewController {
     
     private var sex : UISegmentedControl = {
         let choices = UISegmentedControl.init(items: ["M", "F"])
-        choices.backgroundColor = .white
+        choices.backgroundColor = UIColor.init(white: 1, alpha: 0.2)
+        choices.selectedSegmentTintColor = .white
+        choices.selectedSegmentIndex = 0
         choices.addTarget(self, action: #selector(handleSexPick), for: .valueChanged)
         return choices
     }()
@@ -136,14 +138,14 @@ extension SignUp {
         let nameStack : UIStackView = {
             let stack = UIStackView(arrangedSubviews: [fullname, email])
             stack.axis = .horizontal
-            stack.spacing = 4
+            stack.spacing = 6
             stack.distribution = .fillEqually
             return stack
         }()
         let sexAndAgeStack : UIStackView = {
             let stack = UIStackView(arrangedSubviews: [age, sex])
             stack.axis = .horizontal
-            stack.spacing = 4
+            stack.spacing = 6
             stack.distribution = .fillEqually
             return stack
         }()
@@ -255,13 +257,17 @@ extension SignUp {
         guard let fullname = fullname.text,
             let email = email.text,
             let password = password.text,
+            let age = age.text,
             let profileIMG = profile else { return }
         let hud = JGProgressHUD.init(style: .dark)
         hud.show(in: view)
+        let pickedSex : String = sex.selectedSegmentIndex == 0 ? "M" : "F"
         let credential = UserCredential(fullname: fullname,
                                         email: email,
                                         password: password,
-                                        profileIMG: profileIMG)
+                                        profileIMG: profileIMG,
+                                        age: age,
+                                        sex: pickedSex)
         AuthenticationService.register(withCredentials: credential) { [weak self] uid, err  in
             if let err = err {
                 print(err.localizedDescription)

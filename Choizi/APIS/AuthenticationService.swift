@@ -26,7 +26,9 @@ struct AuthenticationService {
                         "uid":uid,
                         "fullname":credentials.fullname,
                         "email":credentials.email,
-                        "images":[imgURL]
+                        "images":[imgURL],
+                        "age":credentials.age,
+                        "sex":credentials.sex
                     ]
                     
                     Firestore.firestore().collection("users").document(uid).setData(data) { error in

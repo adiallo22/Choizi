@@ -14,5 +14,7 @@ struct UserCredential {
     var email : String
     var password : String
     var profileIMG : UIImage
+    var age : String
+    var sex : String
     
 }
