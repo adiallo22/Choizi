@@ -27,7 +27,7 @@ struct AuthenticationService {
                         "fullname":credentials.fullname,
                         "email":credentials.email,
                         "images":[imgURL],
-                        "age":credentials.age,
+                        "age":Int(credentials.age) ?? 18,
                         "sex":credentials.sex
                     ]
                     

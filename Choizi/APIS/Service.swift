@@ -74,6 +74,7 @@ extension Service {
                         guard user.uid != Auth.auth().currentUser?.uid else { return }
                         guard AlreadySwipedUsers[user.uid] == nil else { return }
                         users.insert(user, at: 0)
+                        print("\(user.name) is \(user.sex)")
                     })
                     completion(.success(users))
                 }
@@ -91,6 +92,7 @@ extension Service {
             "fullname":user.name,
             "email":user.email,
             "age":user.age,
+            "sex":user.sex,
             "images":user.images,
             "bio":user.bio,
             "profession":user.profession,
