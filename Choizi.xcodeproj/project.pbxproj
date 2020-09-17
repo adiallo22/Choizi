@@ -28,7 +28,6 @@
 		C015DF1C250EFBCA008ED583 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C015DF1B250EFBCA008ED583 /* ConversationViewModel.swift */; };
 		C01D2AE9250FE8AC009F6732 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C01D2AE8250FE8AC009F6732 /* GoogleService-Info.plist */; };
 		C01D2AEC2511348F009F6732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01D2AEB2511348F009F6732 /* ViewController.swift */; };
-		C01D2B1425139CD0009F6732 /* ChoiziTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01D2B1325139CD0009F6732 /* ChoiziTests.swift */; };
 		C03C4EE024F89C4B00475B4D /* SegmentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */; };
 		C05EE6B324D8860C00C08BA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B224D8860C00C08BA8 /* User.swift */; };
 		C05EE6B524D8883D00C08BA8 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B424D8883D00C08BA8 /* CardViewModel.swift */; };
@@ -96,7 +95,6 @@
 		C01D2AE8250FE8AC009F6732 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C01D2AEB2511348F009F6732 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C01D2B1125139CD0009F6732 /* ChoiziTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChoiziTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C01D2B1325139CD0009F6732 /* ChoiziTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiziTests.swift; sourceTree = "<group>"; };
 		C01D2B1525139CD0009F6732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C03C4EDF24F89C4B00475B4D /* SegmentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentBar.swift; sourceTree = "<group>"; };
 		C05EE6B224D8860C00C08BA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 		C01D2B1225139CD0009F6732 /* ChoiziTests */ = {
 			isa = PBXGroup;
 			children = (
-				C01D2B1325139CD0009F6732 /* ChoiziTests.swift */,
 				C01D2B1525139CD0009F6732 /* Info.plist */,
 			);
 			path = ChoiziTests;
@@ -384,6 +381,7 @@
 					};
 					C01D2B1025139CD0009F6732 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 						TestTargetID = C0095E3024D07E8D0000B1EC;
 					};
 				};
@@ -526,7 +524,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C01D2B1425139CD0009F6732 /* ChoiziTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +705,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNY957A2G6;
 				INFOPLIST_FILE = ChoiziTests/Info.plist;
@@ -719,6 +717,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = abdulCo.ChoiziTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChoiziTests/ChoiziTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Choizi.app/Choizi";
@@ -729,6 +729,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNY957A2G6;
 				INFOPLIST_FILE = ChoiziTests/Info.plist;
@@ -740,6 +741,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = abdulCo.ChoiziTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChoiziTests/ChoiziTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Choizi.app/Choizi";

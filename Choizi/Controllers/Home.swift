@@ -15,6 +15,8 @@ class Home : UIViewController {
     
     var rewardedAd: GADRewardedAd?
     
+    private var alertType : AlertType?
+    
     private var user : User?
     
     private var viewModels : [CardViewModel] = [] {
@@ -129,12 +131,12 @@ extension Home {
     fileprivate func configAds() {
         rewardedAd = GADRewardedAd(adUnitID: videoAdsID)
         rewardedAd?.load(GADRequest()) { error in
-          if let error = error {
-            print(error.localizedRecoverySuggestion ?? "error ")
-          } else {
-            print("ads is shown.")
-          }
-    }
+            if let error = error {
+                print(error.localizedRecoverySuggestion ?? "error ")
+            } else {
+                print("ads is shown.")
+            }
+        }
     }
 }
 
@@ -294,7 +296,7 @@ extension Home : FooterHomeBarDelegate {
         if rewardedAd?.isReady == true {
            rewardedAd?.present(fromRootViewController: self, delegate:self)
         }
-        presentAlert(of: .Superlike)
+        alertType = .Superlike
     }
     
     func handleLike() {
@@ -312,7 +314,7 @@ extension Home : FooterHomeBarDelegate {
         if rewardedAd?.isReady == true {
            rewardedAd?.present(fromRootViewController: self, delegate:self)
         }
-        presentAlert(of: .Boost)
+        alertType = .Boost
     }
     
     func handleRefresh() {
@@ -338,8 +340,12 @@ extension Home : ProfileDelegate {
     }
     
     func handleSuperLike(_ controller: Profile, onUser user: User) {
-        controller.dismiss(animated: true) {
-            self.presentAlert(of: .Superlike)
+        controller.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            if self.rewardedAd?.isReady == true {
+                self.rewardedAd?.present(fromRootViewController: self, delegate:self)
+            }
+            self.alertType = .Superlike
         }
     }
 }
@@ -371,7 +377,9 @@ extension Home : GADRewardedAdDelegate {
     }
     
     func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
-        presentAlert(of: .Superlike)
+        configAds()
+        guard let alert = alertType else { return }
+        presentAlert(of: alert)
     }
     
 }
