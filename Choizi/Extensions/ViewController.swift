@@ -12,7 +12,7 @@ extension UIViewController {
     
     func presentAlert(of type : AlertType) {
         let alert = UIAlertController.init(title: "Alert",
-                                           message: "\(type.description) is not yet activated",
+                                           message: type.description,
                                            preferredStyle: .alert)
         let action = UIAlertAction.init(title: "Ok", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
@@ -32,9 +32,9 @@ enum AlertType {
     var description : String {
         switch self {
         case .Boost:
-            return "Boosting"
+            return "Your profile cannot be boosted at this moment, please try again later"
         case .Superlike:
-            return "Superliking"
+            return "Superliking a user is not yet activated, please try again later"
         }
     }
 }

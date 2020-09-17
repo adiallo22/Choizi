@@ -13,3 +13,4 @@ let collectionUserSwipes = Firestore.firestore().collection("swipes")
 let collectionMatchesMsg = Firestore.firestore().collection("match_messages")
 let adsID = "ca-app-pub-3940256099942544/2934735716"
 let fullScreenAdsId = "ca-app-pub-3940256099942544/4411468910"
+let videoAdsID = "ca-app-pub-3940256099942544/1712485313"

@@ -9,8 +9,11 @@
 import UIKit
 import FirebaseAuth
 import JGProgressHUD
+import GoogleMobileAds
 
 class Home : UIViewController {
+    
+    var rewardedAd: GADRewardedAd?
     
     private var user : User?
     
@@ -37,6 +40,7 @@ class Home : UIViewController {
         checkLogStatus()
         fetchCurrentUserAndAllUsers()
         configUI()
+        configAds()
     }
     
 }
@@ -122,6 +126,16 @@ extension Home {
         Service.uploadMatch(currentUser: currentUSR, matchedUser: user)
     }
     
+    fileprivate func configAds() {
+        rewardedAd = GADRewardedAd(adUnitID: videoAdsID)
+        rewardedAd?.load(GADRequest()) { error in
+          if let error = error {
+            print(error.localizedRecoverySuggestion ?? "error ")
+          } else {
+            print("ads is shown.")
+          }
+    }
+    }
 }
 
 //MARK: - APIS
@@ -277,6 +291,9 @@ extension Home : CardDelegate {
 extension Home : FooterHomeBarDelegate {
     
     func handleSuperLike() {
+        if rewardedAd?.isReady == true {
+           rewardedAd?.present(fromRootViewController: self, delegate:self)
+        }
         presentAlert(of: .Superlike)
     }
     
@@ -292,6 +309,9 @@ extension Home : FooterHomeBarDelegate {
     }
     
     func handleBoost() {
+        if rewardedAd?.isReady == true {
+           rewardedAd?.present(fromRootViewController: self, delegate:self)
+        }
         presentAlert(of: .Boost)
     }
     
@@ -334,6 +354,24 @@ extension Home : MatchViewDelegate {
         let nav = UINavigationController.init(rootViewController: chat)
         present(nav, animated: true, completion: nil)
         nav.modalPresentationStyle = .fullScreen
+    }
+    
+}
+
+//MARK: - GADRewardBasedVideoAdDelegate
+
+extension Home : GADRewardedAdDelegate {
+    
+    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+        print("Rewarded ad succeed to present.")
+    }
+    
+    func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
+      print("Rewarded ad failed to present.")
+    }
+    
+    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
+        presentAlert(of: .Superlike)
     }
     
 }
