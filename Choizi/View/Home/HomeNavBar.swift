@@ -31,7 +31,8 @@ class HomeNavBar : UIStackView {
     
     var img : UIImageView = {
         let img = UIImageView()
-        img.image = #imageLiteral(resourceName: "app_icon")
+        img.image = #imageLiteral(resourceName: "logo")
+        img.setDimensions(height: 40, width: 40)
         img.contentMode = .scaleAspectFit
         return img
     }()

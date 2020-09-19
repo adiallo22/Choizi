@@ -129,7 +129,7 @@ extension Home {
     }
     
     fileprivate func configAds() {
-        rewardedAd = GADRewardedAd(adUnitID: videoAdsID)
+        rewardedAd = GADRewardedAd(adUnitID: rewardedAdsID)
         rewardedAd?.load(GADRequest()) { error in
             if let error = error {
                 print(error.localizedRecoverySuggestion ?? "error ")
@@ -382,4 +382,4 @@ extension Home : GADRewardedAdDelegate {
         presentAlert(of: alert)
     }
     
-}
+} 
