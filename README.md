@@ -20,3 +20,19 @@ Technologies used
 - Cocoapods as dependency manager to import 3rd party libraries
 - SDWebImage framework to download images and cache them
 - AdMob to display ads and collect revenu
+
+<img src="/mockups/IMG_0268_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0269_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0270_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0271_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0272_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0273_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0274_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0275_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0276_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0277_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0278_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0279_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0280_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0281_iphonexspacegrey_portrait.png"/>
+<img src="/mockups/IMG_0282_iphonexspacegrey_portrait.png"/>
