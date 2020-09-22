@@ -30,6 +30,8 @@ class Home : UIViewController {
     
     private let footer = FooterHomeBar()
     
+    let service = Service()
+    
     private let deck : UIView = {
         let view = UIView()
         view.layer.cornerRadius = 5
@@ -125,7 +127,7 @@ extension Home {
         view.addSubview(matchView)
         matchView.fillSuperview()
         //upload matches to database
-        Service().uploadMatch(currentUser: currentUSR, matchedUser: user)
+        service.uploadMatch(currentUser: currentUSR, matchedUser: user)
     }
     
     fileprivate func configAds() {
@@ -163,7 +165,7 @@ extension Home {
     
     fileprivate func fetchCurrentUserAndAllUsers() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        Service().fetchUser(withUid: uid) { [weak self] result in
+        service.fetchUser(withUid: uid) { [weak self] result in
             switch result {
             case .success(let user):
                 self?.user = user
@@ -176,7 +178,7 @@ extension Home {
     
     fileprivate func fetchAllUsers() {
         guard let user = user else { return }
-        Service().fetchAllUsers(fromCurrentUser: user) { result in
+        service.fetchAllUsers(fromCurrentUser: user) { result in
             switch result {
             case .success(let users):
                 self.viewModels = users.map({ CardViewModel.init(user: $0) })
@@ -187,14 +189,14 @@ extension Home {
     }
     
     fileprivate func persistSwipeAndMatch(onUser user: User, withLike like: Bool, withAnimation: Bool) {
-        Service().saveSwipe(onUser: user, isLike: like) { err in
+        service.saveSwipe(onUser: user, isLike: like) { err in
             if err != nil {
                 print(err!.localizedDescription)
             }
         }
         // check for matches only with swipe is right side
         if like == true {
-            Service().isThereAMatch(withUser: user) { [weak self] match in
+            service.isThereAMatch(withUser: user) { [weak self] match in
                 self?.presentMatchView(forUser: user)
             }
         }
@@ -212,7 +214,7 @@ extension Home {
 extension Home : AuthenticateDelegate {
     
     func finishedSigningUp(withUID uid: String) {
-        Service().fetchUser(withUid: uid) { [weak self] result in
+        service.fetchUser(withUid: uid) { [weak self] result in
             switch result {
             case .success(let user):
                 self?.user = user

@@ -14,8 +14,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "conversationTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "fetchAllUsers()"
             landmarkType = "7">
          </BreakpointContent>
@@ -124,8 +124,8 @@
             filePath = "Choizi/Controllers/Setting.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "handleDone()"
             landmarkType = "7">
          </BreakpointContent>
@@ -140,8 +140,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "perfomPersistingSwipe(fromCard:withLike:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -156,8 +156,8 @@
             filePath = "Choizi/Controllers/Setting.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "handleDone()"
             landmarkType = "7">
          </BreakpointContent>
@@ -188,8 +188,8 @@
             filePath = "Choizi/Controllers/Setting.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "Setting"
             landmarkType = "3">
             <Locations>
@@ -330,8 +330,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "handleBoost()"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,8 +346,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "handleRefresh()"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,8 +362,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "handleBoost()"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,8 +394,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "persistSwipeAndMatch(onUser:withLike:withAnimation:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,8 +522,8 @@
             filePath = "Choizi/Controllers/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
             landmarkName = "handleLike(_:onUser:)"
             landmarkType = "7">
          </BreakpointContent>

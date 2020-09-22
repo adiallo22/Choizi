@@ -12,6 +12,8 @@ private let reuseIdentifier = "MessageCell"
 
 class Chat : UICollectionViewController {
     
+    //MARK: - properties
+    
     private let user : User
     
     private var messages : [Message] = [] {
