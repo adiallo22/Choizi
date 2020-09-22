@@ -36,6 +36,8 @@
 		C05EE6BC24DB223A00C08BA8 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6BB24DB223A00C08BA8 /* AuthViewModel.swift */; };
 		C06FCF0024F368DD00DDC078 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FCEFF24F368DD00DDC078 /* Conversation.swift */; };
 		C09C5712251A5CC000A7D6CB /* UploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C5711251A5CC000A7D6CB /* UploadingService.swift */; };
+		C09C5714251A8C9D00A7D6CB /* ServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C5713251A8C9D00A7D6CB /* ServiceInterface.swift */; };
+		C09C5716251A8CBD00A7D6CB /* AutenthicationInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C5715251A8CBD00A7D6CB /* AutenthicationInterface.swift */; };
 		C0A377D124EEC8FB001BA545 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */; };
 		C0A377D324EEC93D001BA545 /* UserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D224EEC93D001BA545 /* UserCredential.swift */; };
 		C0A377D524EED660001BA545 /* FetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D424EED660001BA545 /* FetchingService.swift */; };
@@ -105,6 +107,8 @@
 		C05EE6BB24DB223A00C08BA8 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		C06FCEFF24F368DD00DDC078 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		C09C5711251A5CC000A7D6CB /* UploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingService.swift; sourceTree = "<group>"; };
+		C09C5713251A8C9D00A7D6CB /* ServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInterface.swift; sourceTree = "<group>"; };
+		C09C5715251A8CBD00A7D6CB /* AutenthicationInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenthicationInterface.swift; sourceTree = "<group>"; };
 		C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C0A377D224EEC93D001BA545 /* UserCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredential.swift; sourceTree = "<group>"; };
 		C0A377D424EED660001BA545 /* FetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingService.swift; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 		C09C5710251A5C8400A7D6CB /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				C09C5713251A8C9D00A7D6CB /* ServiceInterface.swift */,
+				C09C5715251A8CBD00A7D6CB /* AutenthicationInterface.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 				C0F1CF4D24F49EEA0052488D /* SettingFooter.swift in Sources */,
 				C0A377D524EED660001BA545 /* FetchingService.swift in Sources */,
 				C0F1CF5724F6D0FF0052488D /* ProfileViewModel.swift in Sources */,
+				C09C5714251A8C9D00A7D6CB /* ServiceInterface.swift in Sources */,
 				C0B430D42502C3FF004BFFC5 /* MatchViewModel.swift in Sources */,
 				C0F1CF5524F6B5D60052488D /* ProfileCell.swift in Sources */,
 				C09C5712251A5CC000A7D6CB /* UploadingService.swift in Sources */,
@@ -507,6 +514,7 @@
 				C05EE6B324D8860C00C08BA8 /* User.swift in Sources */,
 				C0EA2B3624F019AD0034154B /* Buttons.swift in Sources */,
 				C015DF1A250EF650008ED583 /* ConversationCell.swift in Sources */,
+				C09C5716251A8CBD00A7D6CB /* AutenthicationInterface.swift in Sources */,
 				C0095E5624D0F3DB0000B1EC /* FooterHomeBar.swift in Sources */,
 				C015DF18250E906C008ED583 /* ConversationModel.swift in Sources */,
 				C0B430A524FEBEDA004BFFC5 /* MatchView.swift in Sources */,

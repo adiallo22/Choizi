@@ -9,11 +9,6 @@
 import FirebaseAuth
 import FirebaseFirestore
 
-protocol AuthenticationInterface {
-    func register(withCredentials credentials: UserCredential, completion: @escaping(String?, Error?)->Void)
-    func signIn(withEmail email: String, andPassword password: String, completion: AuthDataResultCallback?)
-}
-
 struct AuthenticationService : AuthenticationInterface {
     
     func register(withCredentials credentials: UserCredential, completion: @escaping(String?, Error?)->Void) {
