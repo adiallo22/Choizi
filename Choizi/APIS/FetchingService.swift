@@ -12,9 +12,21 @@ import FirebaseAuth
 
 let ref = Storage.storage()
 
-struct Service {
+protocol ServiceInterface {
+    func uploadImage(image: UIImage, completion: @escaping(Result<String, Error>)->Void)
+    func fetchUser(withUid uid: String, completion: @escaping(Result<User, Error>)->Void)
+    func fetchAllUsers(fromCurrentUser user: User, completion: @escaping(Result<[User], Error>)->Void)
+    func saveData(withUser user: User, completion: @escaping(Error?)->Void)
+    func saveSwipe(onUser user: User, isLike like: Bool, completion: @escaping(Error?)->Void)
+    func isThereAMatch(withUser user: User, completion: @escaping(Bool)->Void)
+    func fetchLikedUser(completion: @escaping([User]?) -> Void)
+    func uploadMatch(currentUser: User, matchedUser: User)
+    func fetchMatches(completion: @escaping([Match]) -> Void)
+}
+
+struct Service : ServiceInterface {
     
-    static func uploadImage(image: UIImage, completion: @escaping(Result<String, Error>)->Void) {
+    func uploadImage(image: UIImage, completion: @escaping(Result<String, Error>)->Void) {
         
         guard let imgData = image.jpegData(compressionQuality: 0.7) else { return }
         let filePath = NSUUID().uuidString
@@ -43,7 +55,7 @@ struct Service {
 //MARK: - Fetch User
 
 extension Service {
-    static func fetchUser(withUid uid: String, completion: @escaping(Result<User, Error>)->Void) {
+    func fetchUser(withUid uid: String, completion: @escaping(Result<User, Error>)->Void) {
         collectionUserPath.document(uid).getDocument { snap, err in
             if let err = err {
                 completion(.failure(err))
@@ -59,11 +71,11 @@ extension Service {
 //MARK: - Fetch All Users
 
 extension Service {
-    static func fetchAllUsers(fromCurrentUser user: User, completion: @escaping(Result<[User], Error>)->Void) {
+    func fetchAllUsers(fromCurrentUser user: User, completion: @escaping(Result<[User], Error>)->Void) {
         var users : [User] = []
         let query = collectionUserPath.whereField("age", isGreaterThanOrEqualTo: user.seekingMinAge)
             .whereField("age", isLessThanOrEqualTo: user.seekingMaxAge)
-        fetchSwipes { AlreadySwipedUsers in
+        Service.fetchSwipes { AlreadySwipedUsers in
             query.getDocuments { snapshot, err in
                 if let err = err {
                     completion(.failure(err))
@@ -83,50 +95,10 @@ extension Service {
     }
 }
 
-//MARK: - Upload data
-
-extension Service {
-    static func saveData(withUser user: User, completion: @escaping(Error?)->Void) {
-        let data : [String:Any] = [
-            "uid":user.uid,
-            "fullname":user.name,
-            "email":user.email,
-            "age":user.age,
-            "sex":user.sex,
-            "images":user.images,
-            "bio":user.bio,
-            "profession":user.profession,
-            "seekingMinAge":user.seekingMinAge,
-            "seekingMaxAge":user.seekingMaxAge
-        ]
-        collectionUserPath.document(user.uid).setData(data, completion: completion)
-    }
-}
-
-//MARK: - save swipes
-
-extension Service {
-    static func saveSwipe(onUser user: User, isLike like: Bool, completion: @escaping(Error?)->Void) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        collectionUserSwipes.document(uid).getDocument { snapshot, error in
-            if let error = error {
-                completion(error)
-            } else {
-                let data = [user.uid:like]
-                if snapshot?.exists == true {
-                    collectionUserSwipes.document(uid).updateData(data)
-                } else {
-                    collectionUserSwipes.document(uid).setData(data)
-                }
-            }
-        }
-    }
-}
-
 //MARK: - check for matching
 
 extension Service {
-    static func isThereAMatch(withUser user: User, completion: @escaping(Bool)->Void) {
+    func isThereAMatch(withUser user: User, completion: @escaping(Bool)->Void) {
         guard let currentUID = Auth.auth().currentUser?.uid else { return }
         collectionUserSwipes.document(user.uid).getDocument { snapshot, error in
             if error != nil {
@@ -160,12 +132,12 @@ extension Service {
 //MARK: - fetch liked users
 
 extension Service {
-    static func fetchLikedUser(completion: @escaping([User]?) -> Void) {
+    func fetchLikedUser(completion: @escaping([User]?) -> Void) {
         var users : [User] = []
-        fetchSwipes { SwipedUsers in
+        Service.fetchSwipes { SwipedUsers in
             SwipedUsers.forEach { key, value in
                 guard value == true else { return }
-                fetchUser(withUid: key) { result in
+                self.fetchUser(withUid: key) { result in
                     switch result {
                     case .success(let user):
                         users.append(user)
@@ -179,34 +151,11 @@ extension Service {
     }
 }
 
-//MARK: - upload matches
-
-extension Service {
-    static func uploadMatch(currentUser: User, matchedUser: User) {
-        guard let matchedURL = matchedUser.images.first else { return }
-        guard let currentUSRurl = currentUser.images.first else { return }
-        //upload match from current user standpoint
-        let matchUsrData = [
-            "name":matchedUser.name,
-            "uid":matchedUser.uid,
-            "profileIMGurl":matchedURL
-        ]
-        collectionMatchesMsg.document(currentUser.uid).collection("matches").document(matchedUser.uid).setData(matchUsrData)
-        //upload match from matched user standpoint
-        let currentUsrData = [
-            "name":currentUser.name,
-            "uid":currentUser.uid,
-            "profileIMGurl":currentUSRurl
-        ]
-        collectionMatchesMsg.document(matchedUser.uid).collection("matches").document(currentUser.uid).setData(currentUsrData)
-    }
-}
-
 
 //MARK: - fetch matches
 
 extension Service {
-    static func fetchMatches(completion: @escaping([Match]) -> Void) {
+    func fetchMatches(completion: @escaping([Match]) -> Void) {
         var matches : [Match] = []
         guard let uid = Auth.auth().currentUser?.uid else { return }
         collectionMatchesMsg.document(uid).collection("matches").getDocuments { snapshot, error in

@@ -8,7 +8,13 @@
 
 import Firebase
 
-struct MessageService {
+protocol MessageServiceInterface {
+    func uploadMessage(_ message: String, to user : User, completion: ((Error?) -> Void)?)
+    func fetchMessage(for user: User, completion: @escaping(Result<[Message], Error>) -> Void)
+    func fetchConversations(completion: @escaping(Result<[ConversationModel], Error>) -> Void)
+}
+
+struct MessageService : MessageServiceInterface {
     
     static let shared = MessageService()
     

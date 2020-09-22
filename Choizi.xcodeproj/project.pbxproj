@@ -35,9 +35,10 @@
 		C05EE6BA24D8C44200C08BA8 /* SingUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6B924D8C44200C08BA8 /* SingUp.swift */; };
 		C05EE6BC24DB223A00C08BA8 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EE6BB24DB223A00C08BA8 /* AuthViewModel.swift */; };
 		C06FCF0024F368DD00DDC078 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FCEFF24F368DD00DDC078 /* Conversation.swift */; };
+		C09C5712251A5CC000A7D6CB /* UploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C5711251A5CC000A7D6CB /* UploadingService.swift */; };
 		C0A377D124EEC8FB001BA545 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */; };
 		C0A377D324EEC93D001BA545 /* UserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D224EEC93D001BA545 /* UserCredential.swift */; };
-		C0A377D524EED660001BA545 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D424EED660001BA545 /* Service.swift */; };
+		C0A377D524EED660001BA545 /* FetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D424EED660001BA545 /* FetchingService.swift */; };
 		C0ADE19924F16E73009183A0 /* SettingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ADE19824F16E73009183A0 /* SettingHeader.swift */; };
 		C0ADE19B24F19C04009183A0 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ADE19A24F19C04009183A0 /* SettingCell.swift */; };
 		C0ADE19D24F19D97009183A0 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ADE19C24F19D97009183A0 /* SettingViewModel.swift */; };
@@ -103,9 +104,10 @@
 		C05EE6B924D8C44200C08BA8 /* SingUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUp.swift; sourceTree = "<group>"; };
 		C05EE6BB24DB223A00C08BA8 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		C06FCEFF24F368DD00DDC078 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		C09C5711251A5CC000A7D6CB /* UploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingService.swift; sourceTree = "<group>"; };
 		C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C0A377D224EEC93D001BA545 /* UserCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredential.swift; sourceTree = "<group>"; };
-		C0A377D424EED660001BA545 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		C0A377D424EED660001BA545 /* FetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingService.swift; sourceTree = "<group>"; };
 		C0ADE19824F16E73009183A0 /* SettingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeader.swift; sourceTree = "<group>"; };
 		C0ADE19A24F19C04009183A0 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		C0ADE19C24F19D97009183A0 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
@@ -252,8 +254,10 @@
 		C0095E4D24D07F290000B1EC /* APIS */ = {
 			isa = PBXGroup;
 			children = (
+				C09C5710251A5C8400A7D6CB /* Interfaces */,
 				C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */,
-				C0A377D424EED660001BA545 /* Service.swift */,
+				C0A377D424EED660001BA545 /* FetchingService.swift */,
+				C09C5711251A5CC000A7D6CB /* UploadingService.swift */,
 				C015DF15250E6ABA008ED583 /* MessageService.swift */,
 			);
 			path = APIS;
@@ -286,6 +290,13 @@
 				C05EE6B924D8C44200C08BA8 /* SingUp.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C09C5710251A5C8400A7D6CB /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		C0B430D72503F98D004BFFC5 /* Home */ = {
@@ -479,10 +490,11 @@
 				C06FCF0024F368DD00DDC078 /* Conversation.swift in Sources */,
 				C0F1CF5324F5905D0052488D /* Profile.swift in Sources */,
 				C0F1CF4D24F49EEA0052488D /* SettingFooter.swift in Sources */,
-				C0A377D524EED660001BA545 /* Service.swift in Sources */,
+				C0A377D524EED660001BA545 /* FetchingService.swift in Sources */,
 				C0F1CF5724F6D0FF0052488D /* ProfileViewModel.swift in Sources */,
 				C0B430D42502C3FF004BFFC5 /* MatchViewModel.swift in Sources */,
 				C0F1CF5524F6B5D60052488D /* ProfileCell.swift in Sources */,
+				C09C5712251A5CC000A7D6CB /* UploadingService.swift in Sources */,
 				C015DF12250E49F5008ED583 /* Message.swift in Sources */,
 				C0095E3524D07E8D0000B1EC /* AppDelegate.swift in Sources */,
 				C0B430DD25041582004BFFC5 /* MatchCellViewModel.swift in Sources */,

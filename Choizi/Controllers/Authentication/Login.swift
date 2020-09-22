@@ -145,7 +145,7 @@ extension Login {
         //show loader
         let hud = JGProgressHUD.init(style: .dark)
         hud.show(in: view)
-        AuthenticationService.signIn(withEmail: email, andPassword: pwd) { [weak self] result, err in
+        AuthenticationService().signIn(withEmail: email, andPassword: pwd) { [weak self] result, err in
             if let err = err {
                 self?.setError(withDescription: err.localizedDescription)
                 hud.dismiss()

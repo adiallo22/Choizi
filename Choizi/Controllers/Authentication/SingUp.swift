@@ -272,7 +272,7 @@ extension SignUp {
                                         profileIMG: profileIMG,
                                         age: age,
                                         sex: pickedSex)
-        AuthenticationService.register(withCredentials: credential) { [weak self] uid, err  in
+        AuthenticationService().register(withCredentials: credential) { [weak self] uid, err  in
             if let err = err {
                 print(err.localizedDescription)
                 hud.dismiss()
