@@ -9,9 +9,14 @@
 import FirebaseAuth
 import FirebaseFirestore
 
-struct AuthenticationService {
+protocol AuthenticationInterface {
+    func register(withCredentials credentials: UserCredential, completion: @escaping(String?, Error?)->Void)
+    func signIn(withEmail email: String, andPassword password: String, completion: AuthDataResultCallback?)
+}
+
+struct AuthenticationService : AuthenticationInterface {
     
-    static func register(withCredentials credentials: UserCredential, completion: @escaping(String?, Error?)->Void) {
+    func register(withCredentials credentials: UserCredential, completion: @escaping(String?, Error?)->Void) {
         
         Service.uploadImage(image: credentials.profileIMG) { result in
             switch result {
@@ -47,7 +52,7 @@ struct AuthenticationService {
 //MARK: - LOGGIN
 
 extension AuthenticationService {
-    static func signIn(withEmail email: String,
+    func signIn(withEmail email: String,
                        andPassword password: String,
                        completion: AuthDataResultCallback?) {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
