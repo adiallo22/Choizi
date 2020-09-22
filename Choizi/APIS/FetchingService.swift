@@ -12,19 +12,22 @@ import FirebaseAuth
 
 let ref = Storage.storage()
 
-protocol ServiceInterface {
-    func uploadImage(image: UIImage, completion: @escaping(Result<String, Error>)->Void)
+protocol ServiceDownloadInterface {
     func fetchUser(withUid uid: String, completion: @escaping(Result<User, Error>)->Void)
     func fetchAllUsers(fromCurrentUser user: User, completion: @escaping(Result<[User], Error>)->Void)
-    func saveData(withUser user: User, completion: @escaping(Error?)->Void)
-    func saveSwipe(onUser user: User, isLike like: Bool, completion: @escaping(Error?)->Void)
     func isThereAMatch(withUser user: User, completion: @escaping(Bool)->Void)
     func fetchLikedUser(completion: @escaping([User]?) -> Void)
-    func uploadMatch(currentUser: User, matchedUser: User)
     func fetchMatches(completion: @escaping([Match]) -> Void)
 }
 
-struct Service : ServiceInterface {
+protocol ServiceUploadInterface {
+    func uploadImage(image: UIImage, completion: @escaping(Result<String, Error>)->Void)
+    func saveData(withUser user: User, completion: @escaping(Error?)->Void)
+    func saveSwipe(onUser user: User, isLike like: Bool, completion: @escaping(Error?)->Void)
+    func uploadMatch(currentUser: User, matchedUser: User)
+}
+
+struct Service : ServiceDownloadInterface {
     
     func uploadImage(image: UIImage, completion: @escaping(Result<String, Error>)->Void) {
         

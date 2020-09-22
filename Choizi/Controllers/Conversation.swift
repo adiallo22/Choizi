@@ -14,6 +14,10 @@ private let reuseIdentifier = "conversationCell"
 
 class Conversation : UITableViewController {
     
+    //MARK: - properties
+    
+    let service = Service()
+    
     private var bannerView: GADBannerView!
     
     private var user : User
@@ -129,14 +133,14 @@ extension Conversation {
 extension Conversation {
     
     fileprivate func fetchMatches() {
-        Service().fetchMatches { [weak self] matches in
+        service.fetchMatches { [weak self] matches in
             self?.header.matches = matches
             self?.header.delegate = self
         }
     }
     
     fileprivate func fetchUserAndOpenChat(withUID uid: String) {
-        Service().fetchUser(withUid: uid) { [weak self] result in
+        service.fetchUser(withUid: uid) { [weak self] result in
             switch result {
             case .success(let user):
                 self?.openChat(withUser: user)

@@ -11,7 +11,7 @@ import Firebase
 
 //MARK: - upload matches
 
-extension Service {
+extension Service : ServiceUploadInterface {
     func uploadMatch(currentUser: User, matchedUser: User) {
         guard let matchedURL = matchedUser.images.first else { return }
         guard let currentUSRurl = currentUser.images.first else { return }
