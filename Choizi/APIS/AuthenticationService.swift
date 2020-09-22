@@ -18,7 +18,7 @@ struct AuthenticationService : AuthenticationInterface {
     
     func register(withCredentials credentials: UserCredential, completion: @escaping(String?, Error?)->Void) {
         
-        Service.uploadImage(image: credentials.profileIMG) { result in
+        Service().uploadImage(image: credentials.profileIMG) { result in
             switch result {
             case .success(let imgURL):
                 

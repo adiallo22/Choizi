@@ -129,14 +129,14 @@ extension Conversation {
 extension Conversation {
     
     fileprivate func fetchMatches() {
-        Service.fetchMatches { [weak self] matches in
+        Service().fetchMatches { [weak self] matches in
             self?.header.matches = matches
             self?.header.delegate = self
         }
     }
     
     fileprivate func fetchUserAndOpenChat(withUID uid: String) {
-        Service.fetchUser(withUid: uid) { [weak self] result in
+        Service().fetchUser(withUid: uid) { [weak self] result in
             switch result {
             case .success(let user):
                 self?.openChat(withUser: user)

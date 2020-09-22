@@ -77,7 +77,7 @@ extension MessageService {
                     let data = change.document.data()
                     let msg = Message.init(data: data)
                     if msg.fromID != currentUID {
-                        Service.fetchUser(withUid: msg.fromID) { result in
+                        Service().fetchUser(withUid: msg.fromID) { result in
                             switch result {
                             case .success(let user):
                                 conversations.append(ConversationModel.init(user: user, message: msg))
@@ -87,7 +87,7 @@ extension MessageService {
                             }
                         }
                     } else {
-                        Service.fetchUser(withUid: msg.toID) { result in
+                        Service().fetchUser(withUid: msg.toID) { result in
                             switch result {
                             case .success(let user):
                                 conversations.append(ConversationModel.init(user: user, message: msg))

@@ -108,7 +108,7 @@ extension Setting {
         let hud = JGProgressHUD.init(style: .dark)
         hud.textLabel.text = "Saving photo.."
         hud.show(in: view)
-        Service.saveData(withUser: user) { [weak self] err in
+        Service().saveData(withUser: user) { [weak self] err in
             guard let self = self else { return }
             self.delegate?.settingUpdated(self, withUser: self.user)
         }
@@ -123,7 +123,7 @@ extension Setting {
         let hud = JGProgressHUD.init(style: .dark)
         hud.textLabel.text = "Saving photo.."
         hud.show(in: view)
-        Service.uploadImage(image: image) { result in
+        Service().uploadImage(image: image) { result in
             switch result {
             case .success(let url):
                 self.user.images.append(url)
