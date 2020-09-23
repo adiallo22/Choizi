@@ -109,7 +109,9 @@ extension Conversation {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ConversationCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? ConversationCell else {
+            fatalError("Error getting conversation cell at \(indexPath.row)")
+        }
         cell.conversation = conversations[indexPath.row]
         return cell
     }

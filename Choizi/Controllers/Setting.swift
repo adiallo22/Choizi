@@ -150,7 +150,7 @@ extension Setting {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier, for: indexPath) as! SettingCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier, for: indexPath) as? SettingCell else { fatalError("Failed finding setting cell at \(indexPath.row)")}
         guard let setting = SettingSections.init(rawValue: indexPath.section) else { return cell }
         let viewModel = SettingViewModel(user: user, setting: setting)
         cell.viewModel = viewModel
