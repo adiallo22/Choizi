@@ -38,6 +38,9 @@
 		C09C5712251A5CC000A7D6CB /* UploadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C5711251A5CC000A7D6CB /* UploadingService.swift */; };
 		C09C5714251A8C9D00A7D6CB /* ServiceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C5713251A8C9D00A7D6CB /* ServiceInterface.swift */; };
 		C09C5716251A8CBD00A7D6CB /* AutenthicationInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C5715251A8CBD00A7D6CB /* AutenthicationInterface.swift */; };
+		C09C5718251B6E9D00A7D6CB /* ServiceUploadInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C5717251B6E9D00A7D6CB /* ServiceUploadInterfaceTest.swift */; };
+		C09C571B251B6EFB00A7D6CB /* ServiceDownloadInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C571A251B6EFB00A7D6CB /* ServiceDownloadInterfaceTest.swift */; };
+		C09C571D251B6F1D00A7D6CB /* UploadServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C571C251B6F1D00A7D6CB /* UploadServiceMock.swift */; };
 		C0A377D124EEC8FB001BA545 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */; };
 		C0A377D324EEC93D001BA545 /* UserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D224EEC93D001BA545 /* UserCredential.swift */; };
 		C0A377D524EED660001BA545 /* FetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A377D424EED660001BA545 /* FetchingService.swift */; };
@@ -109,6 +112,9 @@
 		C09C5711251A5CC000A7D6CB /* UploadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingService.swift; sourceTree = "<group>"; };
 		C09C5713251A8C9D00A7D6CB /* ServiceInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInterface.swift; sourceTree = "<group>"; };
 		C09C5715251A8CBD00A7D6CB /* AutenthicationInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenthicationInterface.swift; sourceTree = "<group>"; };
+		C09C5717251B6E9D00A7D6CB /* ServiceUploadInterfaceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUploadInterfaceTest.swift; sourceTree = "<group>"; };
+		C09C571A251B6EFB00A7D6CB /* ServiceDownloadInterfaceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDownloadInterfaceTest.swift; sourceTree = "<group>"; };
+		C09C571C251B6F1D00A7D6CB /* UploadServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadServiceMock.swift; sourceTree = "<group>"; };
 		C0A377D024EEC8FB001BA545 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C0A377D224EEC93D001BA545 /* UserCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredential.swift; sourceTree = "<group>"; };
 		C0A377D424EED660001BA545 /* FetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchingService.swift; sourceTree = "<group>"; };
@@ -283,6 +289,9 @@
 			isa = PBXGroup;
 			children = (
 				C01D2B1525139CD0009F6732 /* Info.plist */,
+				C09C571C251B6F1D00A7D6CB /* UploadServiceMock.swift */,
+				C09C5717251B6E9D00A7D6CB /* ServiceUploadInterfaceTest.swift */,
+				C09C571A251B6EFB00A7D6CB /* ServiceDownloadInterfaceTest.swift */,
 			);
 			path = ChoiziTests;
 			sourceTree = "<group>";
@@ -544,6 +553,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09C571D251B6F1D00A7D6CB /* UploadServiceMock.swift in Sources */,
+				C09C5718251B6E9D00A7D6CB /* ServiceUploadInterfaceTest.swift in Sources */,
+				C09C571B251B6EFB00A7D6CB /* ServiceDownloadInterfaceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
