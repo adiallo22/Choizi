@@ -26,6 +26,7 @@ enum FetchingErrors : Error {
         case .fetchMatchesError : return "Error fetching matched users"
         }
     }
+    
 }
 
 class DownloadServiceMock : ServiceDownloadInterface {
@@ -56,9 +57,9 @@ class DownloadServiceMock : ServiceDownloadInterface {
 
 extension DownloadServiceMock {
     
-    func fetchUser(withUid uid: String, completion: @escaping(Result<User, Error>)->Void) {
+    func fetchUser(withUid uid: String, completion: @escaping(Result<User, FetchingErrors>)->Void) {
         if shouldReturnError {
-            completion(Error())
+            completion(.failure(.fetchUserError))
         } else {
             completion(mockUser)
         }
@@ -66,7 +67,7 @@ extension DownloadServiceMock {
     
     func fetchAllUsers(fromCurrentUser user: User, completion: @escaping(Result<[User], Error>)->Void) {
         if shouldReturnError {
-            completion(Error())
+            completion(.failure(.fetchAllUsersError))
         } else {
             completion(mockUsers)
         }
@@ -74,7 +75,7 @@ extension DownloadServiceMock {
     
     func isThereAMatch(withUser user: User, completion: @escaping(Bool)->Void) {
         if shouldReturnError {
-            completion(Eoor())
+            completion(.isThereAMatchError)
         } else {
             completion(true)
         }
@@ -82,7 +83,7 @@ extension DownloadServiceMock {
     
     func fetchLikedUser(completion: @escaping([User]?) -> Void) {
         if shouldReturnError {
-            completion(Error())
+            completion(FetchingErrors.fetchLikedUserError)
         } else {
             completion(mockUsers)
         }
@@ -90,7 +91,7 @@ extension DownloadServiceMock {
     
     func fetchMatches(completion: @escaping([Match]) -> Void) {
         if shouldReturnError {
-            completion(Error())
+            completion(FetchingErrors.fetchMatchesError)
         } else {
             completion(mockMatches)
         }

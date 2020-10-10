@@ -11,10 +11,11 @@ target 'Choizi' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
 	pod 'Firebase/Core'
-  pod 'Firebase/AdMob'
+	pod 'Firebase/AdMob'
 	pod 'Firebase/Storage'
-  pod 'Firebase/Analytics'
+  	pod 'Firebase/Analytics'
 	pod 'SDWebImage'
 	pod 'JGProgressHUD'
+	pod 'Firebase/Performance'
 
 end
