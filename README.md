@@ -16,12 +16,12 @@ Below are few functionalities that can be done with the App
 <br>
 <br>
 Technologies used
-- The MVVM architecture 
-- Programatically desing the UI - Therefore no storyboard
-- Firebase server to store user profiles, swipes, chats, images
-- Cocoapods as dependency manager to import 3rd party libraries
-- SDWebImage framework to download images and cache them
-- AdMob to display ads and collect revenu
+1. The MVVM architecture 
+2. Programatically desing the UI - Therefore no storyboard
+3. Firebase server to store user profiles, swipes, chats, images
+4. Cocoapods as dependency manager to import 3rd party libraries
+5. SDWebImage framework to download images and cache them
+6. AdMob to display ads and collect revenu
 
 <img src="/mockups/IMG_0268_iphonexspacegrey_portrait.png"/>
 <img src="/mockups/IMG_0269_iphonexspacegrey_portrait.png"/>
