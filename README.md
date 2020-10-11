@@ -10,6 +10,8 @@ Below are few functionalities that can be done with the App
 5. Authentication with a beautiful sign in and sign up flow
 6. Modify your profile
 7. Show a matching animation when 2 users like each other
+8. Modify your credentials
+9. Uplooad and replace photos
 
 <br>
 <br>
