@@ -15,7 +15,7 @@ Below are few functionalities that can be done with the App
 
 <br>
 <br>
-Technologies used
+Technologies used <br>
 1. The MVVM architecture <br>
 2. Programatically desing the UI - Therefore no storyboard <br>
 3. Firebase server to store user profiles, swipes, chats, images <br>
